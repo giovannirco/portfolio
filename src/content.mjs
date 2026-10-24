@@ -30,7 +30,7 @@ export const pages = {
     hero: {
       name: "Giovanni Coutinho",
       role: "Staff Platform Engineer",
-      lede: "I design and run Kubernetes platforms, and I care most about the parts nobody notices until they break: how code reaches production and how you find out something is wrong. Eight years of production Kubernetes, almost seven of them on the platform team at Exodus, a non-custodial crypto wallet and exchange.",
+      lede: "I design and run Kubernetes platforms. What I care about most is how code gets to production and how fast you notice when something goes wrong. Eight years of production Kubernetes, almost seven of them on the platform team at Exodus, a non-custodial crypto wallet and exchange.",
       links: { resume: "Resume", github: "GitHub", linkedin: "LinkedIn", email: "Email" },
     },
     screens: { top: "Who I am", work: "What I've done", homelab: "What I run", projects: "Projects", contact: "How I work" },
@@ -94,7 +94,7 @@ export const pages = {
     hero: {
       name: "Giovanni Coutinho",
       role: "Staff Platform Engineer",
-      lede: "Projeto e opero plataformas Kubernetes, e o que mais me interessa são as partes que ninguém nota até quebrarem: como o código chega à produção e como você descobre que algo deu errado. Oito anos de Kubernetes em produção, quase sete deles no time de plataforma da Exodus, uma carteira e exchange cripto não custodial.",
+      lede: "Projeto e opero plataformas Kubernetes. O que mais me importa é como o código chega à produção e quão rápido se percebe quando algo dá errado. Oito anos de Kubernetes em produção, quase sete deles no time de plataforma da Exodus, uma carteira e exchange cripto não custodial.",
       links: { resume: "Currículo", github: "GitHub", linkedin: "LinkedIn", email: "E-mail" },
     },
     screens: { top: "Quem sou", work: "O que eu fiz", homelab: "O que eu opero", projects: "Projetos", contact: "Como trabalho" },
