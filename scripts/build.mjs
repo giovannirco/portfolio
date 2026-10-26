@@ -8,7 +8,6 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const src = join(root, "src");
 const out = join(root, "dist");
 
-// every language must have the same keys and the same shape
 function shape(value, path = "") {
   if (Array.isArray(value)) return value.flatMap((v, i) => shape(v, `${path}[${i}]`));
   if (value && typeof value === "object") return Object.entries(value).flatMap(([k, v]) => shape(v, path ? `${path}.${k}` : k));
@@ -31,7 +30,9 @@ for (const f of readdirSync(join(src, "fonts")).filter((f) => f.endsWith(".woff2
   writeFileSync(join(out, "assets", "fonts", name), buf);
   asset[`/assets/fonts/${f}`] = `/assets/fonts/${name}`;
 }
-cpSync(join(src, "fonts", "OFL.txt"), join(out, "assets", "fonts", "OFL.txt"));
+for (const file of readdirSync(join(src, "fonts")).filter((file) => file.endsWith(".txt"))) {
+  cpSync(join(src, "fonts", file), join(out, "assets", "fonts", file));
+}
 
 let css = readFileSync(join(src, "assets", "site.css"), "utf8");
 for (const [from, to] of Object.entries(asset)) css = css.replaceAll(from, to);
@@ -51,10 +52,10 @@ const ext = (href, text) => `<a href="${esc(href)}" rel="noopener">${esc(text)}<
 const mail = (text) => `<!--email_off--><a href="mailto:${site.email}">${esc(text)}</a><!--/email_off-->`;
 const langs = Object.values(pages);
 
-function head(p, { title = p.title, canonical = site.origin + p.path, alternates = true } = {}) {
+function head(p, { title = p.title, canonical = site.origin + p.path, alternates = true, route = "" } = {}) {
   const alt = alternates
-    ? langs.map((l) => `<link rel="alternate" hreflang="${l.lang}" href="${site.origin}${l.path}">`).join("\n") +
-      `\n<link rel="alternate" hreflang="x-default" href="${site.origin}/">`
+    ? langs.map((l) => `<link rel="alternate" hreflang="${l.lang}" href="${site.origin}${l.path}${route}">`).join("\n") +
+      `\n<link rel="alternate" hreflang="x-default" href="${site.origin}/${route}">`
     : "";
   return `<!DOCTYPE html>
 <html lang="${p.lang}">
@@ -80,148 +81,115 @@ ${alt}
 </head>`;
 }
 
-function langSwitch(p) {
-  return `<nav class="lang" aria-label="${esc(p.switchLabel)}">` +
-    langs.map((l) => `<a href="${l.path}" hreflang="${l.lang}" lang="${l.lang}" aria-current="${l === p}">${l.lang === "en" ? "EN" : "PT"}</a>`).join("") +
-    `</nav>`;
+
+const arrow = (direction = "right") => `<svg class="arrow ${direction}" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>`;
+
+function renderHeader(page, story = null) {
+  const identity = story
+    ? `<a class="identity-name" href="${page.path}">${esc(page.hero.name)}</a>`
+    : `<h1 class="identity-name">${esc(page.hero.name)}</h1>`;
+  const nav = Object.entries(page.screens).map(([id, label]) =>
+    `<a href="${story ? page.path : ""}#${id === "work" ? "observability" : id}" data-section="${id}">${esc(label)}</a>`).join("");
+  const language = langs.map((language) =>
+    `<a href="${language.path}${story ? "work/" + story.id + "/" : ""}" hreflang="${language.lang}" lang="${language.lang}" aria-current="${language === page}">${language.lang === "en" ? "EN" : "PT-BR"}</a>`).join('<span aria-hidden="true"> / </span>');
+  return `<header class="site-header"><div class="identity">${identity}<p>${esc(page.hero.role)}</p></div>
+<div class="header-links"><div class="utilities">${ext(site.resume, page.hero.links.resume)}<a href="${story ? page.path : ""}#about">${esc(page.reel.contact)}</a><nav class="lang" aria-label="${esc(page.switchLabel)}">${language}</nav></div>
+<nav class="primary-nav" aria-label="${esc(page.nav)}">${nav}</nav></div></header>`;
 }
 
-function page(p) {
-  const ids = Object.keys(p.screens);
-  const h = p.hero;
-  const leds = p.clusters.map((c) => `<li tabindex="0"><span class="led" aria-hidden="true"></span><span class="tip">${esc(c)}</span><span class="sr">${esc(c)}</span></li>`).join("");
-  const rows = (list) => list.map(([k, v]) => `<li><span class="k">${esc(k)}</span><p>${esc(v)}</p></li>`).join("\n");
-  const proj = p.projects.rows.map((r) => `<li><span class="k">${r.url ? ext(r.url, r.name) : ext(r.repo, r.name)}</span><div><p>${esc(r.text)}</p>` +
-    `<p class="go">${r.url ? ext(r.url, p.projects.visit) : ""}${ext(r.repo, p.projects.source)}</p></div></li>`).join("\n");
-  const spec = p.homelab.spec.map(([v, k]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("");
-  const principles = p.contact.principles.map(([b, t]) => `<li><strong>${esc(b)}</strong> ${esc(t)}</li>`).join("\n");
-  const rail = ids.map((id) => `<li><a href="#${id}" aria-current="${id === ids[0]}"><span class="plate" aria-hidden="true"></span><span class="label">${esc(p.screens[id])}</span></a></li>`).join("");
-  const L = p.contact.labels;
+function renderFlow(story) {
+  return `<ol class="flow">${story.steps.map((step) => `<li><span>${esc(step)}</span></li>`).join("")}</ol>`;
+}
 
-  return `${head(p)}
-<body>
-<a class="skip" href="#work">${esc(p.skip)}</a>
-<nav class="rail" aria-label="${esc(p.nav)}"><ol>${rail}</ol></nav>
-<main>
-<section class="screen" id="top" aria-labelledby="top-h">
-  <header class="top"><span class="brand">gc</span>${langSwitch(p)}</header>
-  <div class="inner">
-    <ul class="leds" aria-label="${esc(p.clustersLabel)}">${leds}</ul>
-    <h1 id="top-h">${esc(h.name)}</h1>
-    <p class="role">${esc(h.role)}</p>
-    <p class="lede">${esc(h.lede)}</p>
-    <ul class="links">
-      <li>${ext(site.resume, h.links.resume)}</li>
-      <li>${ext(site.github, h.links.github)}</li>
-      <li>${ext(site.linkedin, h.links.linkedin)}</li>
-      <li>${mail(h.links.email)}</li>
-    </ul>
-  </div>
-  <a class="next" href="#work">${esc(p.next)}</a>
-</section>
+function renderReel(page) {
+  const cards = page.cases.map((story) => `<article class="case-card" id="${story.id}" aria-labelledby="${story.id}-h">
+<h2 id="${story.id}-h">${esc(story.title)}</h2>
+<p class="case-summary">${esc(story.summary)}</p>
+${renderFlow(story)}
+<a class="read-case" href="${page.path}work/${story.id}/">${esc(page.reel.read)} ${arrow()}</a></article>`).join("");
+  const caseLinks = page.cases.map((story, index) =>
+    `<a href="#${story.id}" data-case-link="${story.id}"><span class="case-position" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span><span>${esc(story.label)}</span></a>`).join("");
+  return `<section class="reel-section" id="work" aria-label="${esc(page.work.heading)}">
+<section class="reel" tabindex="0" aria-label="${esc(page.reel.label)}" aria-describedby="reel-hint">
+<article class="case-card intro-card" id="top" aria-labelledby="intro-h">
+<h2 id="intro-h">${esc(page.hero.heading)}</h2><p class="case-summary">${esc(page.hero.lede)}</p>
+<div class="intro-links">${ext(site.github, "GitHub")}${ext(site.resume, page.hero.links.resume)}</div>
+<a class="read-case" href="#observability">${esc(page.work.heading)} ${arrow()}</a></article>
+${cards}</section>
+<div class="reel-controls"><button type="button" data-reel-prev aria-label="${esc(page.reel.previous)}">${arrow("left")}</button>
+<nav class="case-index" aria-label="${esc(page.reel.caseNav)}">${caseLinks}</nav>
+<button type="button" data-reel-next aria-label="${esc(page.reel.next)}">${arrow()}</button></div>
+<p class="reel-hint" id="reel-hint">${esc(page.reel.hint)}</p>
+<p class="reel-exit"><a href="#projects">${esc(page.projects.heading)} ${arrow("down")}</a></p>
+</section>`;
+}
 
-<section class="screen" id="work" aria-labelledby="work-h">
-  <div class="inner">
-    <h2 id="work-h">${esc(p.work.heading)}</h2>
-    <p class="muted">${esc(p.work.intro)}</p>
-    <ul class="ledger">
-${rows(p.work.rows)}
-    </ul>
-  </div>
-</section>
 
-<section class="screen" id="homelab" aria-labelledby="homelab-h">
-  <div class="inner">
-    <h2 id="homelab-h">${esc(p.homelab.heading)}</h2>
-    <p class="lede">${esc(p.homelab.lede)}</p>
-    <dl class="spec">${spec}</dl>
-    <p>${esc(p.homelab.body)}</p>
-    <p class="links">${ext(site.orrery, p.homelab.orrery)} ${ext("https://github.com/giovannirco/agentic-homelab", p.homelab.handbook)}</p>
-    <p class="asof">${esc(p.homelab.asof)}</p>
-  </div>
-</section>
+function renderSections(page) {
+  const projects = page.projects.rows.map((project) => `<li><h3>${ext(project.repo, project.name)}</h3><div><p>${esc(project.text)}</p><p class="project-links">${ext(project.repo, page.projects.source)}${project.url ? ext(project.url, page.projects.visit) : ""}</p></div></li>`).join("");
+  const products = page.products.rows.map((product) => `<li><h3>${product.url ? ext(product.url, product.name) : esc(product.name)}</h3><p>${esc(product.text)}</p></li>`).join("");
+  const contributions = page.projects.contributions.map((item) => `<li>${ext(item.url, item.name + ": " + item.text)}</li>`).join("");
+  const specs = page.homelab.spec.map(([value, label]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join("");
+  return `<section class="content-section" id="projects" aria-labelledby="projects-h"><h2 id="projects-h">${esc(page.projects.heading)}</h2>
+<ul class="work-list">${projects}</ul><div class="upstream"><h3>${esc(page.projects.upstream)}</h3><ul>${contributions}</ul></div></section>
+<section class="content-section" id="products" aria-labelledby="products-h"><h2 id="products-h">${esc(page.products.heading)}</h2><ul class="work-list">${products}</ul></section>
+<section class="content-section" id="homelab" aria-labelledby="homelab-h"><h2 id="homelab-h">${esc(page.homelab.heading)}</h2><p class="section-intro">${esc(page.homelab.lede)}</p>
+<dl class="lab-spec">${specs}</dl><p class="asof">${esc(page.homelab.asof)}</p><p>${esc(page.homelab.body)}</p>
+<p class="project-links">${ext(site.orrery, page.homelab.orrery)}${ext("https://github.com/giovannirco/agentic-homelab", page.homelab.handbook)}</p></section>
+<section class="content-section about" id="about" aria-labelledby="about-h"><h2 id="about-h">${esc(page.about.heading)}</h2>
+<ul class="principles">${page.contact.principles.map(([title, body]) => `<li><h3>${esc(title)}</h3><p>${esc(body)}</p></li>`).join("")}</ul>
+<div class="experience"><h3>${esc(page.about.experience)}</h3><p>${esc(page.about.history)}</p></div>
+<footer><h3>${esc(page.contact.reach)}</h3><p class="project-links">${mail(page.hero.links.email)}${ext(site.linkedin, "LinkedIn")}${ext(site.github, "GitHub")}${ext(site.resume, page.hero.links.resume)}</p><p class="asof">${esc(page.contact.where)} ${esc(page.contact.foot)}</p></footer></section>`;
+}
 
-<section class="screen" id="projects" aria-labelledby="projects-h">
-  <div class="inner">
-    <h2 id="projects-h">${esc(p.projects.heading)}</h2>
-    <ul class="ledger">
-${proj}
-    </ul>
-  </div>
-</section>
+function renderStory(page, story) {
+  const route = "work/" + story.id + "/";
+  const related = story.id === "ai" ? page.projects.rows.slice(0, 3) : [page.projects.rows[2], page.projects.rows[4]];
+  return `${head({ ...page, description: story.summary }, { title: story.title + " · " + page.hero.name, canonical: site.origin + page.path + route, route })}
+<body class="story-page"><a class="skip" href="#story">${esc(page.skip)}</a>${renderHeader(page, story)}
+<main class="story" id="story"><a class="back-link" href="${page.path}#${story.id}">${arrow("left")} ${esc(page.reel.back)}</a>
+<article><h1>${esc(story.title)}</h1><p class="story-summary">${esc(story.summary)}</p>${renderFlow(story)}
+${story.sections.map(([title, body]) => `<section><h2>${esc(title)}</h2><p>${esc(body)}</p></section>`).join("")}</article>
+<aside class="related"><h2>${esc(page.reel.related)}</h2><ul>${related.map((project) => `<li>${ext(project.repo, project.name)}<p>${esc(project.text)}</p></li>`).join("")}</ul></aside>
+<a class="back-link" href="${page.path}#${story.id}">${arrow("left")} ${esc(page.reel.back)}</a></main></body></html>`;
+}
 
-<section class="screen" id="contact" aria-labelledby="contact-h">
-  <div class="inner">
-    <h2 id="contact-h">${esc(p.contact.heading)}</h2>
-    <ul class="principles">
-${principles}
-    </ul>
-    <h3>${esc(p.contact.reach)}</h3>
-    <dl class="contact">
-      <dt>${esc(L.email)}</dt><dd>${mail(site.email)}</dd>
-      <dt>${esc(L.linkedin)}</dt><dd>${ext(site.linkedin, "in/giovanni-coutinho")}</dd>
-      <dt>${esc(L.github)}</dt><dd>${ext(site.github, "giovannirco")}</dd>
-      <dt>${esc(L.resume)}</dt><dd>${ext(site.resume, "resume.giovanni.dev.br")}</dd>
-    </dl>
-    <p class="foot">${esc(p.contact.where)} ${esc(p.contact.foot)}</p>
-  </div>
-</section>
-</main>
-<script src="${asset["site.js"]}" defer></script>
-</body>
-</html>
-`;
+function page(page) {
+  return `${head(page)}<body><a class="skip" href="#work">${esc(page.skip)}</a>
+${renderHeader(page)}<main>${renderReel(page)}${renderSections(page)}</main>
+<script src="${asset["site.js"]}" defer></script></body></html>`;
 }
 
 function notFound() {
   const en = pages.en.notFound, pt = pages["pt-br"].notFound;
-  return `${head(pages.en, { title: en.title, alternates: false })}
-<body>
-<main>
-<section class="screen" aria-labelledby="nf-h">
-  <div class="inner">
-    <h1 id="nf-h">${esc(en.title)}</h1>
-    <p class="lede">${esc(en.text)} <a href="/">${esc(en.home)}</a></p>
-    <p class="muted" lang="pt-BR">${esc(pt.text)} <a href="/pt-br/">${esc(pt.home)}</a></p>
-  </div>
-</section>
-</main>
-</body>
-</html>
-`;
+  return `${head(pages.en, { title: en.title, alternates: false })}<body><main class="reading"><h1>${esc(en.title)}</h1>
+<p>${esc(en.text)} <a href="/">${esc(en.home)}</a></p><p lang="pt-BR">${esc(pt.text)} <a href="/pt-br/">${esc(pt.home)}</a></p></main></body></html>`;
 }
 
-for (const p of langs) {
-  mkdirSync(join(out, p.path), { recursive: true });
-  writeFileSync(join(out, p.path, "index.html"), page(p).replace('<html lang', '<html class="snap" lang'));
+
+const routes = [];
+for (const entry of langs) {
+  mkdirSync(join(out, entry.path), { recursive: true });
+  writeFileSync(join(out, entry.path, "index.html"), page(entry));
+  routes.push({ entry, suffix: "" });
+  for (const story of entry.cases) {
+    const suffix = "work/" + story.id + "/";
+    mkdirSync(join(out, entry.path, suffix), { recursive: true });
+    writeFileSync(join(out, entry.path, suffix, "index.html"), renderStory(entry, story));
+    routes.push({ entry, suffix });
+  }
 }
 writeFileSync(join(out, "404.html"), notFound());
 writeFileSync(join(out, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${site.origin}/sitemap.xml\n`);
 writeFileSync(join(out, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${langs.map((p) => `  <url><loc>${site.origin}${p.path}</loc>${langs.map((l) => `<xhtml:link rel="alternate" hreflang="${l.lang}" href="${site.origin}${l.path}"/>`).join("")}</url>`).join("\n")}
-</urlset>
-`);
-const en = pages.en;
-writeFileSync(join(out, "llms.txt"), `# ${en.hero.name}
-
-> ${en.hero.role}. ${en.hero.lede}
-
-## ${en.work.heading}
-${en.work.rows.map(([k, v]) => `- ${k}: ${v}`).join("\n")}
-
-## ${en.homelab.heading}
-${en.homelab.spec.map(([v, k]) => `- ${v} ${k}`).join("\n")}
-- ${en.homelab.body}
-
-## ${en.projects.heading}
-${en.projects.rows.map((r) => `- [${r.name}](${r.url || r.repo}): ${r.text}`).join("\n")}
-
-## Links
-- [Resume](${site.resume})
-- [GitHub](${site.github})
-- [LinkedIn](${site.linkedin})
-- [Orrery](${site.orrery})
-- Portuguese: ${site.origin}/pt-br/
-`);
-console.log(`built ${langs.length} languages into dist/`);
+${routes.map(({ entry, suffix }) => `<url><loc>${site.origin}${entry.path}${suffix}</loc>${langs.map((language) => `<xhtml:link rel="alternate" hreflang="${language.lang}" href="${site.origin}${language.path}${suffix}"/>`).join("")}</url>`).join("\n")}
+</urlset>`);
+const english = pages.en;
+writeFileSync(join(out, "llms.txt"), `# ${english.hero.name}\n\n${english.hero.role}. ${english.hero.lede}\n
+## Cases\n${english.cases.map((story) => `- [${story.title}](${site.origin}/work/${story.id}/): ${story.summary}`).join("\n")}
+## Public work\n${english.projects.rows.map((project) => `- [${project.name}](${project.repo}): ${project.text}`).join("\n")}
+## Products\n${english.products.rows.map((product) => `- ${product.name}: ${product.text}`).join("\n")}
+## Experience\n${english.about.history}
+## Links\n- [Resume](${site.resume})\n- [GitHub](${site.github})\n- [LinkedIn](${site.linkedin})\n`);
+console.log(`built ${langs.length} languages and ${routes.length} routes into dist/`);

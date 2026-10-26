@@ -2,3 +2,12 @@ node_modules/
 dist/
 test-results/
 playwright-report/
+.impeccable/*
+!.impeccable/config.json
+!.impeccable/design.json
+!.impeccable/direction-contract.md
+!.impeccable/mocks/
+.impeccable/mocks/*
+!.impeccable/mocks/case-reel.png
+!.impeccable/mocks/case-reel.png.json
+!.impeccable/mocks/case-reel.prompt.txt

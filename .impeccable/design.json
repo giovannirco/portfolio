@@ -1,0 +1,359 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-26T15:43:56.489Z",
+  "title": "Design System: Giovanni Coutinho — Case reel",
+  "extensions": {
+    "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "Warm charcoal",
+        "tonalRamp": [
+          "oklch(15.00% 0.00194 106.57)",
+          "oklch(26.43% 0.00194 106.57)",
+          "oklch(37.86% 0.00194 106.57)",
+          "oklch(49.29% 0.00194 106.57)",
+          "oklch(60.71% 0.00194 106.57)",
+          "oklch(72.14% 0.00194 106.57)",
+          "oklch(83.57% 0.00194 106.57)",
+          "oklch(95.00% 0.00194 106.57)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Warm paper",
+        "tonalRamp": [
+          "oklch(15.00% 0.01744 96.10)",
+          "oklch(26.43% 0.01744 96.10)",
+          "oklch(37.86% 0.01744 96.10)",
+          "oklch(49.29% 0.01744 96.10)",
+          "oklch(60.71% 0.01744 96.10)",
+          "oklch(72.14% 0.01744 96.10)",
+          "oklch(83.57% 0.01744 96.10)",
+          "oklch(95.00% 0.01744 96.10)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Paper ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.00608 91.65)",
+          "oklch(26.43% 0.00608 91.65)",
+          "oklch(37.86% 0.00608 91.65)",
+          "oklch(49.29% 0.00608 91.65)",
+          "oklch(60.71% 0.00608 91.65)",
+          "oklch(72.14% 0.00608 91.65)",
+          "oklch(83.57% 0.00608 91.65)",
+          "oklch(95.00% 0.00608 91.65)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted warm gray",
+        "tonalRamp": [
+          "oklch(15.00% 0.01994 83.06)",
+          "oklch(26.43% 0.01994 83.06)",
+          "oklch(37.86% 0.01994 83.06)",
+          "oklch(49.29% 0.01994 83.06)",
+          "oklch(60.71% 0.01994 83.06)",
+          "oklch(72.14% 0.01994 83.06)",
+          "oklch(83.57% 0.01994 83.06)",
+          "oklch(95.00% 0.01994 83.06)"
+        ]
+      },
+      "amber": {
+        "role": "primary",
+        "displayName": "Signal amber",
+        "tonalRamp": [
+          "oklch(15.00% 0.13988 72.95)",
+          "oklch(26.43% 0.13988 72.95)",
+          "oklch(37.86% 0.13988 72.95)",
+          "oklch(49.29% 0.13988 72.95)",
+          "oklch(60.71% 0.13988 72.95)",
+          "oklch(72.14% 0.13988 72.95)",
+          "oklch(83.57% 0.13988 72.95)",
+          "oklch(95.00% 0.13988 72.95)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Charcoal divider",
+        "tonalRamp": [
+          "oklch(15.00% 0.01943 82.73)",
+          "oklch(26.43% 0.01943 82.73)",
+          "oklch(37.86% 0.01943 82.73)",
+          "oklch(49.29% 0.01943 82.73)",
+          "oklch(60.71% 0.01943 82.73)",
+          "oklch(72.14% 0.01943 82.73)",
+          "oklch(83.57% 0.01943 82.73)",
+          "oklch(95.00% 0.01943 82.73)"
+        ]
+      },
+      "paper-line": {
+        "role": "neutral",
+        "displayName": "Paper divider",
+        "tonalRamp": [
+          "oklch(15.00% 0.01888 81.31)",
+          "oklch(26.43% 0.01888 81.31)",
+          "oklch(37.86% 0.01888 81.31)",
+          "oklch(49.29% 0.01888 81.31)",
+          "oklch(60.71% 0.01888 81.31)",
+          "oklch(72.14% 0.01888 81.31)",
+          "oklch(83.57% 0.01888 81.31)",
+          "oklch(95.00% 0.01888 81.31)"
+        ]
+      },
+      "supporting-text": {
+        "role": "neutral",
+        "displayName": "Supporting text",
+        "tonalRamp": [
+          "oklch(15.00% 0.01892 86.15)",
+          "oklch(26.43% 0.01892 86.15)",
+          "oklch(37.86% 0.01892 86.15)",
+          "oklch(49.29% 0.01892 86.15)",
+          "oklch(60.71% 0.01892 86.15)",
+          "oklch(72.14% 0.01892 86.15)",
+          "oklch(83.57% 0.01892 86.15)",
+          "oklch(95.00% 0.01892 86.15)"
+        ]
+      },
+      "paper-focus": {
+        "role": "primary",
+        "displayName": "Paper focus",
+        "tonalRamp": [
+          "oklch(15.00% 0.10268 68.49)",
+          "oklch(26.43% 0.10268 68.49)",
+          "oklch(37.86% 0.10268 68.49)",
+          "oklch(49.29% 0.10268 68.49)",
+          "oklch(60.71% 0.10268 68.49)",
+          "oklch(72.14% 0.10268 68.49)",
+          "oklch(83.57% 0.10268 68.49)",
+          "oklch(95.00% 0.10268 68.49)"
+        ]
+      },
+      "flow-line": {
+        "role": "primary",
+        "displayName": "Diagram connector",
+        "tonalRamp": [
+          "oklch(15.00% 0.12683 66.52)",
+          "oklch(26.43% 0.12683 66.52)",
+          "oklch(37.86% 0.12683 66.52)",
+          "oklch(49.29% 0.12683 66.52)",
+          "oklch(60.71% 0.12683 66.52)",
+          "oklch(72.14% 0.12683 66.52)",
+          "oklch(83.57% 0.12683 66.52)",
+          "oklch(95.00% 0.12683 66.52)"
+        ]
+      },
+      "read-hover": {
+        "role": "primary",
+        "displayName": "Reading link hover",
+        "tonalRamp": [
+          "oklch(15.00% 0.10038 67.98)",
+          "oklch(26.43% 0.10038 67.98)",
+          "oklch(37.86% 0.10038 67.98)",
+          "oklch(49.29% 0.10038 67.98)",
+          "oklch(60.71% 0.10038 67.98)",
+          "oklch(72.14% 0.10038 67.98)",
+          "oklch(83.57% 0.10038 67.98)",
+          "oklch(95.00% 0.10038 67.98)"
+        ]
+      },
+      "control-line": {
+        "role": "neutral",
+        "displayName": "Control outline",
+        "tonalRamp": [
+          "oklch(15.00% 0.02011 81.28)",
+          "oklch(26.43% 0.02011 81.28)",
+          "oklch(37.86% 0.02011 81.28)",
+          "oklch(49.29% 0.02011 81.28)",
+          "oklch(60.71% 0.02011 81.28)",
+          "oklch(72.14% 0.02011 81.28)",
+          "oklch(83.57% 0.02011 81.28)",
+          "oklch(95.00% 0.02011 81.28)"
+        ]
+      },
+      "back-underline": {
+        "role": "primary",
+        "displayName": "Back-link underline",
+        "tonalRamp": [
+          "oklch(15.00% 0.11783 66.73)",
+          "oklch(26.43% 0.11783 66.73)",
+          "oklch(37.86% 0.11783 66.73)",
+          "oklch(49.29% 0.11783 66.73)",
+          "oklch(60.71% 0.11783 66.73)",
+          "oklch(72.14% 0.11783 66.73)",
+          "oklch(83.57% 0.11783 66.73)",
+          "oklch(95.00% 0.11783 66.73)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Case display",
+        "purpose": "Short case titles; responsive overrides are recorded in DESIGN.md."
+      },
+      "headline": {
+        "displayName": "Section headline",
+        "purpose": "Supporting section headings."
+      },
+      "story-display": {
+        "displayName": "Reading title",
+        "purpose": "Full case title."
+      },
+      "title": {
+        "displayName": "Row title",
+        "purpose": "Project names."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "General explanatory prose."
+      },
+      "case-summary": {
+        "displayName": "Case summary",
+        "purpose": "Prominent short case explanation."
+      },
+      "story-body": {
+        "displayName": "Reading prose",
+        "purpose": "Long case text."
+      },
+      "diagram": {
+        "displayName": "Diagram label",
+        "purpose": "Three-step process labels."
+      },
+      "label": {
+        "displayName": "Case index",
+        "purpose": "Desktop position and category navigation."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "trace-decision",
+        "value": "2s cubic-bezier(.16, 1, .3, 1) 1",
+        "purpose": "One signal traversal when a case becomes current; left 16.66% to 83.33%, opacity 0 → 1 → 0."
+      },
+      {
+        "name": "reel-navigation",
+        "value": "smooth",
+        "purpose": "Native browser smooth scrolling for explicit navigation; instant for reduced motion and initial centering."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "none",
+        "purpose": "Disable animations/transitions and smooth scrolling; retain completed static diagrams."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-desktop-min",
+        "value": "1201px"
+      },
+      {
+        "name": "compact-desktop-max",
+        "value": "1535px"
+      },
+      {
+        "name": "tablet-max",
+        "value": "1200px"
+      },
+      {
+        "name": "mobile-max",
+        "value": "760px"
+      },
+      {
+        "name": "narrow-max",
+        "value": "360px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Reel control",
+      "kind": "button",
+      "refersTo": "reel-control",
+      "description": "Previous/next arrow control on the charcoal frame.",
+      "html": "<div class=\"ds-control-stage\"><button class=\"ds-reel-button\" aria-label=\"Next case\"><svg class=\"ds-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14m-6-6 6 6-6 6\"/></svg></button></div>",
+      "css": ".ds-control-stage { background: var(--ground); } .ds-reel-button { width:56px; height:56px; border:1px solid #777064; border-radius:50%; background:transparent; color:var(--paper); display:grid; place-items:center; cursor:pointer; font:inherit; } .ds-reel-button:hover:not(:disabled) { border-color:var(--amber); color:var(--amber); } .ds-reel-button:disabled { opacity:.35; cursor:default; } .ds-arrow { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.6; vertical-align: middle; flex: none; } :focus-visible { outline: 2px solid var(--amber); outline-offset: 5px; }"
+    },
+    {
+      "name": "Read the case",
+      "kind": "custom",
+      "refersTo": "read-case",
+      "description": "Paper-panel reading link with divider and directional SVG.",
+      "html": "<div class=\"ds-read-stage\"><a class=\"ds-read-case\" href=\"/work/observability/\">Read the case <svg class=\"ds-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14m-6-6 6 6-6 6\"/></svg></a></div>",
+      "css": ".ds-read-stage { background:var(--paper); color:var(--ink); font-family: var(--sans); font-size: 1.0625rem; line-height: 1.6; } .ds-read-case { display: flex; align-items: center; gap: 16px; border-top: 1px solid var(--paper-line); padding-top: 16px; margin-top: 24px; font: 400 18px/1.5 var(--mono); text-decoration: none; }\n.ds-read-case:hover { color: #81500a; } .ds-arrow { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.6; vertical-align: middle; flex: none; } :focus-visible { outline: 2px solid #86540c; outline-offset: 5px; } .ds-read-case { color:inherit; } .ds-read-case:hover { color:#81500a; }"
+    },
+    {
+      "name": "Primary navigation",
+      "kind": "nav",
+      "refersTo": "primary-navigation",
+      "description": "Plain navigation with an underlined amber current destination.",
+      "html": "<nav class=\"ds-primary-nav\" aria-label=\"Main navigation\"><a href=\"#top\">Intro</a><a href=\"#observability\" aria-current=\"true\">Decisions</a><a href=\"#projects\">Public work</a><a href=\"#products\">Products</a><a href=\"#homelab\">Homelab</a></nav>",
+      "css": ".ds-primary-nav { background:var(--ground); color:var(--paper); font-family: var(--sans); font-size: 1.0625rem; line-height: 1.6; } .ds-primary-nav a { color:inherit; text-underline-offset:.3em; text-decoration-thickness:1px; } .ds-primary-nav { display: flex; gap: 32px; font-size: 17px; }\n.ds-primary-nav a { text-decoration: none; }\n.ds-primary-nav a[aria-current=\"true\"] { color: var(--amber); text-decoration: underline; } :focus-visible { outline: 2px solid var(--amber); outline-offset: 5px; } @media(max-width:760px) { .ds-primary-nav { flex-wrap:wrap; gap:10px 20px; font-size:15px; } }"
+    },
+    {
+      "name": "Case index",
+      "kind": "nav",
+      "refersTo": "case-index",
+      "description": "Four linked stops with explicit position, category and active state.",
+      "html": "<nav class=\"ds-case-index\" aria-label=\"Choose a case\"><a href=\"#observability\" aria-current=\"true\"><span class=\"ds-case-position\" aria-hidden=\"true\">01</span><span>Observability</span></a><a href=\"#delivery\" aria-current=\"false\"><span class=\"ds-case-position\" aria-hidden=\"true\">02</span><span>Delivery</span></a><a href=\"#network\" aria-current=\"false\"><span class=\"ds-case-position\" aria-hidden=\"true\">03</span><span>Network policy</span></a><a href=\"#ai\" aria-current=\"false\"><span class=\"ds-case-position\" aria-hidden=\"true\">04</span><span>AI tooling</span></a></nav>",
+      "css": ".ds-case-index { background:var(--ground); } .ds-case-index { display: flex; flex: 1; padding-top: 14px; min-width: 0; }\n.ds-case-index a { flex: 1; min-width: 0; position: relative; text-align: center; padding: 34px 6px 0; text-decoration: none; font: 400 16px/1.5 var(--mono); color: var(--muted); }\n.ds-case-index a::before { content: \"\"; width: 13px; height: 13px; border: 1px solid var(--paper); background: var(--ground); border-radius: 50%; position: absolute; top: 4px; left: calc(50% - 6.5px); z-index: 1; }\n.ds-case-index a:not(:last-child)::after { content: \"\"; height: 1px; background: var(--muted); width: 100%; position: absolute; top: 10px; left: 50%; }\n.ds-case-index a[aria-current=\"true\"] { color: var(--amber); }\n.ds-case-index a[aria-current=\"true\"]::before { border-color: var(--amber); background: var(--amber); }\n.ds-case-position { display: block; } :focus-visible { outline: 2px solid var(--amber); outline-offset: 5px; } @media(max-width:760px) { .ds-case-index { padding-top:0; } .ds-case-index a { font:400 12px/1.4 var(--sans); padding:26px 3px 0; overflow-wrap:anywhere; } .ds-case-position { font-family:var(--mono); font-size:11px; } }"
+    },
+    {
+      "name": "Case panel",
+      "kind": "card",
+      "refersTo": "case-panel",
+      "description": "Paper title and summary surface; the production panel also contains the decision flow and read link.",
+      "html": "<article class=\"ds-case-card\"><h2>Choosing what to operate.</h2><p class=\"ds-case-summary\">I compared the cost and upkeep of our telemetry stack, recommended a managed service, and led the migration.</p></article>",
+      "css": ".ds-case-card { font-family: var(--sans); font-size: 1.0625rem; line-height: 1.6; } .ds-case-card h2, .ds-case-card p { margin:0; } .ds-case-card { flex: 0 0 var(--card-width); min-width: 0; min-height: var(--card-height); padding: 44px 60px 38px; border-radius: 3px; color: var(--ink); background: var(--paper); scroll-snap-align: center; display: flex; flex-direction: column; color-scheme: light; }\n.ds-case-card h2 { font: 700 68px/1.04 var(--display); letter-spacing: -.035em; max-width: 12ch; margin-bottom: 28px; text-wrap: initial; }\n.ds-case-summary { font-size: 28px; line-height: 1.45; max-width: 51ch; } @media(max-width:760px) { .ds-case-card { min-height:540px; padding:28px 24px; } .ds-case-card h2 { font-size:clamp(2rem,8vw,3rem); line-height:1.1; max-width:15ch; margin-bottom:22px; } .ds-case-summary { font-size:18px; line-height:1.5; overflow-wrap:break-word; } }"
+    },
+    {
+      "name": "Decision flow",
+      "kind": "custom",
+      "refersTo": "decision-flow",
+      "description": "Semantic three-step diagram; the complete static version used on reading pages.",
+      "html": "<div class=\"ds-flow-stage\"><ol class=\"ds-flow\"><li><span>Our stack</span></li><li><span>Cost and upkeep</span></li><li><span>Managed service</span></li></ol></div>",
+      "css": ".ds-flow-stage { background:var(--paper); color:var(--ink); } .ds-flow { list-style: none; padding: 0; margin: auto 0; display: flex; position: relative; min-height: 110px; align-items: center; }\n.ds-flow li { flex: 1; position: relative; text-align: center; font: 400 18px/1.35 var(--mono); padding: 52px 10px 0; }\n.ds-flow li::before { content: \"\"; position: absolute; top: 0; width: 35px; height: 35px; left: calc(50% - 17.5px); background: var(--amber); border-radius: 50%; }\n.ds-flow li:not(:last-child)::after { content: \"\"; position: absolute; height: 1px; background: #ad6a0a; top: 17px; left: calc(50% + 55px); width: calc(100% - 110px); }\n.ds-flow li:not(:last-child) span::after { content: \"\"; position: absolute; width: 7px; height: 7px; border-top: 1px solid #ad6a0a; border-right: 1px solid #ad6a0a; transform: rotate(45deg); top: 13.5px; left: calc(150% - 62px); } @media(max-width:760px) { .ds-flow { min-height:140px; margin-block:20px; } .ds-flow li { font-size:12px; padding:34px 4px 0; overflow-wrap:break-word; } .ds-flow li::before { width:22px; height:22px; left:calc(50% - 11px); } .ds-flow li:not(:last-child)::after { top:11px; left:calc(50% + 20px); width:calc(100% - 40px); } .ds-flow li:not(:last-child) span::after { left:calc(150% - 27px); top:7.5px; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Case reel",
+    "overview": "Warm charcoal frames paper panels with strong, compact headlines and precise engineering diagrams. Visible neighboring panels establish sequence; generous interior space keeps each decision readable. Supporting work uses quiet ruled rows, while full cases use a paper reading surface.\n\nThis records the implemented, user-approved option C. The mockup establishes composition; the source and final review captures establish tokens and behavior. The numbered four-stop selector remains functional navigation; duplicated labels above panel titles were removed during finish review.",
+    "keyCharacteristics": [
+      "Paper and charcoal surfaces with amber state cues.",
+      "Wix headlines, Plex prose, and Plex Mono diagrams.",
+      "Native scrolling, visible neighbors, and direct case links.",
+      "Flat surfaces and bounded diagram motion."
+    ],
+    "rules": [
+      {
+        "name": "The Surface Contrast Rule",
+        "body": "Use ink text and the darker focus color on paper; use paper text and amber focus on charcoal.",
+        "section": "colors"
+      },
+      {
+        "name": "The Role Separation Rule",
+        "body": "Reserve Wix for case and section headlines; keep prose in Plex Sans and process labels in Plex Mono.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Surface Rule",
+        "body": "Keep paper panels and supporting rows shadow-free; use surface contrast and rules for separation.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep native vertical scrolling and visible neighboring panels.",
+      "Do preserve semantic case links, keyboard focus and static content without JavaScript.",
+      "Do use self-hosted fonts and assets under the existing content security policy.",
+      "Do keep diagram motion bounded and provide the complete static reduced-motion state.",
+      "Do allow Brazilian Portuguese labels and prose to wrap."
+    ],
+    "donts": [
+      "Don't reintroduce duplicate eyebrows above case titles.",
+      "Don't treat the functional numbered case selector as a decorative label style.",
+      "Don't add looping animation, scroll hijacking or shadow-based elevation.",
+      "Don't use portraits, private employer artifacts or invented evidence."
+    ]
+  }
+}
