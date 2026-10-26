@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-26T15:43:56.489Z",
+  "generatedAt": "2026-10-26T17:44:04.351Z",
   "title": "Design System: Giovanni Coutinho — Case reel",
   "extensions": {
     "colorMeta": {
@@ -62,7 +62,7 @@
       },
       "amber": {
         "role": "primary",
-        "displayName": "Signal amber",
+        "displayName": "Engineering amber",
         "tonalRamp": [
           "oklch(15.00% 0.13988 72.95)",
           "oklch(26.43% 0.13988 72.95)",
@@ -130,20 +130,6 @@
           "oklch(95.00% 0.10268 68.49)"
         ]
       },
-      "flow-line": {
-        "role": "primary",
-        "displayName": "Diagram connector",
-        "tonalRamp": [
-          "oklch(15.00% 0.12683 66.52)",
-          "oklch(26.43% 0.12683 66.52)",
-          "oklch(37.86% 0.12683 66.52)",
-          "oklch(49.29% 0.12683 66.52)",
-          "oklch(60.71% 0.12683 66.52)",
-          "oklch(72.14% 0.12683 66.52)",
-          "oklch(83.57% 0.12683 66.52)",
-          "oklch(95.00% 0.12683 66.52)"
-        ]
-      },
       "read-hover": {
         "role": "primary",
         "displayName": "Reading link hover",
@@ -174,7 +160,7 @@
       },
       "back-underline": {
         "role": "primary",
-        "displayName": "Back-link underline",
+        "displayName": "Connectors and back-link underline",
         "tonalRamp": [
           "oklch(15.00% 0.11783 66.73)",
           "oklch(26.43% 0.11783 66.73)",
@@ -184,6 +170,62 @@
           "oklch(72.14% 0.11783 66.73)",
           "oklch(83.57% 0.11783 66.73)",
           "oklch(95.00% 0.11783 66.73)"
+        ]
+      },
+      "diagram-muted": {
+        "role": "neutral",
+        "displayName": "Supporting diagram text",
+        "tonalRamp": [
+          "oklch(15.00% 0.03647 79.52)",
+          "oklch(26.43% 0.03647 79.52)",
+          "oklch(37.86% 0.03647 79.52)",
+          "oklch(49.29% 0.03647 79.52)",
+          "oklch(60.71% 0.03647 79.52)",
+          "oklch(72.14% 0.03647 79.52)",
+          "oklch(83.57% 0.03647 79.52)",
+          "oklch(95.00% 0.03647 79.52)"
+        ]
+      },
+      "boundary-tint": {
+        "role": "primary",
+        "displayName": "Policy boundary wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.13988 72.95)",
+          "oklch(26.43% 0.13988 72.95)",
+          "oklch(37.86% 0.13988 72.95)",
+          "oklch(49.29% 0.13988 72.95)",
+          "oklch(60.71% 0.13988 72.95)",
+          "oklch(72.14% 0.13988 72.95)",
+          "oklch(83.57% 0.13988 72.95)",
+          "oklch(95.00% 0.13988 72.95)"
+        ]
+      },
+      "blocked-path": {
+        "role": "primary",
+        "displayName": "Blocked traffic brown",
+        "tonalRamp": [
+          "oklch(15.00% 0.10925 54.84)",
+          "oklch(26.43% 0.10925 54.84)",
+          "oklch(37.86% 0.10925 54.84)",
+          "oklch(49.29% 0.10925 54.84)",
+          "oklch(60.71% 0.10925 54.84)",
+          "oklch(72.14% 0.10925 54.84)",
+          "oklch(83.57% 0.10925 54.84)",
+          "oklch(95.00% 0.10925 54.84)"
+        ]
+      },
+      "evidence-line": {
+        "role": "neutral",
+        "displayName": "Evidence-sheet strokes",
+        "tonalRamp": [
+          "oklch(15.00% 0.03206 80.57)",
+          "oklch(26.43% 0.03206 80.57)",
+          "oklch(37.86% 0.03206 80.57)",
+          "oklch(49.29% 0.03206 80.57)",
+          "oklch(60.71% 0.03206 80.57)",
+          "oklch(72.14% 0.03206 80.57)",
+          "oklch(83.57% 0.03206 80.57)",
+          "oklch(95.00% 0.03206 80.57)"
         ]
       }
     },
@@ -218,20 +260,75 @@
       },
       "diagram": {
         "displayName": "Diagram label",
-        "purpose": "Three-step process labels."
+        "purpose": "Sans labels for static engineering relationships."
       },
       "label": {
         "displayName": "Case index",
         "purpose": "Desktop position and category navigation."
+      },
+      "diagram-emphasis": {
+        "displayName": "Diagram Emphasis",
+        "purpose": "Owners, destinations and outcomes."
+      },
+      "diagram-caption": {
+        "displayName": "Diagram Caption",
+        "purpose": "Decision caption below each static illustration."
+      },
+      "diagram-secondary": {
+        "displayName": "Diagram Secondary",
+        "purpose": "Supporting labels on release sheets."
+      },
+      "diagram-detail": {
+        "displayName": "Diagram Detail",
+        "purpose": "Technical sources, release targets and evidence labels."
+      },
+      "diagram-enforcement": {
+        "displayName": "Diagram Enforcement",
+        "purpose": "Hubble enforcement note."
+      },
+      "read-link": {
+        "displayName": "Read Link",
+        "purpose": "Full-case reading links."
+      },
+      "identity": {
+        "displayName": "Identity",
+        "purpose": "Header name."
+      },
+      "identity-role": {
+        "displayName": "Identity Role",
+        "purpose": "Header engineering role."
+      },
+      "navigation": {
+        "displayName": "Navigation",
+        "purpose": "Primary navigation."
+      },
+      "metadata": {
+        "displayName": "Metadata",
+        "purpose": "Utility links and dated metadata."
+      },
+      "section-intro": {
+        "displayName": "Section Intro",
+        "purpose": "Supporting chapter introduction."
+      },
+      "section-subhead": {
+        "displayName": "Section Subhead",
+        "purpose": "Upstream, experience and contact headings."
+      },
+      "lab-value": {
+        "displayName": "Lab Value",
+        "purpose": "Homelab numerical figures."
+      },
+      "story-summary": {
+        "displayName": "Story Summary",
+        "purpose": "Reading-page introductory summary."
+      },
+      "story-subhead": {
+        "displayName": "Story Subhead",
+        "purpose": "Reading-page section and related-work headings."
       }
     },
     "shadows": [],
     "motion": [
-      {
-        "name": "trace-decision",
-        "value": "2s cubic-bezier(.16, 1, .3, 1) 1",
-        "purpose": "One signal traversal when a case becomes current; left 16.66% to 83.33%, opacity 0 → 1 → 0."
-      },
       {
         "name": "reel-navigation",
         "value": "smooth",
@@ -240,7 +337,7 @@
       {
         "name": "reduced-motion",
         "value": "none",
-        "purpose": "Disable animations/transitions and smooth scrolling; retain completed static diagrams."
+        "purpose": "Disable animations/transitions and smooth scrolling; diagrams are static for every motion preference."
       }
     ],
     "breakpoints": [
@@ -263,6 +360,10 @@
       {
         "name": "narrow-max",
         "value": "360px"
+      },
+      {
+        "name": "wide-chapter-min",
+        "value": "761px"
       }
     ]
   },
@@ -303,27 +404,51 @@
       "name": "Case panel",
       "kind": "card",
       "refersTo": "case-panel",
-      "description": "Paper title and summary surface; the production panel also contains the decision flow and read link.",
+      "description": "Paper title and summary surface; the production panel also contains a distinct static illustration, caption and read link.",
       "html": "<article class=\"ds-case-card\"><h2>Choosing what to operate.</h2><p class=\"ds-case-summary\">I compared the cost and upkeep of our telemetry stack, recommended a managed service, and led the migration.</p></article>",
       "css": ".ds-case-card { font-family: var(--sans); font-size: 1.0625rem; line-height: 1.6; } .ds-case-card h2, .ds-case-card p { margin:0; } .ds-case-card { flex: 0 0 var(--card-width); min-width: 0; min-height: var(--card-height); padding: 44px 60px 38px; border-radius: 3px; color: var(--ink); background: var(--paper); scroll-snap-align: center; display: flex; flex-direction: column; color-scheme: light; }\n.ds-case-card h2 { font: 700 68px/1.04 var(--display); letter-spacing: -.035em; max-width: 12ch; margin-bottom: 28px; text-wrap: initial; }\n.ds-case-summary { font-size: 28px; line-height: 1.45; max-width: 51ch; } @media(max-width:760px) { .ds-case-card { min-height:540px; padding:28px 24px; } .ds-case-card h2 { font-size:clamp(2rem,8vw,3rem); line-height:1.1; max-width:15ch; margin-bottom:22px; } .ds-case-summary { font-size:18px; line-height:1.5; overflow-wrap:break-word; } }"
     },
     {
-      "name": "Decision flow",
+      "name": "Collection and destinations",
       "kind": "custom",
-      "refersTo": "decision-flow",
-      "description": "Semantic three-step diagram; the complete static version used on reading pages.",
-      "html": "<div class=\"ds-flow-stage\"><ol class=\"ds-flow\"><li><span>Our stack</span></li><li><span>Cost and upkeep</span></li><li><span>Managed service</span></li></ol></div>",
-      "css": ".ds-flow-stage { background:var(--paper); color:var(--ink); } .ds-flow { list-style: none; padding: 0; margin: auto 0; display: flex; position: relative; min-height: 110px; align-items: center; }\n.ds-flow li { flex: 1; position: relative; text-align: center; font: 400 18px/1.35 var(--mono); padding: 52px 10px 0; }\n.ds-flow li::before { content: \"\"; position: absolute; top: 0; width: 35px; height: 35px; left: calc(50% - 17.5px); background: var(--amber); border-radius: 50%; }\n.ds-flow li:not(:last-child)::after { content: \"\"; position: absolute; height: 1px; background: #ad6a0a; top: 17px; left: calc(50% + 55px); width: calc(100% - 110px); }\n.ds-flow li:not(:last-child) span::after { content: \"\"; position: absolute; width: 7px; height: 7px; border-top: 1px solid #ad6a0a; border-right: 1px solid #ad6a0a; transform: rotate(45deg); top: 13.5px; left: calc(150% - 62px); } @media(max-width:760px) { .ds-flow { min-height:140px; margin-block:20px; } .ds-flow li { font-size:12px; padding:34px 4px 0; overflow-wrap:break-word; } .ds-flow li::before { width:22px; height:22px; left:calc(50% - 11px); } .ds-flow li:not(:last-child)::after { top:11px; left:calc(50% + 20px); width:calc(100% - 40px); } .ds-flow li:not(:last-child) span::after { left:calc(150% - 27px); top:7.5px; } }"
+      "refersTo": "case-diagram",
+      "description": "Persistent collection branches to independent telemetry destinations.",
+      "html": "<div class=\"ds-diagram-stage\"><figure class=\"ds-case-diagram\" data-diagram=\"observability\"><div class=\"ds-diagram-art\"><div class=\"ds-collection\"><svg viewBox=\"0 0 100 48\" aria-hidden=\"true\"><path d=\"M0 8h26l16 16h58M0 24h100M0 40h26l16-16\"/></svg><strong>Collection stays</strong></div><div class=\"ds-destinations\"><div><span>Metrics + traces</span><strong>Grafana Cloud</strong></div><div><span>Logs</span><strong>Observe</strong></div></div></div><figcaption>Change the destination without rebuilding collection.</figcaption></figure></div>",
+      "css": ".ds-diagram-stage { background:var(--paper); color:var(--ink); font:400 1.0625rem/1.6 var(--sans); }\n.ds-case-diagram { margin: auto 0; padding-top: 22px; }\n.ds-diagram-art { position: relative; display: grid; gap: 32px; align-items: center; min-height: 142px; font-size: 16px; line-height: 1.35; }\n.ds-diagram-art strong { font-weight: 600; }\n.ds-diagram-art svg { fill: none; stroke: currentColor; stroke-width: 1.5; overflow: visible; }\n.ds-case-diagram figcaption { margin-top: 14px; font-size: 15px; line-height: 1.4; color: #625540; }\n[data-diagram=\"observability\"] .ds-diagram-art { grid-template-columns: 1fr 1.5fr; }\n.ds-collection { border-bottom: 4px solid var(--amber); padding: 14px 0; }\n.ds-collection svg { display: block; width: 100%; height: 40px; margin-bottom: 12px; }\n.ds-destinations { border-left: 1px solid #9e610b; display: grid; gap: 14px; padding-left: 26px; }\n.ds-destinations > div { position: relative; border-bottom: 1px solid var(--paper-line); padding-bottom: 8px; display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }\n.ds-destinations > div::before { content: \"\"; position: absolute; top: 12px; right: 100%; width: 26px; height: 1px; background: #9e610b; }\n.ds-destinations span { color: #625540; }\n@media(max-width:760px) {\n.ds-case-diagram { padding-top: 24px; margin-bottom: 22px; }\n.ds-diagram-art { gap: 18px; font-size: 14px; min-height: 160px; }\n.ds-case-diagram figcaption { font-size: 13px; }\n[data-diagram=\"observability\"] .ds-diagram-art { grid-template-columns: .8fr 1fr; }\n.ds-destinations { padding-left: 16px; }\n.ds-destinations > div { gap: 4px; }\n.ds-destinations > div::before { width: 16px; }\n}"
+    },
+    {
+      "name": "Release ownership",
+      "kind": "custom",
+      "refersTo": "case-diagram",
+      "description": "Service owners use shared templates and a reviewed release sheet.",
+      "html": "<div class=\"ds-diagram-stage\"><figure class=\"ds-case-diagram\" data-diagram=\"delivery\"><div class=\"ds-diagram-art\"><div class=\"ds-delivery-owner\"><strong>Service owners</strong><svg viewBox=\"0 0 100 38\" aria-hidden=\"true\"><path d=\"M0 8h25l15 11h60M0 30h25l15-11\"/></svg></div><div class=\"ds-release-sheet\"><span>Shared templates</span><div><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><strong>Reviewed change</strong></div><div class=\"ds-release-target\"><span>Argo CD</span><strong>Covered services</strong></div></div></div><figcaption>The platform supplies the path. Service teams own the release.</figcaption></figure></div>",
+      "css": ".ds-diagram-stage { background:var(--paper); color:var(--ink); font:400 1.0625rem/1.6 var(--sans); }\n.ds-case-diagram { margin: auto 0; padding-top: 22px; }\n.ds-diagram-art { position: relative; display: grid; gap: 32px; align-items: center; min-height: 142px; font-size: 16px; line-height: 1.35; }\n.ds-diagram-art strong { font-weight: 600; }\n.ds-diagram-art svg { fill: none; stroke: currentColor; stroke-width: 1.5; overflow: visible; }\n.ds-case-diagram figcaption { margin-top: 14px; font-size: 15px; line-height: 1.4; color: #625540; }\n[data-diagram=\"delivery\"] .ds-diagram-art { grid-template-columns: 1fr 2fr; }\n.ds-delivery-owner svg { display: block; width: 100%; height: 48px; margin-top: 8px; }\n.ds-release-sheet { border: 1px solid var(--paper-line); border-top: 4px solid var(--amber); padding: 12px 18px; }\n.ds-release-sheet > span { color: #625540; font-size: 14px; }\n.ds-release-sheet > div { display: flex; align-items: center; gap: 8px; margin-top: 8px; }\n.ds-release-sheet svg { width: 20px; height: 20px; }\n.ds-release-sheet .ds-release-target { border-top: 1px solid var(--paper-line); padding-top: 8px; justify-content: space-between; flex-wrap: wrap; }\n.ds-release-target span { font: 400 14px/1.4 var(--mono); }\n@media(max-width:760px) {\n.ds-case-diagram { padding-top: 24px; margin-bottom: 22px; }\n.ds-diagram-art { gap: 18px; font-size: 14px; min-height: 160px; }\n.ds-case-diagram figcaption { font-size: 13px; }\n[data-diagram=\"delivery\"] .ds-diagram-art { grid-template-columns: 1fr; gap: 4px; }\n.ds-delivery-owner { display: flex; align-items: center; gap: 12px; }\n.ds-delivery-owner svg { width: 60px; height: 26px; margin: 0; }\n.ds-release-sheet { padding: 10px 12px; }\n}"
+    },
+    {
+      "name": "Policy enforcement",
+      "kind": "custom",
+      "refersTo": "case-diagram",
+      "description": "Allowed and blocked lanes make the enforcement boundary explicit.",
+      "html": "<div class=\"ds-diagram-stage\"><figure class=\"ds-case-diagram\" data-diagram=\"network\"><div class=\"ds-diagram-art\"><div class=\"ds-policy-boundary\"><strong>Policy boundary</strong></div><div class=\"ds-traffic-lanes\"><div class=\"ds-allowed-lane\"><span>Allowed traffic</span><svg viewBox=\"0 0 160 24\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><path d=\"M0 12h156m-8-6 8 6-8 6\"/></svg><strong>Permitted destination</strong></div><div class=\"ds-blocked-lane\"><span>Blocked callback</span><svg viewBox=\"0 0 160 24\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><path d=\"M0 12h76m0-10v20\"/></svg></div></div><div class=\"ds-enforcement\">Hubble: check enforcement</div></div><figcaption>Compare the rule with the traffic it actually permits.</figcaption></figure></div>",
+      "css": ".ds-diagram-stage { background:var(--paper); color:var(--ink); font:400 1.0625rem/1.6 var(--sans); }\n.ds-case-diagram { margin: auto 0; padding-top: 22px; }\n.ds-diagram-art { position: relative; display: grid; gap: 32px; align-items: center; min-height: 142px; font-size: 16px; line-height: 1.35; }\n.ds-diagram-art strong { font-weight: 600; }\n.ds-diagram-art svg { fill: none; stroke: currentColor; stroke-width: 1.5; overflow: visible; }\n.ds-case-diagram figcaption { margin-top: 14px; font-size: 15px; line-height: 1.4; color: #625540; }\n[data-diagram=\"network\"] .ds-diagram-art { display: block; padding-top: 30px; }\n.ds-policy-boundary { position: absolute; inset: 0 0 28px 50%; border: 1px solid #9e610b; background: #e8a33d12; }\n.ds-policy-boundary strong { position: absolute; top: -11px; left: 12px; padding: 0 6px; background: var(--paper); font-size: 14px; }\n.ds-traffic-lanes > div { display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; gap: 12px; min-height: 40px; position: relative; }\n.ds-traffic-lanes svg { width: 100%; height: 24px; }\n.ds-allowed-lane strong { padding-right: 10px; }\n.ds-blocked-lane svg { color: #92501b; stroke-width: 2; }\n.ds-enforcement { margin-top: 16px; font: 400 13px/1.4 var(--mono); }\n@media(max-width:760px) {\n.ds-case-diagram { padding-top: 24px; margin-bottom: 22px; }\n.ds-diagram-art { gap: 18px; font-size: 14px; min-height: 160px; }\n.ds-case-diagram figcaption { font-size: 13px; }\n.ds-traffic-lanes > div { gap: 8px; grid-template-columns: 1fr .6fr 1fr; min-height: 50px; }\n.ds-policy-boundary { left: 50%; }\n.ds-policy-boundary strong { left: 4px; font-size: 12px; }\n.ds-enforcement { font-size: 11px; }\n}"
+    },
+    {
+      "name": "Investigation evidence",
+      "kind": "custom",
+      "refersTo": "case-diagram",
+      "description": "Named MCP sources supply operational evidence for engineer review.",
+      "html": "<div class=\"ds-diagram-stage\"><figure class=\"ds-case-diagram\" data-diagram=\"ai\"><div class=\"ds-diagram-art\"><div class=\"ds-question\"><strong>Engineering question</strong><div class=\"ds-tool-sources\"><span>Observe MCP</span><span>Checkly MCP</span></div></div><div class=\"ds-evidence-sheet\"><span>Logs + checks</span><svg viewBox=\"0 0 160 36\" aria-hidden=\"true\"><path d=\"M0 4h115M0 18h160M0 32h82\"/></svg><strong>Engineer review</strong></div></div><figcaption>Bring operational evidence into the investigation.</figcaption></figure></div>",
+      "css": ".ds-diagram-stage { background:var(--paper); color:var(--ink); font:400 1.0625rem/1.6 var(--sans); }\n.ds-case-diagram { margin: auto 0; padding-top: 22px; }\n.ds-diagram-art { position: relative; display: grid; gap: 32px; align-items: center; min-height: 142px; font-size: 16px; line-height: 1.35; }\n.ds-diagram-art strong { font-weight: 600; }\n.ds-diagram-art svg { fill: none; stroke: currentColor; stroke-width: 1.5; overflow: visible; }\n.ds-case-diagram figcaption { margin-top: 14px; font-size: 15px; line-height: 1.4; color: #625540; }\n[data-diagram=\"ai\"] .ds-diagram-art { grid-template-columns: 1.2fr 1fr; }\n.ds-tool-sources { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }\n.ds-tool-sources span { border-bottom: 2px solid var(--amber); padding-bottom: 6px; font: 400 14px/1.4 var(--mono); }\n.ds-evidence-sheet { border: 1px solid var(--paper-line); padding: 14px 20px; position: relative; }\n.ds-evidence-sheet::before { content: \"\"; position: absolute; width: 32px; height: 1px; background: #9e610b; right: 100%; top: 50%; }\n.ds-evidence-sheet span { font: 400 14px/1.4 var(--mono); }\n.ds-evidence-sheet svg { width: 100%; height: 30px; margin-block: 12px; color: #9b8f7b; }\n.ds-evidence-sheet strong { display: block; }\n@media(max-width:760px) {\n.ds-case-diagram { padding-top: 24px; margin-bottom: 22px; }\n.ds-diagram-art { gap: 18px; font-size: 14px; min-height: 160px; }\n.ds-case-diagram figcaption { font-size: 13px; }\n[data-diagram=\"ai\"] .ds-diagram-art { grid-template-columns: 1fr 1fr; }\n.ds-tool-sources { margin-top: 14px; }\n.ds-tool-sources span, .ds-evidence-sheet span { font-size: 12px; }\n.ds-evidence-sheet { padding: 12px; }\n.ds-evidence-sheet::before { width: 18px; }\n}"
     }
   ],
   "narrative": {
     "northStar": "Case reel",
-    "overview": "Warm charcoal frames paper panels with strong, compact headlines and precise engineering diagrams. Visible neighboring panels establish sequence; generous interior space keeps each decision readable. Supporting work uses quiet ruled rows, while full cases use a paper reading surface.\n\nThis records the implemented, user-approved option C. The mockup establishes composition; the source and final review captures establish tokens and behavior. The numbered four-stop selector remains functional navigation; duplicated labels above panel titles were removed during finish review.",
+    "overview": "Warm charcoal frames paper panels with strong, compact headlines and precise engineering diagrams. Visible neighboring panels establish sequence; generous interior space keeps each decision readable. Supporting work occupies vertical viewport chapters with quiet ruled rows, while full cases use a paper reading surface. Four static illustrations explain different engineering relationships.\n\nThis records the implemented, user-approved Case reel and its chapter refinement. The mockup establishes palette and reel composition only; the approved direction contract and source supersede its diagram treatment. The numbered four-stop selector remains functional navigation; duplicated labels above panel titles were removed during finish review.",
     "keyCharacteristics": [
       "Paper and charcoal surfaces with amber state cues.",
-      "Wix headlines, Plex prose, and Plex Mono diagrams.",
-      "Native scrolling, visible neighbors, and direct case links.",
-      "Flat surfaces and bounded diagram motion."
+      "Wix headlines, Plex prose and diagram labels, and Plex Mono technical details.",
+      "Native horizontal cases, vertical chapters, visible neighbors and direct case links.",
+      "Flat surfaces and distinct static engineering illustrations."
     ],
     "rules": [
       {
@@ -333,7 +458,7 @@
       },
       {
         "name": "The Role Separation Rule",
-        "body": "Reserve Wix for case and section headlines; keep prose in Plex Sans and process labels in Plex Mono.",
+        "body": "Reserve Wix for case and section headlines; keep prose and diagram relationships in Plex Sans, and technical details in Plex Mono.",
         "section": "typography"
       },
       {
@@ -343,16 +468,18 @@
       }
     ],
     "dos": [
-      "Do keep native vertical scrolling and visible neighboring panels.",
+      "Do keep cases horizontal and supporting topics in native vertical viewport chapters, with visible neighboring case panels.",
       "Do preserve semantic case links, keyboard focus and static content without JavaScript.",
       "Do use self-hosted fonts and assets under the existing content security policy.",
-      "Do keep diagram motion bounded and provide the complete static reduced-motion state.",
+      "Do use four distinct static illustrations with HTML labels and explanatory captions.",
+      "Do let chapters grow beyond the viewport for long content, narrow screens and enlarged text.",
+      "Do keep the header and complete reel in one snap area so phone users can reach its controls, hint and exit link.",
       "Do allow Brazilian Portuguese labels and prose to wrap."
     ],
     "donts": [
       "Don't reintroduce duplicate eyebrows above case titles.",
       "Don't treat the functional numbered case selector as a decorative label style.",
-      "Don't add looping animation, scroll hijacking or shadow-based elevation.",
+      "Don't add travelling particles, repeated three-dot case diagrams, wheel interception or shadow-based elevation.",
       "Don't use portraits, private employer artifacts or invented evidence."
     ]
   }

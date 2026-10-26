@@ -177,11 +177,6 @@ export const pages = {
         "label": "Observability",
         "title": "Choosing what to operate.",
         "summary": "I compared the cost and upkeep of our telemetry stack, recommended a managed service, and led the migration.",
-        "steps": [
-          "Our stack",
-          "Cost and upkeep",
-          "Managed service"
-        ],
         "sections": [
           [
             "The problem",
@@ -199,18 +194,23 @@ export const pages = {
             "What stayed with me",
             "I had wanted to build that self-hosted stack for years. Recommending its replacement meant letting the operating costs decide. Keeping collection separate from storage made that decision much easier to act on."
           ]
-        ]
+        ],
+        "diagram": {
+          "labels": [
+            "Collection stays",
+            "Metrics + traces",
+            "Grafana Cloud",
+            "Logs",
+            "Observe"
+          ],
+          "caption": "Change the destination without rebuilding collection."
+        }
       },
       {
         "id": "delivery",
         "label": "Delivery",
         "title": "Making delivery self-service.",
         "summary": "I drove a GitOps migration and built templates so service owners could ship without a platform engineer on every release.",
-        "steps": [
-          "Service owners",
-          "Git and templates",
-          "Repeatable delivery"
-        ],
         "sections": [
           [
             "The problem",
@@ -228,18 +228,23 @@ export const pages = {
             "What changed",
             "Covered services could deploy without bringing a platform engineer into each release. Templates, runbooks and later agent skills carried the method to other engineers. The useful outcome was ownership of delivery, with a shared way to inspect and change it."
           ]
-        ]
+        ],
+        "diagram": {
+          "labels": [
+            "Service owners",
+            "Shared templates",
+            "Reviewed change",
+            "Argo CD",
+            "Covered services"
+          ],
+          "caption": "The platform supplies the path. Service teams own the release."
+        }
       },
       {
         "id": "network",
         "label": "Network policy",
         "title": "Making isolation hold up.",
         "summary": "I put network policy into the delivery workflow and checked it against real traffic. The policies later contained a malicious callback.",
-        "steps": [
-          "Intended access",
-          "Policy as code",
-          "Observed traffic"
-        ],
         "sections": [
           [
             "The problem",
@@ -257,18 +262,23 @@ export const pages = {
             "The operating lesson",
             "I treat intended configuration and observed behavior as separate things to verify. The same habit applies to deployments and monitoring: a green pipeline or a checked box is the start of the check."
           ]
-        ]
+        ],
+        "diagram": {
+          "labels": [
+            "Policy boundary",
+            "Allowed traffic",
+            "Permitted destination",
+            "Blocked callback",
+            "Hubble: check enforcement"
+          ],
+          "caption": "Compare the rule with the traffic it actually permits."
+        }
       },
       {
         "id": "ai",
         "label": "AI tooling",
         "title": "Giving engineers investigation tools.",
         "summary": "I built MCP servers and reusable workflows that other teams used to investigate systems and carry out platform work.",
-        "steps": [
-          "Engineering questions",
-          "Tools and context",
-          "Reviewable work"
-        ],
         "sections": [
           [
             "The problem",
@@ -286,7 +296,17 @@ export const pages = {
             "What I would change",
             "I would write the case for the work earlier. Adoption showed that the need was real, but a clear proposal would have made priorities and expectations easier to discuss before building."
           ]
-        ]
+        ],
+        "diagram": {
+          "labels": [
+            "Engineering question",
+            "Observe MCP",
+            "Checkly MCP",
+            "Logs + checks",
+            "Engineer review"
+          ],
+          "caption": "Bring operational evidence into the investigation."
+        }
       }
     ],
     "reel": {
@@ -506,11 +526,6 @@ export const pages = {
         "label": "Observabilidade",
         "title": "Escolher o que operar.",
         "summary": "Comparei o custo e a manutenção do nosso stack de telemetria, recomendei um serviço gerenciado e conduzi a migração.",
-        "steps": [
-          "Stack próprio",
-          "Custo e manutenção",
-          "Serviço gerenciado"
-        ],
         "sections": [
           [
             "O problema",
@@ -528,18 +543,23 @@ export const pages = {
             "O que ficou",
             "Eu queria montar aquele stack próprio havia anos. Recomendar sua substituição exigiu deixar o custo de operação decidir. Separar a coleta do armazenamento facilitou bastante colocar essa decisão em prática."
           ]
-        ]
+        ],
+        "diagram": {
+          "labels": [
+            "A coleta continua",
+            "Métricas + traces",
+            "Grafana Cloud",
+            "Logs",
+            "Observe"
+          ],
+          "caption": "Trocar o destino sem reconstruir a coleta."
+        }
       },
       {
         "id": "delivery",
         "label": "Entrega",
         "title": "Dar autonomia para publicar.",
         "summary": "Conduzi uma migração para GitOps e criei templates para os donos dos serviços publicarem sem chamar um engenheiro de plataforma a cada release.",
-        "steps": [
-          "Donos dos serviços",
-          "Git e templates",
-          "Entrega repetível"
-        ],
         "sections": [
           [
             "O problema",
@@ -557,18 +577,23 @@ export const pages = {
             "O que mudou",
             "Os serviços migrados podiam publicar sem envolver um engenheiro de plataforma em cada release. Templates, runbooks e depois skills de agente levaram o método a outros engenheiros. O resultado foi autonomia sobre a entrega, com um caminho comum para investigar e mudar."
           ]
-        ]
+        ],
+        "diagram": {
+          "labels": [
+            "Donos dos serviços",
+            "Templates comuns",
+            "Mudança revisada",
+            "Argo CD",
+            "Serviços migrados"
+          ],
+          "caption": "A plataforma fornece o caminho. Os times cuidam da release."
+        }
       },
       {
         "id": "network",
         "label": "Rede",
         "title": "Fazer o isolamento funcionar.",
         "summary": "Coloquei network policy no fluxo de entrega e conferi o resultado no tráfego real. Mais tarde, as políticas contiveram um callback malicioso.",
-        "steps": [
-          "Acesso necessário",
-          "Policy como código",
-          "Tráfego observado"
-        ],
         "sections": [
           [
             "O problema",
@@ -586,18 +611,23 @@ export const pages = {
             "A lição operacional",
             "Trato a configuração pretendida e o comportamento observado como coisas distintas a verificar. O mesmo vale para deploys e monitoramento: um pipeline verde ou um item marcado é o começo da conferência."
           ]
-        ]
+        ],
+        "diagram": {
+          "labels": [
+            "Limite da policy",
+            "Tráfego permitido",
+            "Destino permitido",
+            "Callback bloqueado",
+            "Hubble: conferir o bloqueio"
+          ],
+          "caption": "Comparar a regra com o tráfego que ela realmente permite."
+        }
       },
       {
         "id": "ai",
         "label": "Ferramentas de IA",
         "title": "Dar ferramentas para investigar.",
         "summary": "Criei servidores MCP e fluxos reutilizáveis que outros times usaram para investigar sistemas e executar trabalho de plataforma.",
-        "steps": [
-          "Perguntas dos times",
-          "Ferramentas e contexto",
-          "Trabalho revisável"
-        ],
         "sections": [
           [
             "O problema",
@@ -615,7 +645,17 @@ export const pages = {
             "O que eu mudaria",
             "Eu escreveria a proposta mais cedo. A adoção mostrou que a necessidade era real, mas uma proposta clara teria facilitado discutir prioridades e expectativas antes de construir."
           ]
-        ]
+        ],
+        "diagram": {
+          "labels": [
+            "Pergunta do time",
+            "Observe MCP",
+            "Checkly MCP",
+            "Logs + checks",
+            "Revisão humana"
+          ],
+          "caption": "Trazer evidências da operação para a investigação."
+        }
       }
     ],
     "reel": {

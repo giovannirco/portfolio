@@ -63,12 +63,63 @@ for (const path of ["/", "/pt-br/"]) {
       expect(violations.map((item) => item.id)).toEqual([]);
     }
   });
-  test(`${path} reduced motion stops diagram animation`, async ({ page }) => {
+  test(`${path} cases explain distinct decisions without travelling particles`, async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto(path);
-    expect(await page.locator("#observability .flow").evaluate((node) => getComputedStyle(node, "::after").animationName)).toBe("none");
+    await expect(page.locator(".flow")).toHaveCount(0);
+    for (const id of ["observability", "delivery", "network", "ai"]) {
+      const diagram = page.locator(`#${id} figure`);
+      await expect(diagram).toHaveAttribute("data-diagram", id);
+      await expect(diagram.locator("figcaption")).not.toBeEmpty();
+      expect(await diagram.evaluate((node) => node.getAnimations({ subtree: true }).length)).toBe(0);
+      expect(await diagram.evaluate((node) => node.scrollWidth <= node.clientWidth)).toBe(true);
+    }
+    await expect(page.locator("#observability figure")).toContainText("Grafana Cloud");
+    await expect(page.locator("#network figure")).toContainText("Hubble");
   });
 }
+test("vertical chapters settle independently of horizontal cases", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 960 });
+  await page.goto("/#products");
+  await page.evaluate(() => document.fonts.ready);
+  await expect.poll(() => page.locator("#products").evaluate((node) => Math.abs(node.getBoundingClientRect().top))).toBeLessThan(2);
+  await page.mouse.move(1100, 500);
+  await page.mouse.wheel(0, 500);
+  await expect.poll(() => page.locator("#homelab").evaluate((node) => Math.abs(node.getBoundingClientRect().top))).toBeLessThan(2);
+  await page.mouse.wheel(0, -500);
+  await expect.poll(() => page.locator("#products").evaluate((node) => Math.abs(node.getBoundingClientRect().top))).toBeLessThan(2);
+  await expect(page.locator('[data-case-link="observability"]')).toHaveAttribute("aria-current", "true");
+});
+test("long phone chapters keep their last links reachable", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/pt-br/#projects");
+  const last = page.locator("#projects .upstream a").last();
+  await last.focus();
+  await expect(last).toBeInViewport();
+  await page.locator("#about footer a").last().focus();
+  await expect(page.locator("#about footer a").last()).toBeInViewport();
+});
+test("phone scrolling can reach the reel controls before leaving the case chapter", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  for (const path of ["/", "/pt-br/"]) {
+    await page.goto(path);
+    await page.evaluate(() => document.fonts.ready);
+    await page.mouse.move(380, 450);
+    for (const [delta, target] of [[350, ".reel-hint"], [900, "#projects-h"], [-500, ".reel-hint"]]) {
+      await page.mouse.wheel(0, delta);
+      let previous = -1;
+      let settled = 0;
+      await expect.poll(async () => {
+        const position = await page.evaluate(() => scrollY);
+        settled = Math.abs(position - previous) < 1 ? settled + 1 : 0;
+        previous = position;
+        return settled;
+      }, { intervals: [150] }).toBeGreaterThanOrEqual(3);
+      await expect(page.locator(target)).toBeInViewport();
+    }
+    await expect(page.locator(".reel-controls")).toBeInViewport();
+  }
+});
 test("cases are reachable without JavaScript", async ({ browser, baseURL }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();

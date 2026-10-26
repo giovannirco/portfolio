@@ -8,7 +8,7 @@ Show Staff engineering judgment through four concrete decisions before supportin
 
 ## OWN-WORLD
 
-Warm charcoal, paper and amber preserve the site's simplicity. Keep self-hosted IBM Plex for body and diagrams; Wix Madefor Display 700 matches the approved headline lettering. Use precise, semantic three-step diagrams with CSS geometry. The generated neighboring panels' incidental copy is replaced by verified content. No raster illustration is owed.
+Warm charcoal, paper and amber preserve the site's simplicity. Keep self-hosted IBM Plex for body and diagrams; Wix Madefor Display 700 matches the approved headline lettering. Four distinct semantic diagrams explain collection and destinations, release ownership, enforcement boundaries and investigation evidence. Geometry stays crisp, text stays HTML, and captions explain the decision. No raster illustration is owed.
 
 ## STORY
 
@@ -22,7 +22,7 @@ The first decision sits on a wide paper panel inside a charcoal frame. Neighbori
 
 Direction seed `aba7d842` initially assigned Decision atlas, recorded in `research.md` and build state. Giovanni superseded that assignment with a blend of Engineering review, Evidence index and straightforward portfolio, requested three additional scrolling concepts, then explicitly selected option C, Case reel. This user choice is the final authority; no new roll is needed.
 
-Native horizontal scrolling, swipe, arrow controls and keyboard navigation move the reel. Vertical wheel gestures stay native. The active marker follows the centered card. A bounded signal crosses the selected case diagram once; reduced motion shows the completed static diagram. Mobile retains a neighboring edge, readable type and direct controls. Longer cases open normal reading pages with stable links.
+Native horizontal scrolling, swipe, arrow controls and keyboard navigation move the reel. The active marker follows the centered card. Giovanni rejected the travelling signal and repeated three-dot diagrams, then clarified: keep cases horizontal; give the rest of the page one topic per vertical scroll. Public work, Products, Homelab and How I work use native viewport-height scroll snapping. Content can exceed one viewport on phones or with enlarged text, without clipping or trapped scrolling. No wheel interception or vertical control of the horizontal cases. Diagrams are static; only user-directed navigation moves. Reduced motion makes navigation immediate. Longer cases open normal reading pages with stable links. This correction supersedes the original comp's diagram treatment, not its palette or reel composition.
 
 ## Delivery and verification
 

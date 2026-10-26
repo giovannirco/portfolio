@@ -97,15 +97,23 @@ function renderHeader(page, story = null) {
 <nav class="primary-nav" aria-label="${esc(page.nav)}">${nav}</nav></div></header>`;
 }
 
-function renderFlow(story) {
-  return `<ol class="flow">${story.steps.map((step) => `<li><span>${esc(step)}</span></li>`).join("")}</ol>`;
+function renderDiagram(story) {
+  const [a, b, c, d, e] = story.diagram.labels.map(esc);
+  const diagrams = {
+    observability: `<div class="collection"><svg viewBox="0 0 100 48" aria-hidden="true"><path d="M0 8h26l16 16h58M0 24h100M0 40h26l16-16"/></svg><strong>${a}</strong></div><div class="destinations"><div><span>${b}</span><strong>${c}</strong></div><div><span>${d}</span><strong>${e}</strong></div></div>`,
+    delivery: `<div class="delivery-owner"><strong>${a}</strong><svg viewBox="0 0 100 38" aria-hidden="true"><path d="M0 8h25l15 11h60M0 30h25l15-11"/></svg></div><div class="release-sheet"><span>${b}</span><div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><strong>${c}</strong></div><div class="release-target"><span>${d}</span><strong>${e}</strong></div></div>`,
+    network: `<div class="policy-boundary"><strong>${a}</strong></div><div class="traffic-lanes"><div class="allowed-lane"><span>${b}</span><svg viewBox="0 0 160 24" preserveAspectRatio="none" aria-hidden="true"><path d="M0 12h156m-8-6 8 6-8 6"/></svg><strong>${c}</strong></div><div class="blocked-lane"><span>${d}</span><svg viewBox="0 0 160 24" preserveAspectRatio="none" aria-hidden="true"><path d="M0 12h76m0-10v20"/></svg></div></div><div class="enforcement">${e}</div>`,
+    ai: `<div class="question"><strong>${a}</strong><div class="tool-sources"><span>${b}</span><span>${c}</span></div></div><div class="evidence-sheet"><span>${d}</span><svg viewBox="0 0 160 36" aria-hidden="true"><path d="M0 4h115M0 18h160M0 32h82"/></svg><strong>${e}</strong></div>`,
+  };
+  if (!diagrams[story.id]) throw new Error(`Unknown case diagram: ${story.id}`);
+  return `<figure class="case-diagram" data-diagram="${story.id}"><div class="diagram-art">${diagrams[story.id]}</div><figcaption>${esc(story.diagram.caption)}</figcaption></figure>`;
 }
 
 function renderReel(page) {
   const cards = page.cases.map((story) => `<article class="case-card" id="${story.id}" aria-labelledby="${story.id}-h">
 <h2 id="${story.id}-h">${esc(story.title)}</h2>
 <p class="case-summary">${esc(story.summary)}</p>
-${renderFlow(story)}
+${renderDiagram(story)}
 <a class="read-case" href="${page.path}work/${story.id}/">${esc(page.reel.read)} ${arrow()}</a></article>`).join("");
   const caseLinks = page.cases.map((story, index) =>
     `<a href="#${story.id}" data-case-link="${story.id}"><span class="case-position" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span><span>${esc(story.label)}</span></a>`).join("");
@@ -148,15 +156,15 @@ function renderStory(page, story) {
   return `${head({ ...page, description: story.summary }, { title: story.title + " · " + page.hero.name, canonical: site.origin + page.path + route, route })}
 <body class="story-page"><a class="skip" href="#story">${esc(page.skip)}</a>${renderHeader(page, story)}
 <main class="story" id="story"><a class="back-link" href="${page.path}#${story.id}">${arrow("left")} ${esc(page.reel.back)}</a>
-<article><h1>${esc(story.title)}</h1><p class="story-summary">${esc(story.summary)}</p>${renderFlow(story)}
+<article><h1>${esc(story.title)}</h1><p class="story-summary">${esc(story.summary)}</p>${renderDiagram(story)}
 ${story.sections.map(([title, body]) => `<section><h2>${esc(title)}</h2><p>${esc(body)}</p></section>`).join("")}</article>
 <aside class="related"><h2>${esc(page.reel.related)}</h2><ul>${related.map((project) => `<li>${ext(project.repo, project.name)}<p>${esc(project.text)}</p></li>`).join("")}</ul></aside>
 <a class="back-link" href="${page.path}#${story.id}">${arrow("left")} ${esc(page.reel.back)}</a></main></body></html>`;
 }
 
 function page(page) {
-  return `${head(page)}<body><a class="skip" href="#work">${esc(page.skip)}</a>
-${renderHeader(page)}<main>${renderReel(page)}${renderSections(page)}</main>
+  return `${head(page)}<body class="chapter-page"><a class="skip" href="#work">${esc(page.skip)}</a>
+<main><section class="case-chapter" aria-label="${esc(page.hero.name)}">${renderHeader(page)}${renderReel(page)}</section>${renderSections(page)}</main>
 <script src="${asset["site.js"]}" defer></script></body></html>`;
 }
 

@@ -1,6 +1,6 @@
 # portfolio
 
-Source of [giovanni.dev.br](https://giovanni.dev.br): a horizontal case reel, four case studies, public projects and products, in English and Portuguese. Plain HTML and CSS, with JavaScript for reel navigation. Swipe, arrow buttons and keyboard controls select cases; vertical scrolling remains native. Reduced motion and browsing without JavaScript are supported.
+Source of [giovanni.dev.br](https://giovanni.dev.br): a horizontal case reel, four case studies, public projects and products, in English and Portuguese. Plain HTML and CSS, with JavaScript for reel navigation. Swipe, arrow buttons and keyboard controls select cases. The remaining topics form vertical chapters with native scroll snapping; longer phone sections grow to fit their content. Case diagrams are static. Reduced motion and browsing without JavaScript are supported.
 
 ## Build and run
 
