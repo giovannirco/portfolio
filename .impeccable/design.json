@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-26T17:44:04.351Z",
+  "generatedAt": "2026-10-27T17:12:39.329Z",
   "title": "Design System: Giovanni Coutinho — Case reel",
   "extensions": {
     "colorMeta": {
@@ -160,7 +160,7 @@
       },
       "back-underline": {
         "role": "primary",
-        "displayName": "Connectors and back-link underline",
+        "displayName": "Back-link underline",
         "tonalRamp": [
           "oklch(15.00% 0.11783 66.73)",
           "oklch(26.43% 0.11783 66.73)",
@@ -172,9 +172,9 @@
           "oklch(95.00% 0.11783 66.73)"
         ]
       },
-      "diagram-muted": {
+      "comparison-label": {
         "role": "neutral",
-        "displayName": "Supporting diagram text",
+        "displayName": "Comparison and scope labels",
         "tonalRamp": [
           "oklch(15.00% 0.03647 79.52)",
           "oklch(26.43% 0.03647 79.52)",
@@ -186,53 +186,39 @@
           "oklch(95.00% 0.03647 79.52)"
         ]
       },
-      "boundary-tint": {
-        "role": "primary",
-        "displayName": "Policy boundary wash",
-        "tonalRamp": [
-          "oklch(15.00% 0.13988 72.95)",
-          "oklch(26.43% 0.13988 72.95)",
-          "oklch(37.86% 0.13988 72.95)",
-          "oklch(49.29% 0.13988 72.95)",
-          "oklch(60.71% 0.13988 72.95)",
-          "oklch(72.14% 0.13988 72.95)",
-          "oklch(83.57% 0.13988 72.95)",
-          "oklch(95.00% 0.13988 72.95)"
-        ]
-      },
-      "blocked-path": {
-        "role": "primary",
-        "displayName": "Blocked traffic brown",
-        "tonalRamp": [
-          "oklch(15.00% 0.10925 54.84)",
-          "oklch(26.43% 0.10925 54.84)",
-          "oklch(37.86% 0.10925 54.84)",
-          "oklch(49.29% 0.10925 54.84)",
-          "oklch(60.71% 0.10925 54.84)",
-          "oklch(72.14% 0.10925 54.84)",
-          "oklch(83.57% 0.10925 54.84)",
-          "oklch(95.00% 0.10925 54.84)"
-        ]
-      },
-      "evidence-line": {
+      "comparison-before": {
         "role": "neutral",
-        "displayName": "Evidence-sheet strokes",
+        "displayName": "Before panel",
         "tonalRamp": [
-          "oklch(15.00% 0.03206 80.57)",
-          "oklch(26.43% 0.03206 80.57)",
-          "oklch(37.86% 0.03206 80.57)",
-          "oklch(49.29% 0.03206 80.57)",
-          "oklch(60.71% 0.03206 80.57)",
-          "oklch(72.14% 0.03206 80.57)",
-          "oklch(83.57% 0.03206 80.57)",
-          "oklch(95.00% 0.03206 80.57)"
+          "oklch(15.00% 0.01528 90.24)",
+          "oklch(26.43% 0.01528 90.24)",
+          "oklch(37.86% 0.01528 90.24)",
+          "oklch(49.29% 0.01528 90.24)",
+          "oklch(60.71% 0.01528 90.24)",
+          "oklch(72.14% 0.01528 90.24)",
+          "oklch(83.57% 0.01528 90.24)",
+          "oklch(95.00% 0.01528 90.24)"
+        ]
+      },
+      "comparison-after": {
+        "role": "neutral",
+        "displayName": "After panel",
+        "tonalRamp": [
+          "oklch(15.00% 0.03096 86.46)",
+          "oklch(26.43% 0.03096 86.46)",
+          "oklch(37.86% 0.03096 86.46)",
+          "oklch(49.29% 0.03096 86.46)",
+          "oklch(60.71% 0.03096 86.46)",
+          "oklch(72.14% 0.03096 86.46)",
+          "oklch(83.57% 0.03096 86.46)",
+          "oklch(95.00% 0.03096 86.46)"
         ]
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Case display",
-        "purpose": "Short case titles; responsive overrides are recorded in DESIGN.md."
+        "purpose": "Compact reel case titles; the intro retains its larger headline. Responsive overrides are recorded in DESIGN.md."
       },
       "headline": {
         "displayName": "Section headline",
@@ -258,33 +244,9 @@
         "displayName": "Reading prose",
         "purpose": "Long case text."
       },
-      "diagram": {
-        "displayName": "Diagram label",
-        "purpose": "Sans labels for static engineering relationships."
-      },
       "label": {
         "displayName": "Case index",
         "purpose": "Desktop position and category navigation."
-      },
-      "diagram-emphasis": {
-        "displayName": "Diagram Emphasis",
-        "purpose": "Owners, destinations and outcomes."
-      },
-      "diagram-caption": {
-        "displayName": "Diagram Caption",
-        "purpose": "Decision caption below each static illustration."
-      },
-      "diagram-secondary": {
-        "displayName": "Diagram Secondary",
-        "purpose": "Supporting labels on release sheets."
-      },
-      "diagram-detail": {
-        "displayName": "Diagram Detail",
-        "purpose": "Technical sources, release targets and evidence labels."
-      },
-      "diagram-enforcement": {
-        "displayName": "Diagram Enforcement",
-        "purpose": "Hubble enforcement note."
       },
       "read-link": {
         "displayName": "Read Link",
@@ -325,6 +287,30 @@
       "story-subhead": {
         "displayName": "Story Subhead",
         "purpose": "Reading-page section and related-work headings."
+      },
+      "case-label": {
+        "displayName": "Numbered case label",
+        "purpose": "User-approved category above each reel case title; not a general eyebrow pattern."
+      },
+      "comparison-label": {
+        "displayName": "Comparison term",
+        "purpose": "Before, after and scope labels."
+      },
+      "comparison-title": {
+        "displayName": "State title",
+        "purpose": "Bold title inside each state panel."
+      },
+      "comparison-body": {
+        "displayName": "State explanation",
+        "purpose": "Prose inside each state panel."
+      },
+      "comparison-decision": {
+        "displayName": "Personal decision",
+        "purpose": "Unboxed decision prose."
+      },
+      "case-scope": {
+        "displayName": "Scope note",
+        "purpose": "Visible factual boundary and follow-through beneath the comparison."
       }
     },
     "shadows": [],
@@ -337,7 +323,7 @@
       {
         "name": "reduced-motion",
         "value": "none",
-        "purpose": "Disable animations/transitions and smooth scrolling; diagrams are static for every motion preference."
+        "purpose": "Disable animations/transitions and smooth scrolling; comparisons are static for every motion preference."
       }
     ],
     "breakpoints": [
@@ -364,6 +350,14 @@
       {
         "name": "wide-chapter-min",
         "value": "761px"
+      },
+      {
+        "name": "comparison-tablet-max",
+        "value": "1000px"
+      },
+      {
+        "name": "wide-desktop-min",
+        "value": "1536px"
       }
     ]
   },
@@ -404,51 +398,27 @@
       "name": "Case panel",
       "kind": "card",
       "refersTo": "case-panel",
-      "description": "Paper title and summary surface; the production panel also contains a distinct static illustration, caption and read link.",
-      "html": "<article class=\"ds-case-card\"><h2>Choosing what to operate.</h2><p class=\"ds-case-summary\">I compared the cost and upkeep of our telemetry stack, recommended a managed service, and led the migration.</p></article>",
-      "css": ".ds-case-card { font-family: var(--sans); font-size: 1.0625rem; line-height: 1.6; } .ds-case-card h2, .ds-case-card p { margin:0; } .ds-case-card { flex: 0 0 var(--card-width); min-width: 0; min-height: var(--card-height); padding: 44px 60px 38px; border-radius: 3px; color: var(--ink); background: var(--paper); scroll-snap-align: center; display: flex; flex-direction: column; color-scheme: light; }\n.ds-case-card h2 { font: 700 68px/1.04 var(--display); letter-spacing: -.035em; max-width: 12ch; margin-bottom: 28px; text-wrap: initial; }\n.ds-case-summary { font-size: 28px; line-height: 1.45; max-width: 51ch; } @media(max-width:760px) { .ds-case-card { min-height:540px; padding:28px 24px; } .ds-case-card h2 { font-size:clamp(2rem,8vw,3rem); line-height:1.1; max-width:15ch; margin-bottom:22px; } .ds-case-summary { font-size:18px; line-height:1.5; overflow-wrap:break-word; } }"
+      "description": "Approved numbered label, title, summary, semantic comparison, visible scope and reading link.",
+      "html": "<article class=\"ds-case-card\" id=\"observability\" aria-labelledby=\"observability-h\">\n<p class=\"ds-case-label\"><span aria-hidden=\"true\">01 / </span>Observability</p>\n<h2 id=\"observability-h\">Choosing what to operate.</h2>\n<p class=\"ds-case-summary\">I compared the cost and upkeep of our telemetry stack, recommended a managed service, and led the migration.</p>\n<dl class=\"ds-case-comparison\">\n<div class=\"ds-comparison-before\"><dt>Before</dt><dd><strong>We operated the stack</strong><p>Compute and storage, plus upgrades, maintenance and failures.</p></dd></div>\n<div class=\"ds-comparison-decision\"><dt>My decision</dt><dd>Evaluate total operating cost. Run the trial. Lead the migration.</dd></div>\n<div class=\"ds-comparison-after\"><dt>After</dt><dd><strong>Managed metrics + traces</strong><p>Moved to Grafana Cloud. Retired the replaced infrastructure.</p></dd></div>\n</dl><p class=\"ds-case-scope\"><span>Kept in place</span>Collection layer retained. Logs remained in Observe.</p>\n<a class=\"ds-read-case\" href=\"/work/observability/\">Read the case <svg class=\"ds-arrow ds-right\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14m-6-6 6 6-6 6\"/></svg></a></article>",
+      "css": ".ds-case-card { font:400 1.0625rem/1.6 var(--sans); }\n.ds-case-card :where(h2, p) { margin:0; }\n.ds-case-card { flex: 0 0 var(--card-width); min-width: 0; min-height: var(--card-height); padding: 44px 60px 38px; border-radius: 3px; color: var(--ink); background: var(--paper); scroll-snap-align: center; display: flex; flex-direction: column; color-scheme: light; }\n.ds-case-card h2 { font: 700 68px/1.04 var(--display); letter-spacing: -.035em; max-width: 12ch; margin-bottom: 28px; text-wrap: initial; }\n.ds-case-summary { font-size: 28px; line-height: 1.45; max-width: 51ch; }\n.ds-read-case { display: flex; align-items: center; gap: 16px; border-top: 1px solid var(--paper-line); padding-top: 16px; margin-top: 24px; font: 400 18px/1.5 var(--mono); text-decoration: none; }\n.ds-read-case:hover { color: #81500a; }\n.ds-arrow { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.6; vertical-align: middle; flex: none; }\n.ds-case-card :focus-visible { outline:2px solid #86540c; outline-offset:5px; }\n@media (min-width:1201px) and (max-width:1535px) { .ds-case-card { padding-inline:3.9063vw; } .ds-read-case { margin-top:1.5625vw; padding-top:1.0417vw; font-size:1.1719vw; } }\n@media (max-width:1200px) { .ds-case-card { padding-inline:44px; } }\n@media (max-width:760px) { .ds-case-card { min-height:540px; padding:28px 24px; } .ds-case-card h2 { line-height:1.1; max-width:15ch; } .ds-case-summary { overflow-wrap:break-word; } .ds-read-case { font-size:15px; gap:12px; } }\n.ds-case-card:not(.ds-intro-card) { padding-block: 32px 26px; }\n.ds-case-label { font: 500 13px/1.4 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: #86540c; margin-bottom: 10px; }\n.ds-case-card:not(.ds-intro-card) h2 { font-size: clamp(42px, 3.65vw, 56px); margin-bottom: 18px; }\n.ds-case-card:not(.ds-intro-card) .ds-case-summary { font-size: clamp(19px, 1.43vw, 22px); line-height: 1.45; }\n.ds-case-comparison { display: grid; grid-template-columns: 1fr .8fr 1fr; gap: 22px; margin: 28px 0 16px; }\n.ds-case-comparison > div { min-width: 0; padding: 18px 20px; }\n.ds-comparison-before { background: #eeeadf; }\n.ds-comparison-after { background: #f7edd7; }\n.ds-case-comparison dt, .ds-case-scope span { font: 600 12px/1.5 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: #625540; }\n.ds-case-comparison dd { margin: 10px 0 0; font-size: 17px; line-height: 1.45; }\n.ds-case-comparison strong { display: block; font: 600 21px/1.2 var(--sans); letter-spacing: -.02em; margin-bottom: 12px; }\n.ds-case-comparison .ds-comparison-decision { padding-inline: 0; text-align: center; align-self: center; }\n.ds-comparison-decision dt { color: #86540c; }\n.ds-comparison-decision dd { font-size: 18px; }\n.ds-comparison-decision::after { content: \"\"; display: block; width: 80px; height: 3px; margin: 22px auto 0; background: var(--amber); }\n.ds-case-scope { font-size: 16px; line-height: 1.45; margin-bottom: 20px; }\n.ds-case-scope span { display: block; margin-bottom: 3px; }\n.ds-case-card:not(.ds-intro-card) .ds-read-case { margin-top: auto; }\n@media (min-width: 1536px) {\n  .ds-case-card:not(.ds-intro-card) { min-height: 65.7svh; padding-top: 36px; }\n  .ds-case-card:not(.ds-intro-card) h2 { font-size: 64px; }\n  .ds-case-card:not(.ds-intro-card) .ds-case-summary { font-size: 25px; }\n  .ds-case-comparison dd { font-size: 19px; }\n  .ds-case-comparison strong { font-size: 23px; }\n  .ds-case-scope { font-size: 18px; }\n}\n@media (min-width: 761px) and (max-width: 1535px) {\n  .ds-case-comparison { gap: 18px; margin-top: 24px; }\n  .ds-case-comparison > div { padding: 15px 16px; }\n  .ds-case-comparison dd { font-size: 16px; }\n  .ds-case-comparison strong { font-size: 19px; margin-bottom: 10px; }\n  .ds-comparison-decision dd { font-size: 17px; }\n}\n@media (min-width: 761px) and (max-width: 1000px) {\n  .ds-case-comparison { grid-template-columns: 1fr 1fr; gap: 16px; }\n  .ds-case-comparison .ds-comparison-decision { grid-column: 1 / -1; grid-row: 2; text-align: left; }\n  .ds-comparison-decision::after { margin-inline: 0; margin-top: 14px; }\n}\n@media (max-width: 760px) {\n  .ds-case-card:not(.ds-intro-card) { padding: 28px 24px; }\n  .ds-case-card:not(.ds-intro-card) h2 { font-size: clamp(2rem, 8vw, 3rem); margin-bottom: 18px; }\n  .ds-case-card:not(.ds-intro-card) .ds-case-summary { font-size: 18px; }\n  .ds-case-label { font-size: 12px; }\n  .ds-case-comparison { grid-template-columns: 1fr; gap: 16px; margin-top: 24px; }\n  .ds-case-comparison > div { padding: 18px; }\n  .ds-case-comparison strong { font-size: 21px; }\n  .ds-case-comparison .ds-comparison-decision { padding: 4px 18px; text-align: left; }\n  .ds-comparison-decision dd { font-size: 17px; }\n  .ds-comparison-decision::after { width: 56px; margin: 16px 0 0; }\n  .ds-case-scope { font-size: 16px; margin-bottom: 22px; }\n}\n\n"
     },
     {
-      "name": "Collection and destinations",
+      "name": "Case comparison and scope",
       "kind": "custom",
-      "refersTo": "case-diagram",
-      "description": "Persistent collection branches to independent telemetry destinations.",
-      "html": "<div class=\"ds-diagram-stage\"><figure class=\"ds-case-diagram\" data-diagram=\"observability\"><div class=\"ds-diagram-art\"><div class=\"ds-collection\"><svg viewBox=\"0 0 100 48\" aria-hidden=\"true\"><path d=\"M0 8h26l16 16h58M0 24h100M0 40h26l16-16\"/></svg><strong>Collection stays</strong></div><div class=\"ds-destinations\"><div><span>Metrics + traces</span><strong>Grafana Cloud</strong></div><div><span>Logs</span><strong>Observe</strong></div></div></div><figcaption>Change the destination without rebuilding collection.</figcaption></figure></div>",
-      "css": ".ds-diagram-stage { background:var(--paper); color:var(--ink); font:400 1.0625rem/1.6 var(--sans); }\n.ds-case-diagram { margin: auto 0; padding-top: 22px; }\n.ds-diagram-art { position: relative; display: grid; gap: 32px; align-items: center; min-height: 142px; font-size: 16px; line-height: 1.35; }\n.ds-diagram-art strong { font-weight: 600; }\n.ds-diagram-art svg { fill: none; stroke: currentColor; stroke-width: 1.5; overflow: visible; }\n.ds-case-diagram figcaption { margin-top: 14px; font-size: 15px; line-height: 1.4; color: #625540; }\n[data-diagram=\"observability\"] .ds-diagram-art { grid-template-columns: 1fr 1.5fr; }\n.ds-collection { border-bottom: 4px solid var(--amber); padding: 14px 0; }\n.ds-collection svg { display: block; width: 100%; height: 40px; margin-bottom: 12px; }\n.ds-destinations { border-left: 1px solid #9e610b; display: grid; gap: 14px; padding-left: 26px; }\n.ds-destinations > div { position: relative; border-bottom: 1px solid var(--paper-line); padding-bottom: 8px; display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }\n.ds-destinations > div::before { content: \"\"; position: absolute; top: 12px; right: 100%; width: 26px; height: 1px; background: #9e610b; }\n.ds-destinations span { color: #625540; }\n@media(max-width:760px) {\n.ds-case-diagram { padding-top: 24px; margin-bottom: 22px; }\n.ds-diagram-art { gap: 18px; font-size: 14px; min-height: 160px; }\n.ds-case-diagram figcaption { font-size: 13px; }\n[data-diagram=\"observability\"] .ds-diagram-art { grid-template-columns: .8fr 1fr; }\n.ds-destinations { padding-left: 16px; }\n.ds-destinations > div { gap: 4px; }\n.ds-destinations > div::before { width: 16px; }\n}"
-    },
-    {
-      "name": "Release ownership",
-      "kind": "custom",
-      "refersTo": "case-diagram",
-      "description": "Service owners use shared templates and a reviewed release sheet.",
-      "html": "<div class=\"ds-diagram-stage\"><figure class=\"ds-case-diagram\" data-diagram=\"delivery\"><div class=\"ds-diagram-art\"><div class=\"ds-delivery-owner\"><strong>Service owners</strong><svg viewBox=\"0 0 100 38\" aria-hidden=\"true\"><path d=\"M0 8h25l15 11h60M0 30h25l15-11\"/></svg></div><div class=\"ds-release-sheet\"><span>Shared templates</span><div><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg><strong>Reviewed change</strong></div><div class=\"ds-release-target\"><span>Argo CD</span><strong>Covered services</strong></div></div></div><figcaption>The platform supplies the path. Service teams own the release.</figcaption></figure></div>",
-      "css": ".ds-diagram-stage { background:var(--paper); color:var(--ink); font:400 1.0625rem/1.6 var(--sans); }\n.ds-case-diagram { margin: auto 0; padding-top: 22px; }\n.ds-diagram-art { position: relative; display: grid; gap: 32px; align-items: center; min-height: 142px; font-size: 16px; line-height: 1.35; }\n.ds-diagram-art strong { font-weight: 600; }\n.ds-diagram-art svg { fill: none; stroke: currentColor; stroke-width: 1.5; overflow: visible; }\n.ds-case-diagram figcaption { margin-top: 14px; font-size: 15px; line-height: 1.4; color: #625540; }\n[data-diagram=\"delivery\"] .ds-diagram-art { grid-template-columns: 1fr 2fr; }\n.ds-delivery-owner svg { display: block; width: 100%; height: 48px; margin-top: 8px; }\n.ds-release-sheet { border: 1px solid var(--paper-line); border-top: 4px solid var(--amber); padding: 12px 18px; }\n.ds-release-sheet > span { color: #625540; font-size: 14px; }\n.ds-release-sheet > div { display: flex; align-items: center; gap: 8px; margin-top: 8px; }\n.ds-release-sheet svg { width: 20px; height: 20px; }\n.ds-release-sheet .ds-release-target { border-top: 1px solid var(--paper-line); padding-top: 8px; justify-content: space-between; flex-wrap: wrap; }\n.ds-release-target span { font: 400 14px/1.4 var(--mono); }\n@media(max-width:760px) {\n.ds-case-diagram { padding-top: 24px; margin-bottom: 22px; }\n.ds-diagram-art { gap: 18px; font-size: 14px; min-height: 160px; }\n.ds-case-diagram figcaption { font-size: 13px; }\n[data-diagram=\"delivery\"] .ds-diagram-art { grid-template-columns: 1fr; gap: 4px; }\n.ds-delivery-owner { display: flex; align-items: center; gap: 12px; }\n.ds-delivery-owner svg { width: 60px; height: 26px; margin: 0; }\n.ds-release-sheet { padding: 10px 12px; }\n}"
-    },
-    {
-      "name": "Policy enforcement",
-      "kind": "custom",
-      "refersTo": "case-diagram",
-      "description": "Allowed and blocked lanes make the enforcement boundary explicit.",
-      "html": "<div class=\"ds-diagram-stage\"><figure class=\"ds-case-diagram\" data-diagram=\"network\"><div class=\"ds-diagram-art\"><div class=\"ds-policy-boundary\"><strong>Policy boundary</strong></div><div class=\"ds-traffic-lanes\"><div class=\"ds-allowed-lane\"><span>Allowed traffic</span><svg viewBox=\"0 0 160 24\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><path d=\"M0 12h156m-8-6 8 6-8 6\"/></svg><strong>Permitted destination</strong></div><div class=\"ds-blocked-lane\"><span>Blocked callback</span><svg viewBox=\"0 0 160 24\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><path d=\"M0 12h76m0-10v20\"/></svg></div></div><div class=\"ds-enforcement\">Hubble: check enforcement</div></div><figcaption>Compare the rule with the traffic it actually permits.</figcaption></figure></div>",
-      "css": ".ds-diagram-stage { background:var(--paper); color:var(--ink); font:400 1.0625rem/1.6 var(--sans); }\n.ds-case-diagram { margin: auto 0; padding-top: 22px; }\n.ds-diagram-art { position: relative; display: grid; gap: 32px; align-items: center; min-height: 142px; font-size: 16px; line-height: 1.35; }\n.ds-diagram-art strong { font-weight: 600; }\n.ds-diagram-art svg { fill: none; stroke: currentColor; stroke-width: 1.5; overflow: visible; }\n.ds-case-diagram figcaption { margin-top: 14px; font-size: 15px; line-height: 1.4; color: #625540; }\n[data-diagram=\"network\"] .ds-diagram-art { display: block; padding-top: 30px; }\n.ds-policy-boundary { position: absolute; inset: 0 0 28px 50%; border: 1px solid #9e610b; background: #e8a33d12; }\n.ds-policy-boundary strong { position: absolute; top: -11px; left: 12px; padding: 0 6px; background: var(--paper); font-size: 14px; }\n.ds-traffic-lanes > div { display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; gap: 12px; min-height: 40px; position: relative; }\n.ds-traffic-lanes svg { width: 100%; height: 24px; }\n.ds-allowed-lane strong { padding-right: 10px; }\n.ds-blocked-lane svg { color: #92501b; stroke-width: 2; }\n.ds-enforcement { margin-top: 16px; font: 400 13px/1.4 var(--mono); }\n@media(max-width:760px) {\n.ds-case-diagram { padding-top: 24px; margin-bottom: 22px; }\n.ds-diagram-art { gap: 18px; font-size: 14px; min-height: 160px; }\n.ds-case-diagram figcaption { font-size: 13px; }\n.ds-traffic-lanes > div { gap: 8px; grid-template-columns: 1fr .6fr 1fr; min-height: 50px; }\n.ds-policy-boundary { left: 50%; }\n.ds-policy-boundary strong { left: 4px; font-size: 12px; }\n.ds-enforcement { font-size: 11px; }\n}"
-    },
-    {
-      "name": "Investigation evidence",
-      "kind": "custom",
-      "refersTo": "case-diagram",
-      "description": "Named MCP sources supply operational evidence for engineer review.",
-      "html": "<div class=\"ds-diagram-stage\"><figure class=\"ds-case-diagram\" data-diagram=\"ai\"><div class=\"ds-diagram-art\"><div class=\"ds-question\"><strong>Engineering question</strong><div class=\"ds-tool-sources\"><span>Observe MCP</span><span>Checkly MCP</span></div></div><div class=\"ds-evidence-sheet\"><span>Logs + checks</span><svg viewBox=\"0 0 160 36\" aria-hidden=\"true\"><path d=\"M0 4h115M0 18h160M0 32h82\"/></svg><strong>Engineer review</strong></div></div><figcaption>Bring operational evidence into the investigation.</figcaption></figure></div>",
-      "css": ".ds-diagram-stage { background:var(--paper); color:var(--ink); font:400 1.0625rem/1.6 var(--sans); }\n.ds-case-diagram { margin: auto 0; padding-top: 22px; }\n.ds-diagram-art { position: relative; display: grid; gap: 32px; align-items: center; min-height: 142px; font-size: 16px; line-height: 1.35; }\n.ds-diagram-art strong { font-weight: 600; }\n.ds-diagram-art svg { fill: none; stroke: currentColor; stroke-width: 1.5; overflow: visible; }\n.ds-case-diagram figcaption { margin-top: 14px; font-size: 15px; line-height: 1.4; color: #625540; }\n[data-diagram=\"ai\"] .ds-diagram-art { grid-template-columns: 1.2fr 1fr; }\n.ds-tool-sources { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }\n.ds-tool-sources span { border-bottom: 2px solid var(--amber); padding-bottom: 6px; font: 400 14px/1.4 var(--mono); }\n.ds-evidence-sheet { border: 1px solid var(--paper-line); padding: 14px 20px; position: relative; }\n.ds-evidence-sheet::before { content: \"\"; position: absolute; width: 32px; height: 1px; background: #9e610b; right: 100%; top: 50%; }\n.ds-evidence-sheet span { font: 400 14px/1.4 var(--mono); }\n.ds-evidence-sheet svg { width: 100%; height: 30px; margin-block: 12px; color: #9b8f7b; }\n.ds-evidence-sheet strong { display: block; }\n@media(max-width:760px) {\n.ds-case-diagram { padding-top: 24px; margin-bottom: 22px; }\n.ds-diagram-art { gap: 18px; font-size: 14px; min-height: 160px; }\n.ds-case-diagram figcaption { font-size: 13px; }\n[data-diagram=\"ai\"] .ds-diagram-art { grid-template-columns: 1fr 1fr; }\n.ds-tool-sources { margin-top: 14px; }\n.ds-tool-sources span, .ds-evidence-sheet span { font-size: 12px; }\n.ds-evidence-sheet { padding: 12px; }\n.ds-evidence-sheet::before { width: 18px; }\n}"
+      "refersTo": "comparison-before",
+      "description": "Flat state panels frame a personal decision; a visible scope note preserves factual boundaries. Shared by reel and story pages.",
+      "html": "<div class=\"ds-comparison-stage\"><dl class=\"ds-case-comparison\">\n<div class=\"ds-comparison-before\"><dt>Before</dt><dd><strong>We operated the stack</strong><p>Compute and storage, plus upgrades, maintenance and failures.</p></dd></div>\n<div class=\"ds-comparison-decision\"><dt>My decision</dt><dd>Evaluate total operating cost. Run the trial. Lead the migration.</dd></div>\n<div class=\"ds-comparison-after\"><dt>After</dt><dd><strong>Managed metrics + traces</strong><p>Moved to Grafana Cloud. Retired the replaced infrastructure.</p></dd></div>\n</dl><p class=\"ds-case-scope\"><span>Kept in place</span>Collection layer retained. Logs remained in Observe.</p></div>",
+      "css": ".ds-comparison-stage { background:var(--paper); color:var(--ink); font:400 1.0625rem/1.6 var(--sans); } :where(.ds-comparison-stage) p { margin:0; }\n.ds-case-comparison { display: grid; grid-template-columns: 1fr .8fr 1fr; gap: 22px; margin: 28px 0 16px; }\n.ds-case-comparison > div { min-width: 0; padding: 18px 20px; }\n.ds-comparison-before { background: #eeeadf; }\n.ds-comparison-after { background: #f7edd7; }\n.ds-case-comparison dt, .ds-case-scope span { font: 600 12px/1.5 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: #625540; }\n.ds-case-comparison dd { margin: 10px 0 0; font-size: 17px; line-height: 1.45; }\n.ds-case-comparison strong { display: block; font: 600 21px/1.2 var(--sans); letter-spacing: -.02em; margin-bottom: 12px; }\n.ds-case-comparison .ds-comparison-decision { padding-inline: 0; text-align: center; align-self: center; }\n.ds-comparison-decision dt { color: #86540c; }\n.ds-comparison-decision dd { font-size: 18px; }\n.ds-comparison-decision::after { content: \"\"; display: block; width: 80px; height: 3px; margin: 22px auto 0; background: var(--amber); }\n.ds-case-scope { font-size: 16px; line-height: 1.45; margin-bottom: 20px; }\n.ds-case-scope span { display: block; margin-bottom: 3px; }\n@media (min-width: 1536px) {\n        .ds-case-comparison dd { font-size: 19px; }\n  .ds-case-comparison strong { font-size: 23px; }\n  .ds-case-scope { font-size: 18px; }\n}\n@media (min-width: 761px) and (max-width: 1535px) {\n  .ds-case-comparison { gap: 18px; margin-top: 24px; }\n  .ds-case-comparison > div { padding: 15px 16px; }\n  .ds-case-comparison dd { font-size: 16px; }\n  .ds-case-comparison strong { font-size: 19px; margin-bottom: 10px; }\n  .ds-comparison-decision dd { font-size: 17px; }\n}\n@media (min-width: 761px) and (max-width: 1000px) {\n  .ds-case-comparison { grid-template-columns: 1fr 1fr; gap: 16px; }\n  .ds-case-comparison .ds-comparison-decision { grid-column: 1 / -1; grid-row: 2; text-align: left; }\n  .ds-comparison-decision::after { margin-inline: 0; margin-top: 14px; }\n}\n@media (max-width: 760px) {\n          .ds-case-comparison { grid-template-columns: 1fr; gap: 16px; margin-top: 24px; }\n  .ds-case-comparison > div { padding: 18px; }\n  .ds-case-comparison strong { font-size: 21px; }\n  .ds-case-comparison .ds-comparison-decision { padding: 4px 18px; text-align: left; }\n  .ds-comparison-decision dd { font-size: 17px; }\n  .ds-comparison-decision::after { width: 56px; margin: 16px 0 0; }\n  .ds-case-scope { font-size: 16px; margin-bottom: 22px; }\n}\n\n"
     }
   ],
   "narrative": {
     "northStar": "Case reel",
-    "overview": "Warm charcoal frames paper panels with strong, compact headlines and precise engineering diagrams. Visible neighboring panels establish sequence; generous interior space keeps each decision readable. Supporting work occupies vertical viewport chapters with quiet ruled rows, while full cases use a paper reading surface. Four static illustrations explain different engineering relationships.\n\nThis records the implemented, user-approved Case reel and its chapter refinement. The mockup establishes palette and reel composition only; the approved direction contract and source supersede its diagram treatment. The numbered four-stop selector remains functional navigation; duplicated labels above panel titles were removed during finish review.",
+    "overview": "Warm charcoal frames paper panels with compact headlines and explicit Before / My decision / After comparisons. Neutral before panels and warm after panels frame an unboxed personal decision; a visible scope note keeps each outcome bounded. Supporting work occupies vertical viewport chapters with quiet ruled rows, while full cases use a paper reading surface.\n\nThis records the implemented, user-approved Case reel and its comparison refinement, approved on 2026-10-27 in option B and `.impeccable/mocks/case-comparison.png`. The original reel mockup remains a palette and composition reference; the new comparison mockup supersedes its case contents. The small numbered case labels above titles are explicitly user-approved and do not establish a general eyebrow pattern for other surfaces.",
     "keyCharacteristics": [
       "Paper and charcoal surfaces with amber state cues.",
-      "Wix headlines, Plex prose and diagram labels, and Plex Mono technical details.",
+      "Wix headlines, Plex prose and comparison labels, and Plex Mono navigation.",
       "Native horizontal cases, vertical chapters, visible neighbors and direct case links.",
-      "Flat surfaces and distinct static engineering illustrations."
+      "Flat before and after panels, an unboxed decision and a visible scope note."
     ],
     "rules": [
       {
@@ -458,7 +428,7 @@
       },
       {
         "name": "The Role Separation Rule",
-        "body": "Reserve Wix for case and section headlines; keep prose and diagram relationships in Plex Sans, and technical details in Plex Mono.",
+        "body": "Reserve Wix for case and section headlines; keep prose and comparison labels in Plex Sans, and navigation details in Plex Mono.",
         "section": "typography"
       },
       {
@@ -471,15 +441,15 @@
       "Do keep cases horizontal and supporting topics in native vertical viewport chapters, with visible neighboring case panels.",
       "Do preserve semantic case links, keyboard focus and static content without JavaScript.",
       "Do use self-hosted fonts and assets under the existing content security policy.",
-      "Do use four distinct static illustrations with HTML labels and explanatory captions.",
+      "Do keep before, personal decision, after and scope visible as semantic HTML in both languages and both case surfaces.",
       "Do let chapters grow beyond the viewport for long content, narrow screens and enlarged text.",
       "Do keep the header and complete reel in one snap area so phone users can reach its controls, hint and exit link.",
-      "Do allow Brazilian Portuguese labels and prose to wrap."
+      "Do allow Brazilian Portuguese labels and prose to wrap.",
+      "Do preserve the explicitly approved numbered case labels without extending them into a general eyebrow style."
     ],
     "donts": [
-      "Don't reintroduce duplicate eyebrows above case titles.",
       "Don't treat the functional numbered case selector as a decorative label style.",
-      "Don't add travelling particles, repeated three-dot case diagrams, wheel interception or shadow-based elevation.",
+      "Don't add decorative case schematics, travelling particles, wheel interception or shadow-based elevation.",
       "Don't use portraits, private employer artifacts or invented evidence."
     ]
   }

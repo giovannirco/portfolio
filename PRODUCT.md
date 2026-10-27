@@ -32,7 +32,7 @@ Staff Platform Engineer with almost seven years on the Exodus platform team, wor
 - Plain first-person language, concrete decisions and outcomes. Review prose with the humanizer skill.
 - Keep employer names in employment history rather than the landing-page pitch. Cases emphasize Giovanni's decisions, adoption and outcomes, with limited background and no private employer artifacts.
 - No portrait, invented savings, testimonials or private infrastructure identifiers.
-- Giovanni selected the Case reel on 2026-10-26: paper case panels inside a warm charcoal frame, visible neighbors and an explicit case index. His refinement keeps the cases horizontal and gives the remaining topics their own vertical viewport chapters. Remove travelling signals; use distinct static engineering diagrams. Preserve native scrolling and allow long phone chapters to grow.
+- Giovanni selected the Case reel on 2026-10-26: paper case panels inside a warm charcoal frame, visible neighbors and an explicit case index. His refinement keeps the cases horizontal and gives the remaining topics their own vertical viewport chapters. On 2026-10-27 he approved option B and the comparison mockup: Before / My decision / After with visible scope notes, shared with standalone cases. Preserve native scrolling and allow long phone chapters to grow.
 
 ## Evidence on Hand
 
@@ -44,7 +44,7 @@ Staff Platform Engineer with almost seven years on the Exodus platform team, wor
 
 ## Product Principles
 
-- Explain the decision and its consequences before listing tools.
+- Explain the before state, personal decision and after state; keep scope and follow-through visible before listing tools.
 - Show adoption and operational outcomes through concrete examples.
 - Distinguish public artifacts, employer work and products in testing.
 - Make the next useful action easy to find.

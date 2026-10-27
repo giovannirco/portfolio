@@ -14,14 +14,13 @@ colors:
   read-hover: "#81500a"
   control-line: "#777064"
   back-underline: "#9e610b"
-  diagram-muted: "#625540"
-  boundary-tint: "#e8a33d12"
-  blocked-path: "#92501b"
-  evidence-line: "#9b8f7b"
+  comparison-label: "#625540"
+  comparison-before: "#eeeadf"
+  comparison-after: "#f7edd7"
 typography:
   display:
     fontFamily: '"Wix Display", "Plex Sans", sans-serif'
-    fontSize: "68px"
+    fontSize: "clamp(42px, 3.65vw, 56px)"
     fontWeight: 700
     lineHeight: 1.04
     letterSpacing: "-.035em"
@@ -49,7 +48,7 @@ typography:
     lineHeight: 1.6
   case-summary:
     fontFamily: '"Plex Sans", sans-serif'
-    fontSize: "28px"
+    fontSize: "clamp(19px, 1.43vw, 22px)"
     fontWeight: 400
     lineHeight: 1.45
   story-body:
@@ -57,41 +56,44 @@ typography:
     fontSize: "19px"
     fontWeight: 400
     lineHeight: 1.75
-  diagram:
+  case-label:
+    fontFamily: '"Plex Sans", sans-serif'
+    fontSize: "13px"
+    fontWeight: 500
+    lineHeight: 1.4
+    letterSpacing: ".1em"
+  comparison-label:
+    fontFamily: '"Plex Sans", sans-serif'
+    fontSize: "12px"
+    fontWeight: 600
+    lineHeight: 1.5
+    letterSpacing: ".06em"
+  comparison-title:
+    fontFamily: '"Plex Sans", sans-serif'
+    fontSize: "21px"
+    fontWeight: 600
+    lineHeight: 1.2
+    letterSpacing: "-.02em"
+  comparison-body:
+    fontFamily: '"Plex Sans", sans-serif'
+    fontSize: "17px"
+    fontWeight: 400
+    lineHeight: 1.45
+  comparison-decision:
+    fontFamily: '"Plex Sans", sans-serif'
+    fontSize: "18px"
+    fontWeight: 400
+    lineHeight: 1.45
+  case-scope:
     fontFamily: '"Plex Sans", sans-serif'
     fontSize: "16px"
     fontWeight: 400
-    lineHeight: 1.35
+    lineHeight: 1.45
   label:
     fontFamily: '"Plex Mono", monospace'
     fontSize: "16px"
     fontWeight: 400
     lineHeight: 1.5
-  diagram-emphasis:
-    fontFamily: '"Plex Sans", sans-serif'
-    fontSize: "16px"
-    fontWeight: 600
-    lineHeight: 1.35
-  diagram-caption:
-    fontFamily: '"Plex Sans", sans-serif'
-    fontSize: "15px"
-    fontWeight: 400
-    lineHeight: 1.4
-  diagram-secondary:
-    fontFamily: '"Plex Sans", sans-serif'
-    fontSize: "14px"
-    fontWeight: 400
-    lineHeight: 1.35
-  diagram-detail:
-    fontFamily: '"Plex Mono", monospace'
-    fontSize: "14px"
-    fontWeight: 400
-    lineHeight: 1.4
-  diagram-enforcement:
-    fontFamily: '"Plex Mono", monospace'
-    fontSize: "13px"
-    fontWeight: 400
-    lineHeight: 1.4
   read-link:
     fontFamily: '"Plex Mono", monospace'
     fontSize: "18px"
@@ -152,8 +154,9 @@ spacing:
   column-gap: "32px"
   reel-gap: "26px"
   mobile-reel-gap: "14px"
-  diagram-gap: "32px"
-  mobile-diagram-gap: "18px"
+  comparison-gap: "22px"
+  compact-comparison-gap: "18px"
+  stacked-comparison-gap: "16px"
   chapter-block: "52px"
   mobile-chapter-block: "64px"
 components:
@@ -169,7 +172,7 @@ components:
     backgroundColor: "{colors.paper}"
     textColor: "{colors.ink}"
     rounded: "{rounded.paper}"
-    padding: "44px 60px 38px"
+    padding: "32px 60px 26px"
   case-index:
     textColor: "{colors.muted}"
     typography: "{typography.label}"
@@ -181,9 +184,18 @@ components:
     padding: "16px 0 0"
   primary-navigation:
     textColor: "{colors.paper}"
-  case-diagram:
+  comparison-before:
+    backgroundColor: "{colors.comparison-before}"
     textColor: "{colors.ink}"
-    typography: "{typography.diagram}"
+    padding: "18px 20px"
+  comparison-after:
+    backgroundColor: "{colors.comparison-after}"
+    textColor: "{colors.ink}"
+    padding: "18px 20px"
+  comparison-decision:
+    textColor: "{colors.ink}"
+    typography: "{typography.comparison-decision}"
+    padding: "18px 0"
   content-chapter:
     backgroundColor: "{colors.ground}"
     textColor: "{colors.paper}"
@@ -196,50 +208,51 @@ components:
 
 **Creative North Star: "Case reel"**
 
-Warm charcoal frames paper panels with strong, compact headlines and precise engineering diagrams. Visible neighboring panels establish sequence; generous interior space keeps each decision readable. Supporting work occupies vertical viewport chapters with quiet ruled rows, while full cases use a paper reading surface. Four static illustrations explain different engineering relationships.
+Warm charcoal frames paper panels with compact headlines and explicit Before / My decision / After comparisons. Neutral before panels and warm after panels frame an unboxed personal decision; a visible scope note keeps each outcome bounded. Supporting work occupies vertical viewport chapters with quiet ruled rows, while full cases use a paper reading surface.
 
-This records the implemented, user-approved Case reel and its chapter refinement. The mockup establishes palette and reel composition only; the approved direction contract and source supersede its diagram treatment. The numbered four-stop selector remains functional navigation; duplicated labels above panel titles were removed during finish review.
+This records the implemented, user-approved Case reel and its comparison refinement, approved on 2026-10-27 in option B and `.impeccable/mocks/case-comparison.png`. The original reel mockup remains a palette and composition reference; the new comparison mockup supersedes its case contents. The small numbered case labels above titles are explicitly user-approved and do not establish a general eyebrow pattern for other surfaces.
 
 **Key Characteristics:**
 
 - Paper and charcoal surfaces with amber state cues.
-- Wix headlines, Plex prose and diagram labels, and Plex Mono technical details.
+- Wix headlines, Plex prose and comparison labels, and Plex Mono navigation.
 - Native horizontal cases, vertical chapters, visible neighbors and direct case links.
-- Flat surfaces and distinct static engineering illustrations.
+- Flat before and after panels, an unboxed decision and a visible scope note.
 
 ## Colors
 
-The palette pairs warm light paper with near-black charcoal; amber connects diagrams and interaction states.
+The palette pairs warm light paper with near-black charcoal; amber marks decisions and interaction states.
 
 ### Primary
 
-- **Amber:** collection and release accents, selected index stops, active navigation, hover borders, text selection and dark-surface focus.
-- **Paper focus / Read hover / Back underline:** darker amber-family treatments keep fine marks and interaction cues legible on paper. Back underline also colors diagram connectors and the policy boundary.
-- **Boundary tint / Blocked path:** a faint amber wash defines the enforcement area; a deeper brown marks the blocked traffic line. Geometry and text carry the distinction as well as color.
+- **Amber:** the decision underline, selected index stops, active navigation, hover borders, text selection and dark-surface focus.
+- **Paper focus / Read hover / Back underline:** darker amber-family treatments keep fine marks and interaction cues legible on paper. The paper-focus color also identifies the case and personal-decision labels.
 
 ### Neutral
 
 - **Ground / Paper / Ink:** page frame, case surfaces and primary text. Reading pages invert the frame's text/surface relationship while retaining the charcoal header.
 - **Muted / Supporting text:** metadata and secondary prose on dark surfaces.
 - **Line / Paper line / Control line:** section rules, paper dividers and circular control outlines.
-- **Diagram muted / Evidence line:** supporting diagram text and the non-text evidence-sheet strokes, respectively.
+- **Comparison before / Comparison after:** a neutral warm gray and pale amber distinguish the two state panels. Their labels carry meaning independently of color.
+- **Comparison label:** before, after and scope labels use a muted brown on paper.
 
 **The Surface Contrast Rule.** Use ink text and the darker focus color on paper; use paper text and amber focus on charcoal.
 
 ## Typography
 
-Self-hosted Wix Madefor Display 700 is registered as “Wix Display.” IBM Plex Sans supplies 400/500/600; IBM Plex Mono supplies 400. The frontmatter records desktop defaults; responsive overrides are below. No fixed modular ratio is used.
+Self-hosted Wix Madefor Display 700 is registered as “Wix Display.” IBM Plex Sans supplies 400/500/600; IBM Plex Mono supplies 400. The frontmatter records base declarations; the responsive tables below record effective viewport overrides. No fixed modular ratio is used.
 
-- **Display:** short case titles, normally limited to 12ch; mobile allows 15ch; the longer AI title allows 16ch at every width. Titles start directly, without an eyebrow.
+- **Display:** case titles, normally limited to 12ch; mobile allows 15ch; the longer AI title allows 16ch at every width. The intro keeps its larger display treatment.
+- **Case label:** the approved numbered category above each case title, uppercase with .1em tracking; numbers are decorative to assistive technology. This does not appear on standalone stories.
 - **Headline:** supporting section titles. **Story display:** reading-page titles, limited to 16ch.
 - **Title / Body:** project names and explanatory prose; supporting and story paragraphs cap at 70ch.
-- **Case summary:** prominent prose, capped at 51ch. Reading summaries use 24px/1.5, then 21px on mobile.
-- **Diagram / Diagram emphasis:** Plex Sans relationship labels, with 600-weight emphasis for the owner, destination or result. Captions use the smaller caption role; secondary labels stay Sans, while source names, release targets and enforcement notes use Mono detail roles.
+- **Case summary:** compact explanatory prose, capped at 51ch. Intro summaries retain their larger scale. Reading summaries use 24px/1.5, then 21px on mobile.
+- **Comparison label / Title / Body / Decision:** uppercase 600-weight term labels, a stronger state title and plain explanatory prose. The decision has its own body size and darker label. **Case scope:** a separate paragraph with a block label, always visible beneath the comparison.
 - **Label:** the functional case index. Mobile index categories switch to Plex Sans, with numbers remaining Plex Mono.
 - **Identity / Navigation / Metadata:** the header name, plain links and utility copy. Identity has its own compact weight and tracking rather than inheriting a display headline.
 - **Section intro / Section subhead / Lab value:** supporting lead prose, grouped subsection titles and the numerical homelab figures. Story summary and subhead roles keep reading pages distinct.
 
-**The Role Separation Rule.** Reserve Wix for case and section headlines; keep prose and diagram relationships in Plex Sans, and technical details in Plex Mono.
+**The Role Separation Rule.** Reserve Wix for case and section headlines; keep prose and comparison labels in Plex Sans, and navigation details in Plex Mono.
 
 ## Layout
 
@@ -247,16 +260,25 @@ The header has a 14.16svh minimum height; the reel section has an 85.84svh minim
 
 Public work, Products, Homelab and How I work each have a minimum height of 100svh, cap at 1120px, use 52px 32px padding and vertically center their content. These are minimums: long phone content or enlarged text grows naturally and remains scrollable. The case chapter can also exceed the viewport; native scrolling within its full snap area keeps the lower controls, swipe hint and exit link reachable before advancing to Public work. Product rows use a 220px name column, a flexible description column and the column-gap token. Above 760px, public-work rows use a 190px name column, a flexible description and a 94px links column, with 24px gaps and 12px vertical padding; upstream links form two columns. Homelab figures use three columns. Reading pages cap at 80ch, use 32px inline padding and 64px/100px top/bottom margins.
 
-| Viewport | Implemented changes |
+Comparison cards use 32px/26px top/bottom padding above phone widths and 28px on phones, with inline padding of 60px, 3.9063vw at 1201–1535px, 44px at 761–1200px and 24px on phones. At 1536px and above their top padding is 36px and minimum height is 65.7svh. The intro retains 44px 60px 38px padding, scaled at compact desktop widths. Its desktop headline and summary remain 68px and 28px; they scale to 4.4271vw and 1.8229vw at 1201–1535px, then clamp(2.5rem, 5vw, 4.25rem) and 23px at 761–1200px.
+
+| Viewport | Case comparison and typography |
 | --- | --- |
-| 1201–1535px | Panel padding scales to 2.8646vw 3.9063vw 2.474vw; case titles to 4.4271vw; summaries to 1.8229vw; read-link text to 1.1719vw; controls to 3.6458vw; index text to 1.0417vw. |
-| ≤1200px | Cards widen to 76vw with 36px 44px padding. Titles use clamp(2.5rem, 5vw, 4.25rem); summaries use 23px. Controls occupy 70% width. |
-| ≤760px | Cards widen to 88vw with a 540px minimum height and 28px 24px padding. Header and navigation wrap. Titles use clamp(2rem, 8vw, 3rem)/1.1; summaries use 18px/1.5. Diagram labels use 14px; captions 13px; technical sources and boundary labels 12px; enforcement notes 11px. Controls are 40px. Supporting rows and upstream links stack; figures use two columns. Sections use 64px 24px padding. Story titles use 38px and prose 18px. |
-| ≤360px | Panel inline padding drops to 20px; index categories to 11px; control gaps to 4px; navigation gaps to 10px 14px. |
+| ≥1536px | Three columns (1fr .8fr 1fr), 22px gap; title 64px, summary 25px; state title 23px, body and decision 19px, scope 18px. |
+| 1001–1535px | Three columns; 18px gap, 15px 16px state padding. Title clamp(42px, 3.65vw, 56px), summary clamp(19px, 1.43vw, 22px); state title 19px, body 16px, decision 17px and scope 16px. |
+| 761–1000px | Two equal state columns with the decision spanning both below; 16px gap. Type and state padding match compact desktop; the decision aligns left. DOM reading order stays before, decision, after. |
+| ≤760px | Before, decision and after stack in source order; 16px gap, 18px state padding, 4px 18px decision padding. Title clamp(2rem, 8vw, 3rem)/1.1, summary 18px/1.45, label 12px; state title 21px, body and decision 17px, scope 16px. |
+
+| Viewport | Shared reel and chapter changes |
+| --- | --- |
+| 1201–1535px | Read-link text scales to 1.1719vw; controls to 3.6458vw; index text to 1.0417vw. |
+| ≤1200px | Cards widen to 76vw; controls occupy 70% width. |
+| ≤760px | Cards widen to 88vw with a 540px minimum height. Header and navigation wrap. Intro summaries use 18px/1.5. Controls are 40px. Supporting rows and upstream links stack; homelab figures use two columns. Sections use 64px 24px padding. Story titles use 38px and prose 18px. |
+| ≤360px | Intro inline padding drops to 20px; comparison cards retain 24px. Index categories drop to 11px, control gaps to 4px and navigation gaps to 10px 14px. |
 
 Mobile identity uses 23px, its role and primary navigation use 15px, section intros and reading summaries use 21px, and project titles use 22px. The index uses 12px Sans categories and 11px Mono positions; below 361px categories also use 11px.
 
-Print stacks cards, removes header and reel controls, retains static diagrams, resets case and supporting chapter minimum heights and reduces headings for a continuous document. Reading pages have no vertical chapter snapping. Minimum heights allow content growth; they are not clipping boundaries.
+Print stacks cards, removes header and reel controls, retains comparisons and scope notes, and resets case-chapter and supporting-chapter minimum heights for a continuous document. Reading pages have no vertical chapter snapping. Minimum heights allow content growth; they are not clipping boundaries.
 
 ## Elevation & Depth
 
@@ -266,7 +288,7 @@ No shadows, gradients, glass or hover lifts are implemented. Light/dark surface 
 
 ## Shapes
 
-Paper panels have barely rounded corners. Circles belong to case-index stops and arrow controls. Diagram sheets and policy boundaries have square corners; dividers and connectors use 1px lines, with 2px or 4px amber accents. Directional icons are inline 24px SVGs with 1.6px strokes; static illustration paths use 1.5px strokes, with a 2px blocked path.
+Paper panels have barely rounded corners. Circles belong to case-index stops and arrow controls. Comparison state panels have square corners, no borders and no shadows. The decision underline is 3px high and 80px wide, reducing to 56px on phones. Dividers use 1px rules. Directional navigation icons are inline 24px SVGs with 1.6px strokes.
 
 ## Components
 
@@ -276,7 +298,7 @@ Outlined circles contain SVG arrows. Hover changes border and icon to amber; dis
 
 ### Case panel and read link
 
-Each case presents a title, summary, distinct static illustration with a caption and full-width reading link separated by a paper rule. Read links use Plex Mono at 18px/1.5 with a 16px icon gap; mobile uses 15px and a 12px gap. Hover darkens the link. The intro panel uses the same surface with direct GitHub and resume links.
+Each case presents its approved numbered category, title, summary, comparison, visible scope note and full-width reading link separated by a paper rule. The link sits at the bottom of the flex column after content has taken the space it needs. Read links use Plex Mono at 18px/1.5 with a 16px icon gap; mobile uses 15px and a 12px gap. Hover darkens the link. The intro panel uses the same surface with direct GitHub and resume links.
 
 ### Navigation and case index
 
@@ -284,20 +306,19 @@ The header separates identity, utility links and primary navigation. Current pri
 
 The reel supports swipe, arrow controls, focused-reel ArrowLeft/ArrowRight/Home/End, hash links and history. The centered card sets the active marker. Without JavaScript, native scrolling and substantive linked content remain available.
 
-### Case illustrations
+### Case comparison and scope
 
-Each semantic figure combines HTML labels and a decision caption with decorative inline SVG geometry. No travelling particle, signal animation or common three-dot sequence remains. The same illustration appears in its reel panel and full reading page.
+A semantic definition list groups Before, My decision and After. Each state has a term, bold title and explanatory paragraph; the decision uses plain prose. The neutral before and warm after panels surround an unboxed, centered decision with an amber underline. Scope is a separate paragraph immediately beneath the list, with its own short block label. The same renderer and content appear on the reel and standalone story pages in both languages.
 
-- **Observability:** a persistent collection layer branches to separate metrics/traces and logs destinations. Its two-column grid uses a 1:1.5 ratio, becoming .8:1 on phones.
-- **Delivery:** service owners feed a release sheet with shared templates, a reviewed change and the Argo CD target. The 1:2 grid stacks on phones; the owner and connector become an inline row.
-- **Network policy:** an outlined, tinted policy boundary contains the permitted destination. Separate allowed and blocked traffic lanes show enforcement; a Mono note names Hubble. The stopped line and text distinguish blocked traffic without relying on color alone.
-- **AI tooling:** the engineering question and named MCP sources connect to an evidence sheet ending in engineer review. The grid changes from 1.2:1 to equal columns on phones.
+Desktop uses three columns. Tablet places the states side by side with the decision below, while retaining semantic reading order. Phones stack before, decision and after; the decision aligns left and the card grows with its content. State panels use 18px 20px padding at wide desktop, 15px 16px at 761–1535px and 18px on phones. Decision inline padding is zero above 760px. The comparison margin is 28px 0 16px, with 24px top margin below 1536px. Story comparisons use 36px top margin and the following scope has 44px bottom margin.
 
-Illustration grids use a 142px minimum height and 32px gap, becoming 160px and 18px on phones. Captions sit 14px below the art. Reading-page figures use 36px/48px top/bottom margins. Only user-directed navigation moves: explicit reel navigation may scroll smoothly, while reduced motion makes it immediate and disables animations and transitions. Chapter snapping stays native.
+The four cases retain their factual boundaries: collection and Observe logs stay in place; delivery autonomy applies to covered services; the network result is a verified contained callback with follow-through; the AI example addresses a log-export limit and separately names broader tooling work. No quantitative saving or private artifact is implied by a panel.
+
+Only user-directed navigation moves: explicit reel navigation may scroll smoothly, while reduced motion makes it immediate and disables animations and transitions. Comparisons are static and immediately readable. Chapter snapping stays native.
 
 ### Supporting rows and reading pages
 
-Project and product lists use text rows with bottom rules, not additional paper cards. Reading pages retain the header, a back link, case title, summary, diagram, prose sections and related public links. English and Brazilian Portuguese share this system. There are no input fields, chips or filled action-button variants in the current build.
+Project and product lists use text rows with bottom rules, not additional paper cards. Reading pages retain the header, a back link, case title, summary, comparison and scope, prose sections and related public links. English and Brazilian Portuguese share this system. There are no input fields, chips or filled action-button variants in the current build.
 
 ## Do's and Don'ts
 
@@ -306,16 +327,16 @@ Project and product lists use text rows with bottom rules, not additional paper 
 - Do keep cases horizontal and supporting topics in native vertical viewport chapters, with visible neighboring case panels.
 - Do preserve semantic case links, keyboard focus and static content without JavaScript.
 - Do use self-hosted fonts and assets under the existing content security policy.
-- Do use four distinct static illustrations with HTML labels and explanatory captions.
+- Do keep before, personal decision, after and scope visible as semantic HTML in both languages and both case surfaces.
 - Do let chapters grow beyond the viewport for long content, narrow screens and enlarged text.
 - Do keep the header and complete reel in one snap area so phone users can reach its controls, hint and exit link.
 - Do allow Brazilian Portuguese labels and prose to wrap.
+- Do preserve the explicitly approved numbered case labels without extending them into a general eyebrow style.
 
 ### Don't:
 
-- Don't reintroduce duplicate eyebrows above case titles.
 - Don't treat the functional numbered case selector as a decorative label style.
-- Don't add travelling particles, repeated three-dot case diagrams, wheel interception or shadow-based elevation.
+- Don't add decorative case schematics, travelling particles, wheel interception or shadow-based elevation.
 - Don't use portraits, private employer artifacts or invented evidence.
 
-Evidence: `src/assets/site.css`, `src/assets/site.js`, `scripts/build.mjs`, built English/Portuguese landing pages and all four reading-page diagram patterns. This refresh records the local implementation before deployment; the older mockup is only a palette and reel-composition reference. Color ramps in the sidecar are generated preview metadata, not additional approved UI tokens. Not canonized or repaired: the HTML theme-color still uses the prior ground value (#14130f); the rendered ground token above is authoritative.
+Evidence: `src/assets/site.css`, `src/assets/site.js`, `scripts/build.mjs`, built English/Portuguese landing pages and shared reading-page comparisons. This refresh records the local implementation before deployment; the approved comparison mockup governs the case interior. Color ramps in the sidecar are generated preview metadata, not additional approved UI tokens. Not canonized or repaired: the HTML theme-color still uses the prior ground value (#14130f); the rendered ground token above is authoritative.

@@ -195,15 +195,20 @@ export const pages = {
             "I had wanted to build that self-hosted stack for years. Recommending its replacement meant letting the operating costs decide. Keeping collection separate from storage made that decision much easier to act on."
           ]
         ],
-        "diagram": {
-          "labels": [
-            "Collection stays",
-            "Metrics + traces",
-            "Grafana Cloud",
-            "Logs",
-            "Observe"
-          ],
-          "caption": "Change the destination without rebuilding collection."
+        "comparison": {
+          "before": {
+            "title": "We operated the stack",
+            "body": "Compute and storage, plus upgrades, maintenance and failures."
+          },
+          "decision": "Evaluate total operating cost. Run the trial. Lead the migration.",
+          "after": {
+            "title": "Managed metrics + traces",
+            "body": "Moved to Grafana Cloud. Retired the replaced infrastructure."
+          },
+          "scope": {
+            "label": "Kept in place",
+            "body": "Collection layer retained. Logs remained in Observe."
+          }
         }
       },
       {
@@ -229,15 +234,20 @@ export const pages = {
             "Covered services could deploy without bringing a platform engineer into each release. Templates, runbooks and later agent skills carried the method to other engineers. The useful outcome was ownership of delivery, with a shared way to inspect and change it."
           ]
         ],
-        "diagram": {
-          "labels": [
-            "Service owners",
-            "Shared templates",
-            "Reviewed change",
-            "Argo CD",
-            "Covered services"
-          ],
-          "caption": "The platform supplies the path. Service teams own the release."
+        "comparison": {
+          "before": {
+            "title": "Releases needed the platform team",
+            "body": "Pipelines and deployment knowledge were concentrated in one team."
+          },
+          "decision": "Build shared templates. Work with service owners on the GitOps migration.",
+          "after": {
+            "title": "Service owners could ship",
+            "body": "Covered services deployed without a platform engineer on each release."
+          },
+          "scope": {
+            "label": "Scope",
+            "body": "Shared templates covered standard services; others needed a tailored migration."
+          }
         }
       },
       {
@@ -263,15 +273,20 @@ export const pages = {
             "I treat intended configuration and observed behavior as separate things to verify. The same habit applies to deployments and monitoring: a green pipeline or a checked box is the start of the check."
           ]
         ],
-        "diagram": {
-          "labels": [
-            "Policy boundary",
-            "Allowed traffic",
-            "Permitted destination",
-            "Blocked callback",
-            "Hubble: check enforcement"
-          ],
-          "caption": "Compare the rule with the traffic it actually permits."
+        "comparison": {
+          "before": {
+            "title": "Rules described intent",
+            "body": "A policy file alone could not prove what the running cluster enforced."
+          },
+          "decision": "Put policies through GitOps. Check Hubble flows before and after changes.",
+          "after": {
+            "title": "Enforcement was verified",
+            "body": "The policies later contained a malicious callback in production."
+          },
+          "scope": {
+            "label": "Follow-through",
+            "body": "I checked the block, audited policies and handed the application issue to its owners."
+          }
         }
       },
       {
@@ -297,15 +312,20 @@ export const pages = {
             "I would write the case for the work earlier. Adoption showed that the need was real, but a clear proposal would have made priorities and expectations easier to discuss before building."
           ]
         ],
-        "diagram": {
-          "labels": [
-            "Engineering question",
-            "Observe MCP",
-            "Checkly MCP",
-            "Logs + checks",
-            "Engineer review"
-          ],
-          "caption": "Bring operational evidence into the investigation."
+        "comparison": {
+          "before": {
+            "title": "The interface limited exports",
+            "body": "An engineer needed thousands of log rows for an investigation."
+          },
+          "decision": "Build an export tool in the internal Observe MCP server and help engineers use it.",
+          "after": {
+            "title": "Engineers could get the logs",
+            "body": "The tool addressed the export limit. Teams used MCP in real investigations."
+          },
+          "scope": {
+            "label": "Beyond this request",
+            "body": "Checkly MCP and shared runbooks also supported investigations and platform work."
+          }
         }
       }
     ],
@@ -356,6 +376,11 @@ export const pages = {
       "heading": "How I work",
       "experience": "Experience",
       "history": "I spent 2019–2026 on the platform team at Exodus as a DevOps / Platform Engineer, working on wallet and exchange infrastructure. Before that, I worked in systems administration, networking and infrastructure."
+    },
+    "comparison": {
+      "before": "Before",
+      "decision": "My decision",
+      "after": "After"
     }
   },
   "pt-br": {
@@ -544,15 +569,20 @@ export const pages = {
             "Eu queria montar aquele stack próprio havia anos. Recomendar sua substituição exigiu deixar o custo de operação decidir. Separar a coleta do armazenamento facilitou bastante colocar essa decisão em prática."
           ]
         ],
-        "diagram": {
-          "labels": [
-            "A coleta continua",
-            "Métricas + traces",
-            "Grafana Cloud",
-            "Logs",
-            "Observe"
-          ],
-          "caption": "Trocar o destino sem reconstruir a coleta."
+        "comparison": {
+          "before": {
+            "title": "Nós operávamos o stack",
+            "body": "Computação e armazenamento, além de atualizações, manutenção e falhas."
+          },
+          "decision": "Comparar o custo total de operação. Conduzir os testes e a migração.",
+          "after": {
+            "title": "Métricas e traces gerenciados",
+            "body": "Migramos para o Grafana Cloud e desligamos a infraestrutura substituída."
+          },
+          "scope": {
+            "label": "O que ficou",
+            "body": "A camada de coleta continuou. Os logs ficaram no Observe."
+          }
         }
       },
       {
@@ -578,15 +608,20 @@ export const pages = {
             "Os serviços migrados podiam publicar sem envolver um engenheiro de plataforma em cada release. Templates, runbooks e depois skills de agente levaram o método a outros engenheiros. O resultado foi autonomia sobre a entrega, com um caminho comum para investigar e mudar."
           ]
         ],
-        "diagram": {
-          "labels": [
-            "Donos dos serviços",
-            "Templates comuns",
-            "Mudança revisada",
-            "Argo CD",
-            "Serviços migrados"
-          ],
-          "caption": "A plataforma fornece o caminho. Os times cuidam da release."
+        "comparison": {
+          "before": {
+            "title": "Releases dependiam da plataforma",
+            "body": "Pipelines e conhecimento de deploy estavam concentrados em um time."
+          },
+          "decision": "Criar templates comuns e conduzir a migração para GitOps com os donos dos serviços.",
+          "after": {
+            "title": "Os times podiam publicar",
+            "body": "Os serviços migrados podiam publicar sem chamar a plataforma a cada release."
+          },
+          "scope": {
+            "label": "Escopo",
+            "body": "Templates atendiam os serviços comuns; os demais precisavam de uma migração própria."
+          }
         }
       },
       {
@@ -612,15 +647,20 @@ export const pages = {
             "Trato a configuração pretendida e o comportamento observado como coisas distintas a verificar. O mesmo vale para deploys e monitoramento: um pipeline verde ou um item marcado é o começo da conferência."
           ]
         ],
-        "diagram": {
-          "labels": [
-            "Limite da policy",
-            "Tráfego permitido",
-            "Destino permitido",
-            "Callback bloqueado",
-            "Hubble: conferir o bloqueio"
-          ],
-          "caption": "Comparar a regra com o tráfego que ela realmente permite."
+        "comparison": {
+          "before": {
+            "title": "Regras descreviam a intenção",
+            "body": "O arquivo de policy não provava o que o cluster em execução aplicava."
+          },
+          "decision": "Entregar policies por GitOps. Conferir os fluxos no Hubble antes e depois das mudanças.",
+          "after": {
+            "title": "O bloqueio foi verificado",
+            "body": "Mais tarde, as políticas contiveram um callback malicioso em produção."
+          },
+          "scope": {
+            "label": "Acompanhamento",
+            "body": "Conferi o bloqueio, auditei as policies e encaminhei o problema ao time da aplicação."
+          }
         }
       },
       {
@@ -646,15 +686,20 @@ export const pages = {
             "Eu escreveria a proposta mais cedo. A adoção mostrou que a necessidade era real, mas uma proposta clara teria facilitado discutir prioridades e expectativas antes de construir."
           ]
         ],
-        "diagram": {
-          "labels": [
-            "Pergunta do time",
-            "Observe MCP",
-            "Checkly MCP",
-            "Logs + checks",
-            "Revisão humana"
-          ],
-          "caption": "Trazer evidências da operação para a investigação."
+        "comparison": {
+          "before": {
+            "title": "A interface limitava a exportação",
+            "body": "Um engenheiro precisava de milhares de linhas de logs para investigar."
+          },
+          "decision": "Criar uma ferramenta de exportação no Observe MCP interno e ajudar os times a usá-la.",
+          "after": {
+            "title": "Os logs ficaram acessíveis",
+            "body": "A ferramenta resolveu o limite de exportação. Times usaram MCP em investigações reais."
+          },
+          "scope": {
+            "label": "Além dessa demanda",
+            "body": "Checkly MCP e runbooks compartilhados também apoiaram investigações e trabalho de plataforma."
+          }
         }
       }
     ],
@@ -705,6 +750,11 @@ export const pages = {
       "heading": "Como trabalho",
       "experience": "Experiência",
       "history": "De 2019 a 2026, trabalhei no time de plataforma da Exodus como DevOps / Platform Engineer, na infraestrutura de carteira e exchange. Antes disso, trabalhei com administração de sistemas, redes e infraestrutura."
+    },
+    "comparison": {
+      "before": "Antes",
+      "decision": "Minha decisão",
+      "after": "Depois"
     }
   }
 };

@@ -11,3 +11,6 @@ playwright-report/
 !.impeccable/mocks/case-reel.png
 !.impeccable/mocks/case-reel.png.json
 !.impeccable/mocks/case-reel.prompt.txt
+!.impeccable/mocks/case-comparison.png
+!.impeccable/mocks/case-comparison.png.json
+!.impeccable/mocks/case-comparison.prompt.txt

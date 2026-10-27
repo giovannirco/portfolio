@@ -1,29 +1,29 @@
-# Case reel
+# Case reel comparisons
 
-Approved by Giovanni on 2026-10-26: option C. Composition reference: `.impeccable/mocks/case-reel.png`.
+Approved by Giovanni on 2026-10-27: option B, then explicit approval of the observability mockup. Reference: `.impeccable/mocks/case-comparison.png`. This supersedes the diagrams in the 2026-10-26 Case reel without changing its navigation or visual identity.
 
 ## THESIS
 
-Show Staff engineering judgment through four concrete decisions before supporting projects and products. A visitor can skim a summary or open the full case.
+Show Staff engineering judgment through a concrete before state, personal decision and after state. Keep the result's scope visible. Each slide leads to the complete bilingual case.
 
 ## OWN-WORLD
 
-Warm charcoal, paper and amber preserve the site's simplicity. Keep self-hosted IBM Plex for body and diagrams; Wix Madefor Display 700 matches the approved headline lettering. Four distinct semantic diagrams explain collection and destinations, release ownership, enforcement boundaries and investigation evidence. Geometry stays crisp, text stays HTML, and captions explain the decision. No raster illustration is owed.
+Warm charcoal, paper and amber; self-hosted Wix Madefor Display headlines, Plex Sans prose and Plex Mono navigation. Neutral before panel, unboxed decision with amber rule, warm after panel. These are flat typographic comparisons, not schematics. No decorative arrows, travelling dots, fake screenshots or invented metrics. The approved comp explicitly includes a small numbered case label above the title; preserve this user-approved exception to the generic craft floor.
 
 ## STORY
 
-Observability opens the reel, followed by delivery, network policy and AI tooling. Intro is the preceding panel. Public projects, separate products, homelab and experience remain reachable below and from navigation. Dedicated bilingual reading pages explain the problem, personal decision, adoption and outcome. Employer context appears once in experience; no private artifacts or invented metrics.
+Observability compares team-operated infrastructure with managed metrics and traces while retaining collection and Observe logs. Delivery compares concentrated release knowledge with self-service for covered services. Network compares policy intent with observed enforcement, including the contained callback. AI illustrates a concrete export limitation and the internal MCP tool that addressed it. Keep existing long-form prose and privacy boundaries. No employer artifacts or new savings claims.
 
 ## FIRST VIEWPORT
 
-The first decision sits on a wide paper panel inside a charcoal frame. Neighboring edges signal more cases. Compact identity and navigation sit above; four case markers and previous/next controls sit below. The functional numbered index carries case position and category. The finish review removed the duplicated labels above panel titles; this is a documented adaptation of the comp.
+Keep the horizontal paper panel and cropped neighbors, header and bottom case index. The interior has the case label, compact two-line title, summary, three-column comparison, scope note and Read the case link. At the approved 1536x1024 viewport all remain visible. Compact desktop must keep the exit reachable within the first viewport. Compare against the approved comp; do not reproduce its generated image texture.
 
 ## FORM
 
-Direction seed `aba7d842` initially assigned Decision atlas, recorded in `research.md` and build state. Giovanni superseded that assignment with a blend of Engineering review, Evidence index and straightforward portfolio, requested three additional scrolling concepts, then explicitly selected option C, Case reel. This user choice is the final authority; no new roll is needed.
+Original direction seed `aba7d842` assigned Decision atlas. Giovanni superseded it with Case reel on 2026-10-26, then explicitly selected comparison option B and approved the new mockup on 2026-10-27. These user choices govern the implementation; no new roll was needed.
 
-Native horizontal scrolling, swipe, arrow controls and keyboard navigation move the reel. The active marker follows the centered card. Giovanni rejected the travelling signal and repeated three-dot diagrams, then clarified: keep cases horizontal; give the rest of the page one topic per vertical scroll. Public work, Products, Homelab and How I work use native viewport-height scroll snapping. Content can exceed one viewport on phones or with enlarged text, without clipping or trapped scrolling. No wheel interception or vertical control of the horizontal cases. Diagrams are static; only user-directed navigation moves. Reduced motion makes navigation immediate. Longer cases open normal reading pages with stable links. This correction supersedes the original comp's diagram treatment, not its palette or reel composition.
+Desktop: before, decision, after in reading order. Phones: stack that same order and let the card grow; no clipped content or nested scroll area. Tablet may place the two states side by side with the decision below. Native horizontal swipe, arrows, keyboard, history and direct links remain. Supporting topics retain native vertical chapter snapping, with no wheel interception. All comparison text is HTML and visible immediately, including without JavaScript. Only user-directed reel navigation moves; reduced motion makes navigation immediate. Full case pages share the comparison and ordinary reading scroll.
 
-## Delivery and verification
+## Verification and delivery
 
-Extend the existing content module and build script. No new dependencies, framework, external assets or relaxed CSP. Preserve both language routes, static metadata and deployment health checks. Verify build and HTML, bilingual routes, keyboard, scrolling, history, reduced motion, zoom, no-JavaScript access, no foreign requests and axe. Inspect desktop and phone captures, then complete independent review and design documentation.
+No new dependencies, framework, runtime assets or relaxed CSP. Check both languages, compact/desktop/phone, keyboard, native scrolling, history, reduced motion, no JavaScript, enlarged text, axe, absence of foreign requests and nginx endpoints. Independent finish review and design documentation follow. User previously authorized cluster deployment when done; publish through the existing CI image and GitOps pin, verify live, then update content records and journal.

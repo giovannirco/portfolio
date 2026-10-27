@@ -63,19 +63,31 @@ for (const path of ["/", "/pt-br/"]) {
       expect(violations.map((item) => item.id)).toEqual([]);
     }
   });
-  test(`${path} cases explain distinct decisions without travelling particles`, async ({ page }) => {
+  test(`${path} comparisons expose the decision and its scope without diagrams`, async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto(path);
-    await expect(page.locator(".flow")).toHaveCount(0);
+    await expect(page.locator(".flow, .case-diagram")).toHaveCount(0);
     for (const id of ["observability", "delivery", "network", "ai"]) {
-      const diagram = page.locator(`#${id} figure`);
-      await expect(diagram).toHaveAttribute("data-diagram", id);
-      await expect(diagram.locator("figcaption")).not.toBeEmpty();
-      expect(await diagram.evaluate((node) => node.getAnimations({ subtree: true }).length)).toBe(0);
-      expect(await diagram.evaluate((node) => node.scrollWidth <= node.clientWidth)).toBe(true);
+      await page.locator(`[data-case-link="${id}"]`).click();
+      const comparison = page.locator(`#${id} .case-comparison`);
+      await expect(comparison.locator("dt")).toHaveCount(3);
+      for (const detail of await comparison.locator("dd").all()) {
+        await expect(detail).not.toBeEmpty();
+        await expect(detail).toBeVisible();
+      }
+      await expect(page.locator(`#${id} .case-scope`)).not.toBeEmpty();
+      expect(await comparison.evaluate((node) => node.getAnimations({ subtree: true }).length)).toBe(0);
+      expect(await comparison.evaluate((node) => node.scrollWidth <= node.clientWidth)).toBe(true);
+      const panels = await comparison.locator(".comparison-before, .comparison-after").evaluateAll((nodes) => nodes.map((node) => node.getBoundingClientRect().toJSON()));
+      if (page.viewportSize().width <= 760) expect(panels[1].top).toBeGreaterThan(panels[0].bottom);
+      else expect(panels[1].top).toBe(panels[0].top);
     }
-    await expect(page.locator("#observability figure")).toContainText("Grafana Cloud");
-    await expect(page.locator("#network figure")).toContainText("Hubble");
+    await expect(page.locator("#observability .comparison-after")).toContainText("Grafana Cloud");
+    await expect(page.locator("#observability .case-scope")).toContainText("Observe");
+    await expect(page.locator("#network .comparison-decision")).toContainText("Hubble");
+    await page.goto(path + "work/network/");
+    await expect(page.locator(".case-comparison")).toContainText("Hubble");
+    await expect(page.locator(".case-diagram")).toHaveCount(0);
   });
 }
 test("vertical chapters settle independently of horizontal cases", async ({ page }) => {
@@ -105,7 +117,8 @@ test("phone scrolling can reach the reel controls before leaving the case chapte
     await page.goto(path);
     await page.evaluate(() => document.fonts.ready);
     await page.mouse.move(380, 450);
-    for (const [delta, target] of [[350, ".reel-hint"], [900, "#projects-h"], [-500, ".reel-hint"]]) {
+    const controlsDistance = await page.locator(".reel-hint").evaluate((node) => node.getBoundingClientRect().bottom - innerHeight + 80);
+    for (const [delta, target] of [[controlsDistance, ".reel-hint"], [900, "#projects-h"], [-500, ".reel-hint"]]) {
       await page.mouse.wheel(0, delta);
       let previous = -1;
       let settled = 0;
