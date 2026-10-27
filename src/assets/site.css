@@ -182,7 +182,7 @@ html:has(.chapter-page) { scroll-snap-type: y mandatory; }
 .case-card:not(.intro-card) { padding-block: 32px 26px; }
 .case-label { font: 500 13px/1.4 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: #86540c; margin-bottom: 10px; }
 .case-card:not(.intro-card) h2 { font-size: clamp(42px, 3.65vw, 56px); margin-bottom: 18px; }
-.case-card:not(.intro-card) .case-summary { font-size: clamp(19px, 1.43vw, 22px); line-height: 1.45; }
+.case-card:not(.intro-card) .case-summary { font-size: clamp(19px, 1.43vw, 22px); line-height: 1.45; max-width: 32em; }
 .case-comparison { display: grid; grid-template-columns: 1fr .8fr 1fr; gap: 22px; margin: 28px 0 16px; }
 .case-comparison > div { min-width: 0; padding: 18px 20px; }
 .comparison-before { background: #eeeadf; }

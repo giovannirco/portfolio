@@ -246,7 +246,7 @@ Self-hosted Wix Madefor Display 700 is registered as “Wix Display.” IBM Plex
 - **Case label:** the approved numbered category above each case title, uppercase with .1em tracking; numbers are decorative to assistive technology. This does not appear on standalone stories.
 - **Headline:** supporting section titles. **Story display:** reading-page titles, limited to 16ch.
 - **Title / Body:** project names and explanatory prose; supporting and story paragraphs cap at 70ch.
-- **Case summary:** compact explanatory prose, capped at 51ch. Intro summaries retain their larger scale. Reading summaries use 24px/1.5, then 21px on mobile.
+- **Case summary:** compact explanatory prose, capped at 32em. Intro summaries retain their larger scale and 51ch limit. Reading summaries use 24px/1.5, then 21px on mobile.
 - **Comparison label / Title / Body / Decision:** uppercase 600-weight term labels, a stronger state title and plain explanatory prose. The decision has its own body size and darker label. **Case scope:** a separate paragraph with a block label, always visible beneath the comparison.
 - **Label:** the functional case index. Mobile index categories switch to Plex Sans, with numbers remaining Plex Mono.
 - **Identity / Navigation / Metadata:** the header name, plain links and utility copy. Identity has its own compact weight and tracking rather than inheriting a display headline.
