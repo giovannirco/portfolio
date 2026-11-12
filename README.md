@@ -4,10 +4,12 @@ Source of [giovanni.dev.br](https://giovanni.dev.br): a horizontal case reel, fo
 
 ## Build and run
 
+Use Node 24.22.3 to match CI and the image build.
+
 ```sh
 node scripts/build.mjs          # writes dist/
 docker build -t portfolio .
-docker run --read-only --tmpfs /tmp -p 8080:8080 portfolio
+docker run --read-only --tmpfs /tmp -p 127.0.0.1:8088:8080 portfolio
 ```
 
 The image is nginx running as an unprivileged user with a read-only root filesystem. `/healthz` answers `ok`.
@@ -17,7 +19,8 @@ The image is nginx running as an unprivileged user with a read-only root filesys
 ```sh
 npm ci
 npm run check                   # build, content checks, HTML validation
-npx playwright test             # against a running container on :8088 (BASE_URL to change it)
+npx playwright install chromium
+npm run e2e                     # against the running container on :8088 (BASE_URL to change it)
 ```
 
 All copy lives in `src/content.mjs`; the build stops if the two languages don't have the same keys.
