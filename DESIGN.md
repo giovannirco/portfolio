@@ -204,139 +204,38 @@ components:
 
 # Design System: Giovanni Coutinho — Case reel
 
-## Overview
+## Visual identity
 
-**Creative North Star: "Case reel"**
+Warm charcoal frames paper cases; amber marks navigation and focus. Keep Wix Display for headlines, Plex Sans for prose and Plex Mono for functional reel navigation. No shadows, gradients, portraits or private employer screenshots. The approved numbered case categories remain confined to the reel.
 
-Warm charcoal frames paper panels with compact headlines and explicit Before / My decision / After comparisons. Neutral before panels and warm after panels frame an unboxed personal decision; a visible scope note keeps each outcome bounded. Supporting work occupies vertical viewport chapters with quiet ruled rows, while full cases use a paper reading surface.
+## Opening cases
 
-This records the implemented, user-approved Case reel and its comparison refinement, approved on 2026-10-27 in option B and `.impeccable/mocks/case-comparison.png`. The original reel mockup remains a palette and composition reference; the new comparison mockup supersedes its case contents. The small numbered case labels above titles are explicitly user-approved and do not establish a general eyebrow pattern for other surfaces.
+The case reel stays first. Each paper panel presents an outcome headline, a semantic decision/result definition list, a visible scope note and the existing case link. Desktop proofs use two columns; below 760px they stack. Full Before / My decision / After comparisons belong on the standalone case pages, with their existing responsive state panels and scope notes.
 
-**Key Characteristics:**
+The header and reel remain one native vertical snap area. Cards use 68.16vw width, 76vw below 1201px and 88vw on phones, exposing their neighbors. The minimum case height is 63.18svh, 65.7svh on large desktop and 500px on phones; content can grow. Case titles have a 23ch limit on desktop and use 30px/1.1 on phones. Proof text uses 21px/1.5 on desktop, 18px below 1001px and 16px/1.4 on phones. Scope uses 14px/1.4 on phones.
 
-- Paper and charcoal surfaces with amber state cues.
-- Wix headlines, Plex prose and comparison labels, and Plex Mono navigation.
-- Native horizontal cases, vertical chapters, visible neighbors and direct case links.
-- Flat before and after panels, an unboxed decision and a visible scope note.
+Keep the four-case index, arrow controls, swipe, direct hashes, browser history and focused-reel ArrowLeft/ArrowRight/Home/End. Mobile index labels can be shorter, while accessible names and desktop labels retain the full subject. The existing Intro remains reachable through navigation. Vertical wheel movement never drives horizontal case selection. Reduced motion disables smooth transitions.
 
-## Colors
+## Project and product chapters
 
-The palette pairs warm light paper with near-black charcoal; amber marks decisions and interaction states.
+The charcoal chapters cap at 1120px and use 88px block padding, 64px on phones. They have a 100svh minimum, not a height cap. Long content stays natively scrollable; chapter snapping does not clip its final links.
 
-### Primary
+Featured entries use an unboxed two-column composition: project name, purpose, contribution, decision and maturity on one side, evidence on the other. The grid is 1fr/1.2fr with a 48px gap, stacking below 1001px. Entries have 56px block padding, 40px on phones, and a thin bottom rule. Project titles use 34px/1.15 Wix, 30px on phones; taglines use 23px/1.35, 22px on phones. Role and status have quieter 16px and 15px treatments without becoming badges.
 
-- **Amber:** the decision underline, selected index stops, active navigation, hover borders, text selection and dark-surface focus.
-- **Paper focus / Read hover / Back underline:** darker amber-family treatments keep fine marks and interaction cues legible on paper. The paper-focus color also identifies the case and personal-decision labels.
+Screenshots preserve their native aspect ratios, have explicit dimensions and alt text, and load lazily. Captions distinguish public documentation from synthetic demonstrations. Images are copied unchanged and fingerprinted by the build. Provenance and license notices live alongside the source assets. Workflow figures are semantic ordered lists labeled “How it works”, not imitations of product interfaces. Their numbers communicate actual step order; they do not establish a decorative numbering system.
 
-### Neutral
+The remaining entries use ruled rows: a 220px name column plus flexible copy, with purpose, contribution, status and an internal story link. Phones stack the rows. Upstream contributions remain a separate group, and the homelab chapter retains its dated inventory boundary.
 
-- **Ground / Paper / Ink:** page frame, case surfaces and primary text. Reading pages invert the frame's text/surface relationship while retaining the charcoal header.
-- **Muted / Supporting text:** metadata and secondary prose on dark surfaces.
-- **Line / Paper line / Control line:** section rules, paper dividers and circular control outlines.
-- **Comparison before / Comparison after:** a neutral warm gray and pale amber distinguish the two state panels. Their labels carry meaning independently of color.
-- **Comparison label:** before, after and scope labels use a muted brown on paper.
+## Reading pages
 
-**The Surface Contrast Rule.** Use ink text and the darker focus color on paper; use paper text and amber focus on charcoal.
+Case stories retain the paper reading surface, full comparisons, unchanged factual body sections and existing URLs. Project/product stories use the same header, paper, back link and typography, with a 1000px maximum width. They present a name, purpose, summary, available evidence, contribution/decision/status definition list and substantive prose. Plano Adentro uses only the approved public summary and destination.
 
-## Typography
+Project facts use two columns with status spanning the row, stacking on phones. Workflow figures run horizontally on wide reading pages and vertically on phones. Every story has a same-story language switch and a native return link to its chapter. Both languages remain substantive without JavaScript.
 
-Self-hosted Wix Madefor Display 700 is registered as “Wix Display.” IBM Plex Sans supplies 400/500/600; IBM Plex Mono supplies 400. The frontmatter records base declarations; the responsive tables below record effective viewport overrides. No fixed modular ratio is used.
+## Accessibility and delivery
 
-- **Display:** case titles, normally limited to 12ch; mobile allows 15ch; the longer AI title allows 16ch at every width. The intro keeps its larger display treatment.
-- **Case label:** the approved numbered category above each case title, uppercase with .1em tracking; numbers are decorative to assistive technology. This does not appear on standalone stories.
-- **Headline:** supporting section titles. **Story display:** reading-page titles, limited to 16ch.
-- **Title / Body:** project names and explanatory prose; supporting and story paragraphs cap at 70ch.
-- **Case summary:** compact explanatory prose, capped at 32em. Intro summaries retain their larger scale and 51ch limit. Reading summaries use 24px/1.5, then 21px on mobile.
-- **Comparison label / Title / Body / Decision:** uppercase 600-weight term labels, a stronger state title and plain explanatory prose. The decision has its own body size and darker label. **Case scope:** a separate paragraph with a block label, always visible beneath the comparison.
-- **Label:** the functional case index. Mobile index categories switch to Plex Sans, with numbers remaining Plex Mono.
-- **Identity / Navigation / Metadata:** the header name, plain links and utility copy. Identity has its own compact weight and tracking rather than inheriting a display headline.
-- **Section intro / Section subhead / Lab value:** supporting lead prose, grouped subsection titles and the numerical homelab figures. Story summary and subhead roles keep reading pages distinct.
+Preserve the skip link, semantic headings, native links, visible focus and readable content at enlarged text sizes. Use ink and darker amber focus on paper; use paper and amber focus on charcoal. Do not hide substantive text behind animation. Real screenshots supplement the text; they do not carry the only account of the work.
 
-**The Role Separation Rule.** Reserve Wix for case and section headlines; keep prose and comparison labels in Plex Sans, and navigation details in Plex Mono.
+Content and route checks cover language parity, preserved case URLs, internal project discovery, attribution and maturity boundaries. Browser checks cover phone proof visibility, keyboard/history, no-JavaScript reading, loaded evidence, contrast, long chapter reachability and deployment endpoints.
 
-## Layout
-
-The header has a 14.16svh minimum height; the reel section has an 85.84svh minimum. Cards are 68.16vw wide and at least 63.18svh high. Centered scroll padding equals half the remaining viewport width, exposing neighbors. The horizontal reel uses mandatory center snapping. The header and reel share one case chapter inside the main content, with a 100svh minimum height and the accessible name Giovanni Coutinho. Landing pages use native mandatory vertical snapping at this complete case chapter and each supporting chapter, with start alignment and always-stop snap points. The short header is not a separate snap target. Vertical scrolling never drives the horizontal case selection.
-
-Public work, Products, Homelab and How I work each have a minimum height of 100svh, cap at 1120px, use 52px 32px padding and vertically center their content. These are minimums: long phone content or enlarged text grows naturally and remains scrollable. The case chapter can also exceed the viewport; native scrolling within its full snap area keeps the lower controls, swipe hint and exit link reachable before advancing to Public work. Product rows use a 220px name column, a flexible description column and the column-gap token. Above 760px, public-work rows use a 190px name column, a flexible description and a 94px links column, with 24px gaps and 12px vertical padding; upstream links form two columns. Homelab figures use three columns. Reading pages cap at 80ch, use 32px inline padding and 64px/100px top/bottom margins.
-
-Comparison cards use 32px/26px top/bottom padding above phone widths and 28px on phones, with inline padding of 60px, 3.9063vw at 1201–1535px, 44px at 761–1200px and 24px on phones. At 1536px and above their top padding is 36px and minimum height is 65.7svh. The intro retains 44px 60px 38px padding, scaled at compact desktop widths. Its desktop headline and summary remain 68px and 28px; they scale to 4.4271vw and 1.8229vw at 1201–1535px, then clamp(2.5rem, 5vw, 4.25rem) and 23px at 761–1200px.
-
-| Viewport | Case comparison and typography |
-| --- | --- |
-| ≥1536px | Three columns (1fr .8fr 1fr), 22px gap; title 64px, summary 25px; state title 23px, body and decision 19px, scope 18px. |
-| 1001–1535px | Three columns; 18px gap, 15px 16px state padding. Title clamp(42px, 3.65vw, 56px), summary clamp(19px, 1.43vw, 22px); state title 19px, body 16px, decision 17px and scope 16px. |
-| 761–1000px | Two equal state columns with the decision spanning both below; 16px gap. Type and state padding match compact desktop; the decision aligns left. DOM reading order stays before, decision, after. |
-| ≤760px | Before, decision and after stack in source order; 16px gap, 18px state padding, 4px 18px decision padding. Title clamp(2rem, 8vw, 3rem)/1.1, summary 18px/1.45, label 12px; state title 21px, body and decision 17px, scope 16px. |
-
-| Viewport | Shared reel and chapter changes |
-| --- | --- |
-| 1201–1535px | Read-link text scales to 1.1719vw; controls to 3.6458vw; index text to 1.0417vw. |
-| ≤1200px | Cards widen to 76vw; controls occupy 70% width. |
-| ≤760px | Cards widen to 88vw with a 540px minimum height. Header and navigation wrap. Intro summaries use 18px/1.5. Controls are 40px. Supporting rows and upstream links stack; homelab figures use two columns. Sections use 64px 24px padding. Story titles use 38px and prose 18px. |
-| ≤360px | Intro inline padding drops to 20px; comparison cards retain 24px. Index categories drop to 11px, control gaps to 4px and navigation gaps to 10px 14px. |
-
-Mobile identity uses 23px, its role and primary navigation use 15px, section intros and reading summaries use 21px, and project titles use 22px. The index uses 12px Sans categories and 11px Mono positions; below 361px categories also use 11px.
-
-Print stacks cards, removes header and reel controls, retains comparisons and scope notes, and resets case-chapter and supporting-chapter minimum heights for a continuous document. Reading pages have no vertical chapter snapping. Minimum heights allow content growth; they are not clipping boundaries.
-
-## Elevation & Depth
-
-No shadows, gradients, glass or hover lifts are implemented. Light/dark surface contrast, clipped neighboring panels, whitespace and thin divider rules establish depth and grouping.
-
-**The Flat Surface Rule.** Keep paper panels and supporting rows shadow-free; use surface contrast and rules for separation.
-
-## Shapes
-
-Paper panels have barely rounded corners. Circles belong to case-index stops and arrow controls. Comparison state panels have square corners, no borders and no shadows. The decision underline is 3px high and 80px wide, reducing to 56px on phones. Dividers use 1px rules. Directional navigation icons are inline 24px SVGs with 1.6px strokes.
-
-## Components
-
-### Reel controls
-
-Outlined circles contain SVG arrows. Hover changes border and icon to amber; disabled controls use opacity .35 and a default cursor. Controls are hidden until JavaScript initializes. Global keyboard focus is a 2px outline offset by 5px; paper surfaces use the paper-focus token.
-
-### Case panel and read link
-
-Each case presents its approved numbered category, title, summary, comparison, visible scope note and full-width reading link separated by a paper rule. The link sits at the bottom of the flex column after content has taken the space it needs. Read links use Plex Mono at 18px/1.5 with a 16px icon gap; mobile uses 15px and a 12px gap. Hover darkens the link. The intro panel uses the same surface with direct GitHub and resume links.
-
-### Navigation and case index
-
-The header separates identity, utility links and primary navigation. Current primary navigation uses amber with an underline; the current language uses paper against muted alternatives. The four-stop case index uses linked circular markers, position numbers and category names. Active markers fill amber. It is navigation, not a decorative label pattern.
-
-The reel supports swipe, arrow controls, focused-reel ArrowLeft/ArrowRight/Home/End, hash links and history. The centered card sets the active marker. Without JavaScript, native scrolling and substantive linked content remain available.
-
-### Case comparison and scope
-
-A semantic definition list groups Before, My decision and After. Each state has a term, bold title and explanatory paragraph; the decision uses plain prose. The neutral before and warm after panels surround an unboxed, centered decision with an amber underline. Scope is a separate paragraph immediately beneath the list, with its own short block label. The same renderer and content appear on the reel and standalone story pages in both languages.
-
-Desktop uses three columns. Tablet places the states side by side with the decision below, while retaining semantic reading order. Phones stack before, decision and after; the decision aligns left and the card grows with its content. State panels use 18px 20px padding at wide desktop, 15px 16px at 761–1535px and 18px on phones. Decision inline padding is zero above 760px. The comparison margin is 28px 0 16px, with 24px top margin below 1536px. Story comparisons use 36px top margin and the following scope has 44px bottom margin.
-
-The four cases retain their factual boundaries: collection and Observe logs stay in place; delivery autonomy applies to covered services; the network result is a verified contained callback with follow-through; the AI example addresses a log-export limit and separately names broader tooling work. No quantitative saving or private artifact is implied by a panel.
-
-Only user-directed navigation moves: explicit reel navigation may scroll smoothly, while reduced motion makes it immediate and disables animations and transitions. Comparisons are static and immediately readable. Chapter snapping stays native.
-
-### Supporting rows and reading pages
-
-Project and product lists use text rows with bottom rules, not additional paper cards. Reading pages retain the header, a back link, case title, summary, comparison and scope, prose sections and related public links. English and Brazilian Portuguese share this system. There are no input fields, chips or filled action-button variants in the current build.
-
-## Do's and Don'ts
-
-### Do:
-
-- Do keep cases horizontal and supporting topics in native vertical viewport chapters, with visible neighboring case panels.
-- Do preserve semantic case links, keyboard focus and static content without JavaScript.
-- Do use self-hosted fonts and assets under the existing content security policy.
-- Do keep before, personal decision, after and scope visible as semantic HTML in both languages and both case surfaces.
-- Do let chapters grow beyond the viewport for long content, narrow screens and enlarged text.
-- Do keep the header and complete reel in one snap area so phone users can reach its controls, hint and exit link.
-- Do allow Brazilian Portuguese labels and prose to wrap.
-- Do preserve the explicitly approved numbered case labels without extending them into a general eyebrow style.
-
-### Don't:
-
-- Don't treat the functional numbered case selector as a decorative label style.
-- Don't add decorative case schematics, travelling particles, wheel interception or shadow-based elevation.
-- Don't use portraits, private employer artifacts or invented evidence.
-
-Evidence: `src/assets/site.css`, `src/assets/site.js`, `scripts/build.mjs`, built English/Portuguese landing pages and shared reading-page comparisons. This refresh records the local implementation before deployment; the approved comparison mockup governs the case interior. Color ramps in the sidecar are generated preview metadata, not additional approved UI tokens. Not canonized or repaired: the HTML theme-color still uses the prior ground value (#14130f); the rendered ground token above is authoritative.
+Evidence: src/content.mjs, scripts/build.mjs, src/assets/site.css, src/assets/site.js and the static/browser tests. The palette and font tokens above remain authoritative. Older comparison mockups document the standalone-case treatment; the opening proof and richer chapters supersede their homepage composition. Pre-existing sidecar preview drift is not an additional source of UI requirements.

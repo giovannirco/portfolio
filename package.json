@@ -5,7 +5,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "og": "node scripts/og.mjs",
-    "check": "node scripts/build.mjs && node tests/content.test.mjs && html-validate dist",
+    "check": "node scripts/build.mjs && node tests/content.test.mjs && node --test tests/project-stories.test.mjs && html-validate dist",
     "e2e": "playwright test"
   },
   "devDependencies": {

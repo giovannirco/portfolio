@@ -8,7 +8,7 @@ web
 
 ## Users
 
-Hiring managers and engineers assessing Giovanni Coutinho for Staff platform roles. Giovanni confirmed Staff case studies as the primary story on 2026-10-26, with public projects and products supporting it.
+Hiring managers and engineers assessing Giovanni Coutinho for Staff platform roles. Giovanni confirmed Staff case studies first, with richer product and open-source stories supporting them.
 
 ## Product Purpose
 
@@ -32,14 +32,15 @@ Staff Platform Engineer with almost seven years on the Exodus platform team, wor
 - Plain first-person language, concrete decisions and outcomes. Review prose with the humanizer skill.
 - Keep employer names in employment history rather than the landing-page pitch. Cases emphasize Giovanni's decisions, adoption and outcomes, with limited background and no private employer artifacts.
 - No portrait, invented savings, testimonials or private infrastructure identifiers.
-- Giovanni selected the Case reel on 2026-10-26: paper case panels inside a warm charcoal frame, visible neighbors and an explicit case index. His refinement keeps the cases horizontal and gives the remaining topics their own vertical viewport chapters. On 2026-10-27 he approved option B and the comparison mockup: Before / My decision / After with visible scope notes, shared with standalone cases. Preserve native scrolling and allow long phone chapters to grow.
+- Giovanni selected the Case reel on 2026-10-26: paper case panels inside a warm charcoal frame, visible neighbors and an explicit case index. His refinement keeps the cases horizontal and gives the remaining topics their own vertical viewport chapters. The opening cases present a compact decision, result and scope. Standalone cases retain the full Before / My decision / After comparison. Preserve native scrolling and allow long phone chapters to grow.
 
 ## Evidence on Hand
 
 - Existing portfolio content and the owner's current career record support GitOps adoption, observability evaluation and migration, Cilium policies, database upgrades and AI tooling adoption.
-- The approved GitHub profile supplies public projects in this order: Job Scout, Platen, CPA Prometheus, Interview skills, Orrery, Peephole, then selected upstream contributions.
+- Public work includes Job Scout, Platen, CPA Prometheus, Interview skills, Orrery and Peephole, plus Jev Playground, Latchkey and HeatBar. Upstream contributions remain separate. Attribute the Jev model to TypeSafe and the Latchkey protocol port to its upstream project.
 - Products are a separate group: Plano Adentro, Subsíndico, Tessera, Navalha and Seguros MCP. Navalha is in testing and unlinked; Seguros MCP's Tokio Marine integration is in beta.
-- Agentic homelab belongs with the homelab section.
+- Every project and product has a bilingual internal story. Use verified public screenshots or explicitly labeled workflow diagrams; preserve image provenance and maturity limits. Plano Adentro retains only its approved public description.
+- Agentic homelab belongs with the homelab section. Dated inventory is not a current availability claim.
 - Metric cardinality reduction is not billing savings. Older career notes contain differing intermediate percentages; avoid presenting them as a cost reduction or inventing a monetary outcome.
 
 ## Product Principles

@@ -70,8 +70,8 @@ export const pages = {
         ]
       ],
       "asof": "Counted on the clusters on 23 Oct 2026",
-      "body": "Omni manages Talos, Flux lays down the platform and Argo CD the apps. Every namespace is default deny. Metrics, logs and traces land in my own Grafana stack and alerts come to WhatsApp. When I change something, I write down what I did and why.",
-      "orrery": "See it running in the orrery",
+      "body": "Omni manages Talos, Flux lays down the platform and Argo CD the apps. The design uses default-deny namespaces, a self-hosted Grafana stack for metrics, logs and traces, and a WhatsApp alert integration. The figures above are a dated record, not a live availability indicator. When I change something, I write down what I did and why.",
+      "orrery": "Explore the homelab in Orrery",
       "handbook": "How it was built"
     },
     "projects": {
@@ -81,39 +81,235 @@ export const pages = {
       "rows": [
         {
           "name": "Job Scout",
-          "text": "A self-hosted job-search desk for listings, applications and research. MCP gives assistants access; drafts stay yours to review.",
+          "text": "A self-hosted workspace for listings, company research, applications and interview preparation. Job-description history preserves what changed; assistants help research and draft while the user decides what to send.",
           "repo": "https://github.com/giovannirco/job-scout",
-          "url": ""
+          "url": "",
+          "id": "job-scout",
+          "featured": true,
+          "tagline": "Keep the job search’s context together.",
+          "role": "Application and MCP integration.",
+          "decision": "Keep application history and reviewed drafts together, with AI optional.",
+          "status": "Self-hosted, single-user software. It does not apply for jobs automatically.",
+          "sections": [
+            [
+              "The context survives the next step",
+              "A listing, a researched company and an application should not become disconnected notes. Job Scout keeps them in one workspace and records changes to the job description. Interview preparation can refer to the description saved at that stage."
+            ],
+            [
+              "AI assists; the user applies",
+              "MCP gives assistants access to the workspace for research and drafting. The core workflow also works without an AI provider. Application materials stay under the user’s review rather than becoming an automatic submission pipeline."
+            ]
+          ],
+          "flow": [
+            "Find a role",
+            "Research and draft",
+            "Review and track"
+          ],
+          "image": null
         },
         {
           "name": "Platen",
-          "text": "Print and scan from a browser, scripts or an AI assistant. One Go binary handles the printer, PDFs and scan filing in Paperless-ngx.",
+          "text": "One Go service gives browsers, scripts and assistants access to printing and scanning. It talks directly to devices, renders PDFs for printers that cannot accept them, and files scans in Paperless.",
           "repo": "https://github.com/giovannirco/platen",
-          "url": ""
+          "url": "",
+          "id": "platen",
+          "featured": true,
+          "tagline": "Print and scan without building a driver stack.",
+          "role": "Go service, browser interface and REST/MCP tools.",
+          "decision": "Use direct device protocols and stream rasterized pages rather than require CUPS or printer drivers.",
+          "status": "Early software with a limited hardware test matrix. Feeder support still needs real-device validation.",
+          "sections": [
+            [
+              "A PDF is not always printable",
+              "Some printers accept raster pages but not PDFs. Platen uses PDFium through WebAssembly to render pages, then sends them through IPP. Scanning uses eSCL, with a browser workflow for assembling multiple flatbed pages."
+            ],
+            [
+              "Physical actions need a boundary",
+              "The same operations are available through the web, REST and MCP. Dry runs and confirmation for larger jobs make the physical effect visible before paper is consumed. Compatibility is documented per device rather than assumed from a generic protocol claim."
+            ]
+          ],
+          "flow": [],
+          "image": {
+            "src": "platen-home.png",
+            "alt": "Platen dashboard with a printer, scanner and Paperless connection.",
+            "caption": "Platen’s device dashboard, from its public documentation."
+          }
         },
         {
           "name": "CPA Prometheus",
-          "text": "Prometheus metrics for CLIProxyAPI traffic, token usage and provider quotas, with a Grafana dashboard.",
+          "text": "A CLIProxyAPI plugin exposes request failures, latency, token usage and provider quota information through authenticated management metrics, with a Grafana dashboard.",
           "repo": "https://github.com/giovannirco/cpa-prometheus-plugin",
-          "url": ""
+          "url": "",
+          "id": "cpa-prometheus",
+          "featured": false,
+          "tagline": "Make AI proxy usage observable.",
+          "role": "The metrics plugin and dashboard, built for the upstream CLIProxyAPI project.",
+          "decision": "Collect usage inside the proxy and keep metrics behind its management authentication.",
+          "status": "Provider quota fields depend on what each provider exposes. This is a plugin, not the underlying proxy.",
+          "sections": [
+            [
+              "See more than request counts",
+              "The plugin hooks into proxy usage events to record failures, duration and token categories, including reasoning and cached tokens. Quota polling adds remaining capacity and reset information where providers expose it."
+            ],
+            [
+              "Keep the integration close to its source",
+              "Running in process avoids a separate service polling traffic counters. The authenticated management endpoint and accompanying dashboard provide an operational view without making account information an anonymous public feed."
+            ]
+          ],
+          "flow": [],
+          "image": null
         },
         {
           "name": "Interview skills",
-          "text": "Local interview transcripts with timestamps and speaker checks, plus preparation and review workflows. Audio stays on your machine.",
+          "text": "Local transcripts with timestamps and speaker checks, plus preparation and debrief workflows. The procedure includes listening to sample clips before trusting speaker labels.",
           "repo": "https://github.com/giovannirco/interview-skills",
-          "url": ""
+          "url": "",
+          "id": "interview-skills",
+          "featured": false,
+          "tagline": "Turn recordings into a reviewable preparation workflow.",
+          "role": "Workflow and integration of existing transcription and speaker models.",
+          "decision": "Keep audio local and make speaker verification part of the process.",
+          "status": "Models need an initial download. Apple Silicon is the documented tested environment; recording requires consent.",
+          "sections": [
+            [
+              "A transcript needs checking",
+              "Whisper and speaker models provide the raw material. Timestamps and a short listening check make it possible to inspect the result rather than treat model labels as ground truth."
+            ],
+            [
+              "Preparation and reflection",
+              "The skills connect research and practice before an interview with a structured review afterward. They package a local working method, not a newly trained speech model or a guarantee of transcription accuracy."
+            ]
+          ],
+          "flow": [],
+          "image": null
         },
         {
           "name": "Orrery",
-          "text": "A Three.js map of my projects with sanitized public homelab readings.",
+          "text": "An interactive Three.js map connects projects and sanitized public homelab readings. It is a separate visual experience alongside this text-first portfolio.",
           "repo": "https://github.com/giovannirco/giovanni-dev-br-public",
-          "url": "https://orrery.giovanni.dev.br"
+          "url": "https://orrery.giovanni.dev.br",
+          "id": "orrery",
+          "featured": false,
+          "tagline": "Explore the work as a small solar system.",
+          "role": "The interactive project map and public telemetry presentation.",
+          "decision": "Keep the visual experiment separate from the accessible portfolio and private operational systems.",
+          "status": "WebGL experience. Public readings can be unavailable or stale; they are not an availability guarantee.",
+          "sections": [
+            [
+              "An invitation to explore",
+              "The spatial map gives projects a place to be discovered rather than a position in a conventional list. Readers who prefer a direct account can stay in this portfolio; the resume remains a separate destination."
+            ],
+            [
+              "A public view, not an operations console",
+              "The readings are sanitized for public presentation. The Orrery does not expose the private monitoring interface or provide controls over the systems it represents."
+            ]
+          ],
+          "flow": [],
+          "image": {
+            "src": "orrery-public.png",
+            "alt": "The Orrery landing view with projects arranged around an orbital map.",
+            "caption": "The public Orrery interface."
+          }
         },
         {
           "name": "Peephole",
-          "text": "A Rust hub collects and renders data for an ESP32 desk display, keeping the firmware simple.",
+          "text": "A Rust hub collects data from plugins and renders frames for ESP32 displays and a browser view. Integrations and service credentials stay at the hub; the display remains a thin client.",
           "repo": "https://github.com/giovannirco/peephole",
-          "url": "https://peephole.bitops.com.br"
+          "url": "https://peephole.bitops.com.br",
+          "id": "peephole",
+          "featured": true,
+          "tagline": "Put service status on a tiny physical screen.",
+          "role": "Rust hub, rendering, service plugins and display integration.",
+          "decision": "Render at the hub so one screen can show many services without holding their credentials.",
+          "status": "Early project built around a LilyGo display. The public demo uses synthetic data and refuses actions.",
+          "sections": [
+            [
+              "One display, many sources",
+              "Plugins connect sources such as Prometheus, JSON endpoints and service APIs to a shared rendering pipeline. Device pages choose what to show; the browser can display the same frames as the physical screen."
+            ],
+            [
+              "Keep the device small",
+              "The ESP32 fetches rendered frames and sends button actions. Keeping integrations at the hub avoids reproducing every service client on the board and keeps monitored-service credentials off the display."
+            ]
+          ],
+          "flow": [],
+          "image": {
+            "src": "peephole-demo.png",
+            "alt": "Peephole frames showing synthetic service status and metrics.",
+            "caption": "Public demo: synthetic hosts and metrics, not live infrastructure."
+          }
+        },
+        {
+          "name": "Jev Playground",
+          "repo": "https://github.com/giovannirco/jev-playground",
+          "url": "",
+          "text": "Twenty small experiments show TypeSafe’s Jev model making bounded decisions. Ticket triage, document checks and games expose their model requests and responses.",
+          "id": "jev-playground",
+          "featured": false,
+          "tagline": "Make typed AI decisions inspectable.",
+          "role": "The experiments, interfaces and model integration; TypeSafe provides the Jev model.",
+          "decision": "Leave arithmetic, dates and ranking in ordinary code; use the model for judgment.",
+          "status": "Local experiments using an external model provider, not validated safety controls.",
+          "sections": [
+            [
+              "Inspect the decision",
+              "Each experiment exposes the request and response so the reader can see the choices, scores or other typed output. Calls happen through an explicit interaction rather than silently when the page loads."
+            ],
+            [
+              "A model has a bounded job",
+              "Small tools and games separate deterministic work from judgment. The playground makes that boundary visible and gives model behavior a concrete interface to inspect."
+            ]
+          ],
+          "flow": [],
+          "image": null
+        },
+        {
+          "name": "Latchkey",
+          "repo": "https://github.com/giovannirco/latchkey",
+          "url": "",
+          "text": "ESP32 firmware pairs directly with supported TTLock locks and serves an owner-controlled web interface, without a vendor account or phone app.",
+          "id": "latchkey",
+          "featured": false,
+          "tagline": "Put a supported smart lock under local control.",
+          "role": "ESP32 firmware and product integration built on an upstream TTLock protocol port.",
+          "decision": "Run pairing and control on the board, with physical confirmation for destructive web actions.",
+          "status": "Early development with hardware limits. The protocol core is ported from kind3r/ttlock-sdk-js.",
+          "sections": [
+            [
+              "The board owns the connection",
+              "The ESP32 handles the Bluetooth protocol, owner interface and supported lock operations locally. Features depend on what the lock reports and what has been verified on hardware."
+            ],
+            [
+              "Attribution and physical boundaries",
+              "The firmware builds on kind3r/ttlock-sdk-js as its primary protocol reference and port, with ttlock-ble supplying another reference and test vectors. USB claiming and a board-button confirmation put physical presence into privileged workflows; the documented security model still matters."
+            ]
+          ],
+          "flow": [],
+          "image": null
+        },
+        {
+          "name": "HeatBar",
+          "repo": "https://github.com/giovannirco/heatbar",
+          "url": "",
+          "text": "A small macOS utility runs CPU workers and a Metal matrix multiplication, with a local control socket for start, stop and status.",
+          "id": "heatbar",
+          "featured": false,
+          "tagline": "Start and stop CPU and GPU load from the menu bar.",
+          "role": "The Swift menu-bar utility and bundled Metal workload.",
+          "decision": "Make load explicit and reversible; quitting stops the processes it started.",
+          "status": "macOS 14 or later with a Metal GPU. It neither controls fan settings nor produces benchmark scores.",
+          "sections": [
+            [
+              "A deliberately small control",
+              "Start stress launches CPU workers and the GPU workload. Stop stress ends them. The application also exposes start, stop and status through a user-only Unix socket."
+            ],
+            [
+              "Know what it changes",
+              "HeatBar creates load on the Mac running it. The operating system decides how to manage cooling. The tool does not change fan settings, and launch at login stays off until enabled."
+            ]
+          ],
+          "flow": [],
+          "image": null
         }
       ],
       "upstream": "Upstream contributions",
@@ -138,7 +334,8 @@ export const pages = {
           "text": "CPA Prometheus registration",
           "url": "https://github.com/router-for-me/CLIProxyAPI-Plugins-Store/pull/130"
         }
-      ]
+      ],
+      "intro": "Software I build and share. From investigation tools to a screen on the desk, each project starts with a concrete problem."
     },
     "contact": {
       "heading": "How I work",
@@ -175,8 +372,8 @@ export const pages = {
       {
         "id": "observability",
         "label": "Observability",
-        "title": "Choosing what to operate.",
-        "summary": "I compared the cost and upkeep of our telemetry stack, recommended a managed service, and led the migration.",
+        "title": "Moved metrics and traces to managed infrastructure.",
+        "summary": "I evaluated the operating cost, ran the trial and led the move to Grafana Cloud.",
         "sections": [
           [
             "The problem",
@@ -209,13 +406,18 @@ export const pages = {
             "label": "Kept in place",
             "body": "Collection layer retained. Logs remained in Observe."
           }
-        }
+        },
+        "proof": {
+          "result": "Managed metrics and traces; replaced infrastructure retired.",
+          "scope": "Collection stayed. Logs remained in Observe."
+        },
+        "indexLabel": "Telemetry"
       },
       {
         "id": "delivery",
         "label": "Delivery",
-        "title": "Making delivery self-service.",
-        "summary": "I drove a GitOps migration and built templates so service owners could ship without a platform engineer on every release.",
+        "title": "Made service delivery self-service.",
+        "summary": "I drove a GitOps migration and built shared templates with service owners.",
         "sections": [
           [
             "The problem",
@@ -248,13 +450,18 @@ export const pages = {
             "label": "Scope",
             "body": "Shared templates covered standard services; others needed a tailored migration."
           }
-        }
+        },
+        "proof": {
+          "result": "Covered services could ship without a platform engineer on every release.",
+          "scope": "Standard templates plus tailored migrations for other services."
+        },
+        "indexLabel": "Delivery"
       },
       {
         "id": "network",
         "label": "Network policy",
-        "title": "Making isolation hold up.",
-        "summary": "I put network policy into the delivery workflow and checked it against real traffic. The policies later contained a malicious callback.",
+        "title": "Contained an SSRF callback with network policy.",
+        "summary": "I put Cilium policies through GitOps and checked Hubble flows against real traffic.",
         "sections": [
           [
             "The problem",
@@ -287,13 +494,18 @@ export const pages = {
             "label": "Follow-through",
             "body": "I checked the block, audited policies and handed the application issue to its owners."
           }
-        }
+        },
+        "proof": {
+          "result": "A malicious callback was blocked in a production incident.",
+          "scope": "I verified the block and audited policies; the app issue went to its owners."
+        },
+        "indexLabel": "Network policy"
       },
       {
         "id": "ai",
         "label": "AI tooling",
-        "title": "Giving engineers investigation tools.",
-        "summary": "I built MCP servers and reusable workflows that other teams used to investigate systems and carry out platform work.",
+        "title": "Built investigation tools other teams adopted.",
+        "summary": "I built internal Observe and Checkly MCP servers and helped teams use them in investigations.",
         "sections": [
           [
             "The problem",
@@ -326,7 +538,12 @@ export const pages = {
             "label": "Beyond this request",
             "body": "Checkly MCP and shared runbooks also supported investigations and platform work."
           }
-        }
+        },
+        "proof": {
+          "result": "Engineers could export thousands of log rows beyond the interface limit.",
+          "scope": "Employer-owned tools, with tests, releases and setup documentation."
+        },
+        "indexLabel": "AI tools"
       }
     ],
     "reel": {
@@ -348,29 +565,119 @@ export const pages = {
         {
           "name": "Plano Adentro",
           "text": "Architects and designers share projects their clients can walk through in a browser.",
-          "url": "https://planoadentro.com.br"
+          "url": "https://planoadentro.com.br",
+          "id": "plano-adentro",
+          "featured": false,
+          "tagline": "Let clients explore the project.",
+          "role": "",
+          "decision": "",
+          "status": "",
+          "sections": [],
+          "flow": [],
+          "image": null
         },
         {
           "name": "Subsíndico",
-          "text": "Condominium documents, assemblies and maintenance, with answers grounded in the building's own rules.",
-          "url": "https://subsindico.ia.br"
+          "text": "A workspace for condominium documents, assemblies and maintenance. Residents and managers can ask questions against uploaded material and inspect the cited source. Permissions determine which documents can be used in an answer.",
+          "url": "https://subsindico.ia.br",
+          "id": "subsindico",
+          "featured": true,
+          "tagline": "Answers grounded in the building’s own documents.",
+          "role": "Product workflows and permission-aware document retrieval.",
+          "decision": "Filter documents by access before sending context to the model.",
+          "status": "Product in development. Answers need source review; they do not replace the building’s governing documents.",
+          "sections": [
+            [
+              "A question needs a source",
+              "Building rules, assembly records and maintenance information belong in the same working context. Document retrieval helps residents and managers reach the relevant passage and inspect it, rather than accept a detached answer."
+            ],
+            [
+              "Permissions are part of retrieval",
+              "Condominium boundaries and role-based access apply before the model receives document context. Operational workflows and document access share the same product boundary, with tenant isolation below the interface as well."
+            ]
+          ],
+          "flow": [
+            "Ask about a rule",
+            "Retrieve permitted sources",
+            "Inspect the citation"
+          ],
+          "image": null
         },
         {
           "name": "Tessera",
-          "text": "Share access to authenticator codes with permissions, time limits and an audit trail.",
-          "url": "https://tessera.otservices.space"
+          "text": "Give someone permission to request an authentication code, with an expiry and a record of each code issued. The web application is separate from the service that holds and uses the underlying secrets.",
+          "url": "https://tessera.otservices.space",
+          "id": "tessera",
+          "featured": true,
+          "tagline": "Share a code without handing over its secret.",
+          "role": "Permission flows, isolated code issuance and its audit trail.",
+          "decision": "Separate the web tier from secret custody and enforce limits when issuing a code.",
+          "status": "Product in development, with server-side custody. The audit records issuance, not successful authentication elsewhere.",
+          "sections": [
+            [
+              "Permission instead of a copied secret",
+              "A shared authenticator secret is hard to take back. Tessera gives access to code issuance with permissions and time limits, so the underlying secret does not need to be handed to every person who needs a code."
+            ],
+            [
+              "Custody is a deliberate boundary",
+              "An isolated service holds and uses the secrets. The web tier coordinates access, while issuance enforces the grant and produces an audit record. That separation describes the custody model; it does not claim that no server can access the secret."
+            ]
+          ],
+          "flow": [
+            "Grant limited access",
+            "Request a code",
+            "Audit issuance"
+          ],
+          "image": null
         },
         {
           "name": "Navalha",
-          "text": "Scheduling for barbershops and other appointment-based businesses, with WhatsApp and an AI assistant. In testing.",
-          "url": ""
+          "text": "A barbershop workspace for bookings, clients and daily operations. Scheduling connects to packages, memberships, commissions and stock, with WhatsApp supporting the customer journey.",
+          "url": "",
+          "id": "navalha",
+          "featured": false,
+          "tagline": "Run the appointment and the business around it.",
+          "role": "Booking and business workflows, plus messaging integration.",
+          "decision": "Connect reservations and confirmations to the shop’s operating records.",
+          "status": "In testing. Payment-provider integrations are not presented as available.",
+          "sections": [
+            [
+              "An appointment is part of the operation",
+              "The booking flow uses reservations and confirmation rather than treating every slot selection as a completed appointment. Customer records, packages and memberships connect the calendar to the shop’s daily work."
+            ],
+            [
+              "Messages support the workflow",
+              "WhatsApp integration supports communication and reminders. The assistant belongs inside the documented scheduling workflow; it is not a promise of unrestricted autonomous business operation."
+            ]
+          ],
+          "flow": [],
+          "image": null
         },
         {
           "name": "Seguros MCP",
-          "text": "Tools for assistants to look up insurance policies, installments, claims and documents. Tokio Marine integration in beta.",
-          "url": "https://seguros-mcp.bitops.com.br"
+          "text": "Tools for retrieving policies, installments, claims and documents from insurer portals. Explicit operations give an assistant a structured way to work with those systems.",
+          "url": "https://seguros-mcp.bitops.com.br",
+          "id": "seguros-mcp",
+          "featured": false,
+          "tagline": "Bring insurance operations into an assistant’s workflow.",
+          "role": "MCP tools and insurer-portal adapters, not the insurers’ underlying systems.",
+          "decision": "Expose explicit operations and preserve the source system’s actual response.",
+          "status": "Tokio Marine integration in beta. Implemented adapters do not imply equal production support across insurers.",
+          "sections": [
+            [
+              "Make the operation explicit",
+              "Policies, installments, claims and documents have distinct retrieval operations. The MCP interface gives an assistant named tools instead of relying on unrestricted navigation through a portal."
+            ],
+            [
+              "Respect the integration boundary",
+              "Adapters bridge insurer APIs and browser workflows. The product must distinguish an unavailable record or portal failure from a real business result, and documented write operations have their own controls."
+            ]
+          ],
+          "flow": [],
+          "image": null
         }
-      ]
+      ],
+      "intro": "Products that bring engineering decisions into everyday work. These are their workflows, the choices behind them and their current limits."
     },
     "about": {
       "heading": "How I work",
@@ -381,6 +688,21 @@ export const pages = {
       "before": "Before",
       "decision": "My decision",
       "after": "After"
+    },
+    "proof": {
+      "decision": "My decision",
+      "result": "Result",
+      "scope": "Scope"
+    },
+    "stories": {
+      "read": "Explore the project",
+      "back": "Back to",
+      "role": "My contribution",
+      "decision": "Engineering decision",
+      "status": "Stage and limits",
+      "workflow": "How it works",
+      "directory": "More projects",
+      "productRead": "About the product"
     }
   },
   "pt-br": {
@@ -444,8 +766,8 @@ export const pages = {
         ]
       ],
       "asof": "Contado nos clusters em 23 out. 2026",
-      "body": "O Omni gerencia o Talos, o Flux instala a plataforma e o Argo CD os apps. Todo namespace nega tudo por padrão. Métricas, logs e traces vão para um stack Grafana próprio e os alertas chegam no WhatsApp. Quando mudo algo, escrevo o que fiz e por quê.",
-      "orrery": "Veja funcionando no orrery",
+      "body": "O Omni gerencia o Talos, o Flux instala a plataforma e o Argo CD os apps. O desenho usa negação por padrão nos namespaces, um stack Grafana próprio para métricas, logs e traces e uma integração de alertas com WhatsApp. Os números acima são um registro datado, não um indicador de disponibilidade atual. Quando mudo algo, escrevo o que fiz e por quê.",
+      "orrery": "Explore o homelab no Orrery",
       "handbook": "Como foi construído"
     },
     "projects": {
@@ -455,39 +777,235 @@ export const pages = {
       "rows": [
         {
           "name": "Job Scout",
-          "text": "Uma mesa de trabalho para buscar vagas, acompanhar candidaturas e pesquisar empresas. Assistentes acessam por MCP; os rascunhos ficam para você revisar.",
+          "text": "Um espaço próprio para vagas, pesquisa de empresas, candidaturas e preparação para entrevistas. O histórico das descrições preserva o que mudou; assistentes ajudam a pesquisar e redigir, e a pessoa decide o que enviar.",
           "repo": "https://github.com/giovannirco/job-scout",
-          "url": ""
+          "url": "",
+          "id": "job-scout",
+          "featured": true,
+          "tagline": "Mantenha o contexto da busca por trabalho.",
+          "role": "Aplicação e integração MCP.",
+          "decision": "Manter histórico e rascunhos revisados juntos, sem exigir IA.",
+          "status": "Software auto-hospedado para uso individual. Não envia candidaturas automaticamente.",
+          "sections": [
+            [
+              "O contexto acompanha a candidatura",
+              "Uma vaga, a pesquisa da empresa e a candidatura não precisam virar notas desconectadas. O Job Scout reúne tudo e registra mudanças na descrição da vaga. A preparação para a entrevista pode consultar a descrição salva naquela etapa."
+            ],
+            [
+              "A IA ajuda; a pessoa se candidata",
+              "O MCP dá aos assistentes acesso à pesquisa e à redação. O fluxo principal também funciona sem provedor de IA. O material fica para revisão, em vez de entrar em um envio automático de candidaturas."
+            ]
+          ],
+          "flow": [
+            "Encontrar uma vaga",
+            "Pesquisar e redigir",
+            "Revisar e acompanhar"
+          ],
+          "image": null
         },
         {
           "name": "Platen",
-          "text": "Imprima e digitalize pelo navegador, scripts ou um assistente de IA. Um binário Go cuida da impressora, dos PDFs e do envio ao Paperless-ngx.",
+          "text": "Um serviço Go permite imprimir e digitalizar pelo navegador, por scripts ou assistentes. Ele conversa diretamente com os dispositivos, renderiza PDFs para impressoras que não os aceitam e envia digitalizações ao Paperless.",
           "repo": "https://github.com/giovannirco/platen",
-          "url": ""
+          "url": "",
+          "id": "platen",
+          "featured": true,
+          "tagline": "Imprima e digitalize sem montar um stack de drivers.",
+          "role": "Serviço Go, interface web e ferramentas REST/MCP.",
+          "decision": "Usar protocolos diretos e transmitir páginas rasterizadas, sem exigir CUPS ou drivers de impressão.",
+          "status": "Software em estágio inicial, testado em poucos dispositivos. O alimentador ainda precisa de validação em hardware real.",
+          "sections": [
+            [
+              "Nem toda impressora aceita PDF",
+              "Algumas impressoras aceitam páginas rasterizadas, mas não PDFs. O Platen usa PDFium via WebAssembly para renderizar páginas e enviá-las por IPP. A digitalização usa eSCL, com um fluxo no navegador para reunir várias páginas da mesa do scanner."
+            ],
+            [
+              "Ações físicas precisam de limites",
+              "As operações estão disponíveis na web, por REST e por MCP. Simulações e confirmação para trabalhos maiores tornam o efeito físico visível antes de consumir papel. A compatibilidade é documentada por dispositivo."
+            ]
+          ],
+          "flow": [],
+          "image": {
+            "src": "platen-home.png",
+            "alt": "Painel do Platen com impressora, scanner e conexão ao Paperless.",
+            "caption": "Painel de dispositivos do Platen, da documentação pública."
+          }
         },
         {
           "name": "CPA Prometheus",
-          "text": "Métricas Prometheus de tráfego, tokens e cotas de provedores do CLIProxyAPI, com um dashboard Grafana.",
+          "text": "Um plugin do CLIProxyAPI expõe falhas, latência, uso de tokens e cotas dos provedores em métricas autenticadas de gerenciamento, com um dashboard Grafana.",
           "repo": "https://github.com/giovannirco/cpa-prometheus-plugin",
-          "url": ""
+          "url": "",
+          "id": "cpa-prometheus",
+          "featured": false,
+          "tagline": "Torne o uso do proxy de IA observável.",
+          "role": "O plugin de métricas e o dashboard, construídos para o projeto CLIProxyAPI.",
+          "decision": "Coletar uso dentro do proxy e manter métricas protegidas pela autenticação de gerenciamento.",
+          "status": "Os campos de cota dependem do que cada provedor expõe. Este é o plugin, não o proxy que o hospeda.",
+          "sections": [
+            [
+              "Veja além da contagem de requisições",
+              "O plugin recebe eventos de uso do proxy e registra falhas, duração e categorias de tokens, incluindo raciocínio e cache. A consulta de cotas acrescenta capacidade restante e renovação quando o provedor oferece esses dados."
+            ],
+            [
+              "Mantenha a integração perto da origem",
+              "Rodar no mesmo processo evita um serviço separado para consultar contadores de tráfego. O endpoint autenticado e o dashboard dão uma visão operacional sem transformar informações de contas em um feed público anônimo."
+            ]
+          ],
+          "flow": [],
+          "image": null
         },
         {
           "name": "Interview skills",
-          "text": "Transcrições locais de entrevistas com timestamps e conferência de falantes, além de preparação e revisão. O áudio fica na sua máquina.",
+          "text": "Transcrições locais com timestamps e conferência de falantes, além de preparação e retrospectiva. O procedimento inclui ouvir trechos antes de confiar nos rótulos de quem falou.",
           "repo": "https://github.com/giovannirco/interview-skills",
-          "url": ""
+          "url": "",
+          "id": "interview-skills",
+          "featured": false,
+          "tagline": "Transforme gravações em um fluxo de preparação revisável.",
+          "role": "Fluxos e integração de modelos existentes de transcrição e identificação de falantes.",
+          "decision": "Manter o áudio local e incluir a conferência de falantes no processo.",
+          "status": "Os modelos exigem download inicial. Apple Silicon é o ambiente de teste documentado; gravar exige consentimento.",
+          "sections": [
+            [
+              "Uma transcrição precisa de conferência",
+              "Whisper e modelos de falantes fornecem a matéria-prima. Timestamps e uma breve escuta permitem inspecionar o resultado, sem tratar os rótulos do modelo como verdade."
+            ],
+            [
+              "Preparação e reflexão",
+              "As skills conectam pesquisa e prática antes da entrevista com uma revisão estruturada depois. Elas organizam um método local, não um novo modelo de fala nem uma garantia de precisão da transcrição."
+            ]
+          ],
+          "flow": [],
+          "image": null
         },
         {
           "name": "Orrery",
-          "text": "Um mapa dos meus projetos em Three.js, com leituras públicas e sanitizadas do homelab.",
+          "text": "Um mapa interativo em Three.js conecta projetos e leituras públicas sanitizadas do homelab. É uma experiência visual separada deste portfólio focado em leitura.",
           "repo": "https://github.com/giovannirco/giovanni-dev-br-public",
-          "url": "https://orrery.giovanni.dev.br"
+          "url": "https://orrery.giovanni.dev.br",
+          "id": "orrery",
+          "featured": false,
+          "tagline": "Explore o trabalho como um pequeno sistema solar.",
+          "role": "O mapa interativo de projetos e a apresentação da telemetria pública.",
+          "decision": "Separar o experimento visual do portfólio acessível e dos sistemas operacionais privados.",
+          "status": "Experiência WebGL. Leituras públicas podem estar indisponíveis ou desatualizadas; não garantem disponibilidade.",
+          "sections": [
+            [
+              "Um convite para explorar",
+              "O mapa espacial dá aos projetos um lugar para serem descobertos. Quem prefere uma explicação direta pode continuar neste portfólio; o currículo segue em um endereço separado."
+            ],
+            [
+              "Uma visão pública, não um console operacional",
+              "As leituras são sanitizadas para apresentação pública. O Orrery não expõe a interface privada de monitoramento nem fornece controles sobre os sistemas representados."
+            ]
+          ],
+          "flow": [],
+          "image": {
+            "src": "orrery-public.png",
+            "alt": "Tela inicial do Orrery com projetos organizados em um mapa orbital.",
+            "caption": "A interface pública do Orrery."
+          }
         },
         {
           "name": "Peephole",
-          "text": "Um hub Rust coleta e renderiza dados para uma tela ESP32 na mesa, mantendo o firmware simples.",
+          "text": "Um hub Rust coleta dados de plugins e renderiza quadros para telas ESP32 e para o navegador. Integrações e credenciais dos serviços ficam no hub; a tela continua um cliente simples.",
           "repo": "https://github.com/giovannirco/peephole",
-          "url": "https://peephole.bitops.com.br"
+          "url": "https://peephole.bitops.com.br",
+          "id": "peephole",
+          "featured": true,
+          "tagline": "Leve o estado dos serviços para uma pequena tela.",
+          "role": "Hub Rust, renderização, plugins de serviços e integração com a tela.",
+          "decision": "Renderizar no hub para mostrar vários serviços sem guardar suas credenciais na tela.",
+          "status": "Projeto inicial criado em torno de uma tela LilyGo. A demonstração pública usa dados sintéticos e recusa ações.",
+          "sections": [
+            [
+              "Uma tela, várias fontes",
+              "Plugins conectam Prometheus, endpoints JSON e APIs de serviços a uma renderização comum. As páginas do dispositivo escolhem o que mostrar; o navegador exibe os mesmos quadros da tela física."
+            ],
+            [
+              "Mantenha o dispositivo simples",
+              "O ESP32 busca quadros renderizados e envia ações dos botões. As integrações no hub evitam repetir cada cliente de serviço na placa e mantêm as credenciais dos serviços monitorados fora da tela."
+            ]
+          ],
+          "flow": [],
+          "image": {
+            "src": "peephole-demo.png",
+            "alt": "Quadros do Peephole mostrando estado e métricas de serviços sintéticos.",
+            "caption": "Demonstração pública: hosts e métricas sintéticos, não infraestrutura real."
+          }
+        },
+        {
+          "name": "Jev Playground",
+          "repo": "https://github.com/giovannirco/jev-playground",
+          "url": "",
+          "text": "Vinte pequenos experimentos mostram o modelo Jev da TypeSafe tomando decisões delimitadas. Triagem de chamados, conferência de documentos e jogos expõem as requisições e respostas do modelo.",
+          "id": "jev-playground",
+          "featured": false,
+          "tagline": "Torne decisões tipadas de IA inspecionáveis.",
+          "role": "Os experimentos, interfaces e integração; a TypeSafe fornece o modelo Jev.",
+          "decision": "Manter aritmética, datas e ordenação em código comum; usar o modelo para julgamento.",
+          "status": "Experimentos locais com um provedor externo de modelo, não controles de segurança validados.",
+          "sections": [
+            [
+              "Inspecione a decisão",
+              "Cada experimento expõe a requisição e a resposta para mostrar escolhas, pontuações ou outras saídas tipadas. As chamadas partem de uma interação explícita, não silenciosamente ao abrir a página."
+            ],
+            [
+              "O modelo tem uma tarefa delimitada",
+              "Ferramentas e jogos separam trabalho determinístico de julgamento. O playground torna esse limite visível e dá ao comportamento do modelo uma interface concreta para inspeção."
+            ]
+          ],
+          "flow": [],
+          "image": null
+        },
+        {
+          "name": "Latchkey",
+          "repo": "https://github.com/giovannirco/latchkey",
+          "url": "",
+          "text": "Um firmware ESP32 se conecta diretamente a fechaduras TTLock compatíveis e oferece uma interface web sob controle do dono, sem conta do fabricante nem aplicativo de celular.",
+          "id": "latchkey",
+          "featured": false,
+          "tagline": "Coloque uma fechadura compatível sob controle local.",
+          "role": "Firmware ESP32 e integração do produto sobre um porte do protocolo TTLock de um projeto existente.",
+          "decision": "Executar pareamento e controle na placa, com confirmação física para ações destrutivas pela web.",
+          "status": "Em desenvolvimento inicial, com limites de hardware. O núcleo do protocolo é portado de kind3r/ttlock-sdk-js.",
+          "sections": [
+            [
+              "A placa mantém a conexão",
+              "O ESP32 executa localmente o protocolo Bluetooth, a interface do dono e as operações suportadas. As funções dependem do que a fechadura informa e do que foi verificado em hardware."
+            ],
+            [
+              "Atribuição e limites físicos",
+              "O firmware usa kind3r/ttlock-sdk-js como referência principal e origem do porte do protocolo, além de ttlock-ble como referência e fonte de vetores de teste. A configuração inicial por USB e a confirmação por botão incluem presença física nos fluxos privilegiados; o modelo de segurança documentado continua essencial."
+            ]
+          ],
+          "flow": [],
+          "image": null
+        },
+        {
+          "name": "HeatBar",
+          "repo": "https://github.com/giovannirco/heatbar",
+          "url": "",
+          "text": "Um pequeno utilitário macOS executa processos de carga de CPU e multiplicação de matrizes em Metal, com socket local para iniciar, parar e consultar o estado.",
+          "id": "heatbar",
+          "featured": false,
+          "tagline": "Inicie e pare carga de CPU e GPU pela barra de menus.",
+          "role": "O utilitário Swift da barra de menus e a carga Metal incluída.",
+          "decision": "Tornar a carga explícita e reversível; sair encerra os processos iniciados pelo aplicativo.",
+          "status": "macOS 14 ou posterior com GPU Metal. Não controla ventoinhas nem produz pontuações de benchmark.",
+          "sections": [
+            [
+              "Um controle deliberadamente pequeno",
+              "Iniciar a carga abre processos de CPU e a tarefa de GPU. Parar encerra esses processos. O aplicativo também expõe início, parada e estado em um socket Unix restrito ao usuário."
+            ],
+            [
+              "Saiba o que muda",
+              "O HeatBar gera carga no Mac em que roda. O sistema operacional decide como refrigerá-lo. O utilitário não muda as ventoinhas, e a abertura no login fica desativada até ser escolhida."
+            ]
+          ],
+          "flow": [],
+          "image": null
         }
       ],
       "upstream": "Contribuições em outros projetos",
@@ -512,7 +1030,8 @@ export const pages = {
           "text": "Registro do CPA Prometheus",
           "url": "https://github.com/router-for-me/CLIProxyAPI-Plugins-Store/pull/130"
         }
-      ]
+      ],
+      "intro": "Software que construo e compartilho. De ferramentas de investigação a uma tela na mesa, cada projeto resolve um problema concreto."
     },
     "contact": {
       "heading": "Como trabalho",
@@ -549,8 +1068,8 @@ export const pages = {
       {
         "id": "observability",
         "label": "Observabilidade",
-        "title": "Escolher o que operar.",
-        "summary": "Comparei o custo e a manutenção do nosso stack de telemetria, recomendei um serviço gerenciado e conduzi a migração.",
+        "title": "Migrei métricas e traces para infraestrutura gerenciada.",
+        "summary": "Comparei o custo de operação, conduzi os testes e liderei a migração para o Grafana Cloud.",
         "sections": [
           [
             "O problema",
@@ -583,13 +1102,18 @@ export const pages = {
             "label": "O que ficou",
             "body": "A camada de coleta continuou. Os logs ficaram no Observe."
           }
-        }
+        },
+        "proof": {
+          "result": "Métricas e traces gerenciados; infraestrutura substituída desligada.",
+          "scope": "A coleta continuou. Os logs ficaram no Observe."
+        },
+        "indexLabel": "Telemetria"
       },
       {
         "id": "delivery",
         "label": "Entrega",
-        "title": "Dar autonomia para publicar.",
-        "summary": "Conduzi uma migração para GitOps e criei templates para os donos dos serviços publicarem sem chamar um engenheiro de plataforma a cada release.",
+        "title": "Dei aos times autonomia para publicar.",
+        "summary": "Conduzi a migração para GitOps e criei templates compartilhados com os donos dos serviços.",
         "sections": [
           [
             "O problema",
@@ -622,13 +1146,18 @@ export const pages = {
             "label": "Escopo",
             "body": "Templates atendiam os serviços comuns; os demais precisavam de uma migração própria."
           }
-        }
+        },
+        "proof": {
+          "result": "Os serviços migrados podiam publicar sem chamar a plataforma a cada release.",
+          "scope": "Templates para casos comuns; migrações específicas para os demais."
+        },
+        "indexLabel": "Entrega"
       },
       {
         "id": "network",
         "label": "Rede",
-        "title": "Fazer o isolamento funcionar.",
-        "summary": "Coloquei network policy no fluxo de entrega e conferi o resultado no tráfego real. Mais tarde, as políticas contiveram um callback malicioso.",
+        "title": "Contive um callback de SSRF com network policy.",
+        "summary": "Entreguei políticas do Cilium por GitOps e conferi os fluxos no Hubble com tráfego real.",
         "sections": [
           [
             "O problema",
@@ -661,13 +1190,18 @@ export const pages = {
             "label": "Acompanhamento",
             "body": "Conferi o bloqueio, auditei as policies e encaminhei o problema ao time da aplicação."
           }
-        }
+        },
+        "proof": {
+          "result": "Um callback malicioso foi bloqueado em um incidente em produção.",
+          "scope": "Conferi o bloqueio e auditei as políticas; o problema da aplicação ficou com seus responsáveis."
+        },
+        "indexLabel": "Rede"
       },
       {
         "id": "ai",
         "label": "Ferramentas de IA",
-        "title": "Dar ferramentas para investigar.",
-        "summary": "Criei servidores MCP e fluxos reutilizáveis que outros times usaram para investigar sistemas e executar trabalho de plataforma.",
+        "title": "Criei ferramentas de investigação adotadas por outros times.",
+        "summary": "Criei servidores MCP internos para Observe e Checkly e ajudei os times a usá-los em investigações.",
         "sections": [
           [
             "O problema",
@@ -700,7 +1234,12 @@ export const pages = {
             "label": "Além dessa demanda",
             "body": "Checkly MCP e runbooks compartilhados também apoiaram investigações e trabalho de plataforma."
           }
-        }
+        },
+        "proof": {
+          "result": "Engenheiros puderam exportar milhares de linhas de logs além do limite da interface.",
+          "scope": "Ferramentas internas, com testes, releases e documentação de instalação."
+        },
+        "indexLabel": "IA"
       }
     ],
     "reel": {
@@ -722,29 +1261,119 @@ export const pages = {
         {
           "name": "Plano Adentro",
           "text": "Arquitetos e designers compartilham projetos que seus clientes podem explorar pelo navegador.",
-          "url": "https://planoadentro.com.br"
+          "url": "https://planoadentro.com.br",
+          "id": "plano-adentro",
+          "featured": false,
+          "tagline": "Deixe o cliente explorar o projeto.",
+          "role": "",
+          "decision": "",
+          "status": "",
+          "sections": [],
+          "flow": [],
+          "image": null
         },
         {
           "name": "Subsíndico",
-          "text": "Documentos, assembleias e manutenção de condomínios, com respostas baseadas nas regras do próprio prédio.",
-          "url": "https://subsindico.ia.br"
+          "text": "Um espaço para documentos, assembleias e manutenção de condomínios. Moradores e gestores fazem perguntas sobre os materiais enviados e conferem a fonte citada. As permissões determinam quais documentos podem entrar na resposta.",
+          "url": "https://subsindico.ia.br",
+          "id": "subsindico",
+          "featured": true,
+          "tagline": "Respostas baseadas nos documentos do próprio prédio.",
+          "role": "Fluxos do produto e consulta de documentos com controle de permissões.",
+          "decision": "Filtrar documentos por acesso antes de enviar contexto ao modelo.",
+          "status": "Produto em desenvolvimento. As respostas precisam de conferência na fonte; não substituem os documentos do condomínio.",
+          "sections": [
+            [
+              "Uma pergunta precisa de uma fonte",
+              "Regras do prédio, atas e informações de manutenção fazem parte do mesmo contexto de trabalho. A consulta de documentos ajuda moradores e gestores a encontrar e conferir o trecho relevante, em vez de aceitar uma resposta isolada."
+            ],
+            [
+              "Permissões fazem parte da consulta",
+              "Os limites entre condomínios e o acesso por perfil se aplicam antes de o modelo receber o contexto. Os fluxos operacionais e os documentos compartilham esse limite, com isolamento entre condomínios também abaixo da interface."
+            ]
+          ],
+          "flow": [
+            "Perguntar sobre uma regra",
+            "Consultar fontes permitidas",
+            "Conferir a citação"
+          ],
+          "image": null
         },
         {
           "name": "Tessera",
-          "text": "Compartilhe acesso a códigos de autenticação com permissões, limites de tempo e registro de uso.",
-          "url": "https://tessera.otservices.space"
+          "text": "Dê a alguém permissão para solicitar um código de autenticação, com validade e registro de cada emissão. A aplicação web é separada do serviço que guarda e usa os segredos de origem.",
+          "url": "https://tessera.otservices.space",
+          "id": "tessera",
+          "featured": true,
+          "tagline": "Compartilhe um código sem entregar seu segredo.",
+          "role": "Fluxos de permissão, emissão isolada de códigos e sua auditoria.",
+          "decision": "Separar a camada web da custódia dos segredos e aplicar limites na emissão do código.",
+          "status": "Produto em desenvolvimento, com custódia no servidor. A auditoria registra emissões, não autenticações bem-sucedidas em outros serviços.",
+          "sections": [
+            [
+              "Permissão no lugar de um segredo copiado",
+              "É difícil retirar um segredo de autenticação depois de compartilhá-lo. O Tessera dá acesso à emissão com permissões e limites de tempo, sem entregar o segredo a cada pessoa que precisa de um código."
+            ],
+            [
+              "Custódia é um limite deliberado",
+              "Um serviço isolado guarda e usa os segredos. A camada web coordena o acesso; a emissão aplica a autorização e gera um registro. Essa separação descreve a custódia, sem afirmar que nenhum servidor tem acesso ao segredo."
+            ]
+          ],
+          "flow": [
+            "Conceder acesso limitado",
+            "Solicitar um código",
+            "Auditar a emissão"
+          ],
+          "image": null
         },
         {
           "name": "Navalha",
-          "text": "Agendamento para barbearias e outros negócios com hora marcada, com WhatsApp e assistente de IA. Em testes.",
-          "url": ""
+          "text": "Um espaço de trabalho para agendamentos, clientes e operação de barbearias. A agenda se conecta a pacotes, assinaturas, comissões e estoque, com WhatsApp no atendimento.",
+          "url": "",
+          "id": "navalha",
+          "featured": false,
+          "tagline": "Cuide do agendamento e do negócio ao redor dele.",
+          "role": "Fluxos de agendamento e operação, além da integração de mensagens.",
+          "decision": "Conectar reservas e confirmações aos registros operacionais da barbearia.",
+          "status": "Em testes. Integrações com provedores de pagamento não são apresentadas como disponíveis.",
+          "sections": [
+            [
+              "Um horário faz parte da operação",
+              "O fluxo usa reservas e confirmação, em vez de tratar toda seleção de horário como agendamento concluído. Clientes, pacotes e assinaturas conectam a agenda à rotina da barbearia."
+            ],
+            [
+              "Mensagens apoiam o fluxo",
+              "A integração WhatsApp apoia comunicação e lembretes. O assistente faz parte do fluxo documentado de agendamento; não é uma promessa de operação autônoma irrestrita."
+            ]
+          ],
+          "flow": [],
+          "image": null
         },
         {
           "name": "Seguros MCP",
-          "text": "Ferramentas para assistentes consultarem apólices, parcelas, sinistros e documentos. Integração Tokio Marine em beta.",
-          "url": "https://seguros-mcp.bitops.com.br"
+          "text": "Ferramentas para consultar apólices, parcelas, sinistros e documentos nos portais das seguradoras. Operações explícitas dão ao assistente uma forma estruturada de trabalhar com esses sistemas.",
+          "url": "https://seguros-mcp.bitops.com.br",
+          "id": "seguros-mcp",
+          "featured": false,
+          "tagline": "Leve operações de seguros ao fluxo de um assistente.",
+          "role": "Ferramentas MCP e adaptadores para portais, não os sistemas internos das seguradoras.",
+          "decision": "Expor operações explícitas e preservar a resposta real do sistema de origem.",
+          "status": "Integração Tokio Marine em beta. Adaptadores implementados não significam suporte equivalente em produção para todas as seguradoras.",
+          "sections": [
+            [
+              "Torne a operação explícita",
+              "Apólices, parcelas, sinistros e documentos têm operações distintas de consulta. A interface MCP oferece ferramentas nomeadas, em vez de depender de navegação irrestrita pelo portal."
+            ],
+            [
+              "Respeite o limite da integração",
+              "Adaptadores conectam APIs e fluxos de navegador das seguradoras. O produto precisa distinguir um registro indisponível ou uma falha do portal de um resultado de negócio; operações de escrita documentadas têm controles próprios."
+            ]
+          ],
+          "flow": [],
+          "image": null
         }
-      ]
+      ],
+      "intro": "Produtos que levam decisões de engenharia ao dia a dia de quem usa. Aqui estão os fluxos, as escolhas e os limites de cada um."
     },
     "about": {
       "heading": "Como trabalho",
@@ -755,6 +1384,21 @@ export const pages = {
       "before": "Antes",
       "decision": "Minha decisão",
       "after": "Depois"
+    },
+    "proof": {
+      "decision": "Minha decisão",
+      "result": "Resultado",
+      "scope": "Escopo"
+    },
+    "stories": {
+      "read": "Conheça o projeto",
+      "back": "Voltar para",
+      "role": "Minha contribuição",
+      "decision": "Decisão de engenharia",
+      "status": "Estágio e limites",
+      "workflow": "Como funciona",
+      "directory": "Mais projetos",
+      "productRead": "Conheça o produto"
     }
   }
 };

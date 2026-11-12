@@ -1,6 +1,8 @@
 # portfolio
 
-Source of [giovanni.dev.br](https://giovanni.dev.br): a horizontal case reel, four case studies, public projects and products, in English and Portuguese. Plain HTML and CSS, with JavaScript for reel navigation. Swipe, arrow buttons and keyboard controls select cases. The remaining topics form vertical chapters with native scroll snapping; longer phone sections grow to fit their content. Each case shows a static Before / My decision / After comparison and a visible scope note, shared with its standalone story. Desktop uses three columns; tablet places the decision beneath the two states; phones stack the comparison in reading order. Reduced motion and browsing without JavaScript are supported.
+Source of [giovanni.dev.br](https://giovanni.dev.br): a horizontal reel of four Staff case studies, followed by substantial open-source and product chapters, in English and Portuguese. Plain HTML and CSS, with JavaScript for reel navigation. Swipe, arrow buttons and keyboard controls select cases. Each opening case shows a compact decision, result and scope; its standalone page retains the full Before / My decision / After comparison. Native vertical chapters grow to fit longer content. Reduced motion and browsing without JavaScript are supported.
+
+Featured projects combine purpose, contribution, engineering decisions and status with verified public screenshots or labeled workflow diagrams. Every project and product also has a static reading page. Image sources and licenses are recorded in `src/assets/projects/README.md`; no private employer material is included.
 
 ## Build and run
 
@@ -25,7 +27,7 @@ npm run e2e                     # against the running container on :8088 (BASE_U
 
 All copy lives in `src/content.mjs`; the build stops if the two languages don't have the same keys.
 
-The build emits two landing pages and eight case pages under `/work/` and `/pt-br/work/`. Fonts and assets are self-hosted. Case content describes engineering decisions without private artifacts or unverified metrics; employer context stays in the experience section. `PRODUCT.md` records content constraints and `DESIGN.md` records the visual system.
+The build emits 38 routes: two landing pages, eight case pages, eighteen open-source stories and ten product stories. Cases keep `/work/` and `/pt-br/work/`; new stories use `/projects/`, `/products/` and their `/pt-br/` equivalents. Canonical URLs, language links and the sitemap cover every story. Fonts and fingerprinted PNG assets are self-hosted. Case content describes engineering decisions without private artifacts or unverified metrics; employer context stays in the experience section. `PRODUCT.md` records content constraints and `DESIGN.md` records the visual system.
 
 ## Licence
 

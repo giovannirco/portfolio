@@ -24,6 +24,15 @@ mkdirSync(join(out, "assets", "fonts"), { recursive: true });
 
 const hash = (buf) => createHash("sha256").update(buf).digest("hex").slice(0, 10);
 const asset = {};
+const imageSizes = {};
+mkdirSync(join(out, "assets", "projects"), { recursive: true });
+for (const file of readdirSync(join(src, "assets", "projects")).filter((file) => file.endsWith(".png"))) {
+  const buf = readFileSync(join(src, "assets", "projects", file));
+  const name = file.replace(".png", `.${hash(buf)}.png`);
+  writeFileSync(join(out, "assets", "projects", name), buf);
+  asset[`projects/${file}`] = `/assets/projects/${name}`;
+  imageSizes[file] = { width: buf.readUInt32BE(16), height: buf.readUInt32BE(20) };
+}
 for (const f of readdirSync(join(src, "fonts")).filter((f) => f.endsWith(".woff2"))) {
   const buf = readFileSync(join(src, "fonts", f));
   const name = f.replace(".woff2", `.${hash(buf)}.woff2`);
@@ -84,16 +93,16 @@ ${alt}
 
 const arrow = (direction = "right") => `<svg class="arrow ${direction}" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>`;
 
-function renderHeader(page, story = null) {
-  const identity = story
+function renderHeader(page, route = "") {
+  const identity = route
     ? `<a class="identity-name" href="${page.path}">${esc(page.hero.name)}</a>`
     : `<h1 class="identity-name">${esc(page.hero.name)}</h1>`;
   const nav = Object.entries(page.screens).map(([id, label]) =>
-    `<a href="${story ? page.path : ""}#${id === "work" ? "observability" : id}" data-section="${id}">${esc(label)}</a>`).join("");
+    `<a href="${route ? page.path : ""}#${id === "work" ? "observability" : id}" data-section="${id}">${esc(label)}</a>`).join("");
   const language = langs.map((language) =>
-    `<a href="${language.path}${story ? "work/" + story.id + "/" : ""}" hreflang="${language.lang}" lang="${language.lang}" aria-current="${language === page}">${language.lang === "en" ? "EN" : "PT-BR"}</a>`).join('<span aria-hidden="true"> / </span>');
+    `<a href="${language.path}${route}" hreflang="${language.lang}" lang="${language.lang}" aria-current="${language === page}">${language.lang === "en" ? "EN" : "PT-BR"}</a>`).join('<span aria-hidden="true"> / </span>');
   return `<header class="site-header"><div class="identity">${identity}<p>${esc(page.hero.role)}</p></div>
-<div class="header-links"><div class="utilities">${ext(site.resume, page.hero.links.resume)}<a href="${story ? page.path : ""}#about">${esc(page.reel.contact)}</a><nav class="lang" aria-label="${esc(page.switchLabel)}">${language}</nav></div>
+<div class="header-links"><div class="utilities">${ext(site.resume, page.hero.links.resume)}<a href="${route ? page.path : ""}#about">${esc(page.reel.contact)}</a><nav class="lang" aria-label="${esc(page.switchLabel)}">${language}</nav></div>
 <nav class="primary-nav" aria-label="${esc(page.nav)}">${nav}</nav></div></header>`;
 }
 
@@ -110,11 +119,12 @@ function renderReel(page) {
   const cards = page.cases.map((story, index) => `<article class="case-card" id="${story.id}" aria-labelledby="${story.id}-h">
 <p class="case-label"><span aria-hidden="true">${String(index + 1).padStart(2, "0")} / </span>${esc(story.label)}</p>
 <h2 id="${story.id}-h">${esc(story.title)}</h2>
-<p class="case-summary">${esc(story.summary)}</p>
-${renderComparison(page, story)}
+<dl class="case-proof"><div class="case-decision"><dt>${esc(page.proof.decision)}</dt><dd>${esc(story.summary)}</dd></div>
+<div class="case-result"><dt>${esc(page.proof.result)}</dt><dd>${esc(story.proof.result)}</dd></div></dl>
+<p class="case-scope"><span>${esc(page.proof.scope)}</span>${esc(story.proof.scope)}</p>
 <a class="read-case" href="${page.path}work/${story.id}/">${esc(page.reel.read)} ${arrow()}</a></article>`).join("");
   const caseLinks = page.cases.map((story, index) =>
-    `<a href="#${story.id}" data-case-link="${story.id}"><span class="case-position" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span><span>${esc(story.label)}</span></a>`).join("");
+    `<a href="#${story.id}" data-case-link="${story.id}" aria-label="${esc(story.label)}"><span class="case-position" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span><span class="index-label" aria-hidden="true">${esc(story.label)}</span><span class="index-short" aria-hidden="true">${esc(story.indexLabel)}</span></a>`).join("");
   return `<section class="reel-section" id="work" aria-label="${esc(page.work.heading)}">
 <section class="reel" tabindex="0" aria-label="${esc(page.reel.label)}" aria-describedby="reel-hint">
 <article class="case-card intro-card" id="top" aria-labelledby="intro-h">
@@ -131,14 +141,40 @@ ${cards}</section>
 }
 
 
+function renderProjectFigure(page, project) {
+  if (project.image) {
+    const { src, alt, caption } = project.image;
+    const { width, height } = imageSizes[src];
+    return `<figure class="project-figure"><img src="${asset[`projects/${src}`]}" alt="${esc(alt)}" width="${width}" height="${height}" loading="lazy" decoding="async"><figcaption>${esc(caption)}</figcaption></figure>`;
+  }
+  if (project.flow.length) {
+    return `<figure class="project-flow"><ol>${project.flow.map((step) => `<li>${esc(step)}</li>`).join("")}</ol><figcaption>${esc(page.stories.workflow)}</figcaption></figure>`;
+  }
+  return "";
+}
+
+function renderProjectFacts(page, project) {
+  return `<dl class="project-facts">${["role", "decision", "status"].filter((key) => project[key]).map((key) => `<div><dt>${esc(page.stories[key])}</dt><dd>${esc(project[key])}</dd></div>`).join("")}</dl>`;
+}
+
+function renderProjectChapter(page, group) {
+  const content = page[group];
+  const detailLabel = group === "products" ? page.stories.productRead : page.stories.read;
+  const featured = content.rows.filter((item) => item.featured).map((item) => `<article class="featured-project">
+<div class="project-copy"><h3>${esc(item.name)}</h3><p class="project-tagline">${esc(item.tagline)}</p><p>${esc(item.text)}</p>
+<p class="project-role"><strong>${esc(page.stories.role)}:</strong> ${esc(item.role)}</p><p class="project-decision">${esc(item.decision)}</p><p class="project-status">${esc(item.status)}</p>
+<a class="story-link" href="${page.path}${group}/${item.id}/">${esc(detailLabel)} ${arrow()}</a></div>${renderProjectFigure(page, item)}</article>`).join("");
+  const directory = content.rows.filter((item) => !item.featured).map((item) => `<li><h3><a href="${page.path}${group}/${item.id}/">${esc(item.name)}</a></h3><div><p>${esc(item.text)}</p>${item.role ? `<p class="project-role"><strong>${esc(page.stories.role)}:</strong> ${esc(item.role)}</p>` : ""}${item.status ? `<p class="project-status">${esc(item.status)}</p>` : ""}<p class="project-links"><a href="${page.path}${group}/${item.id}/">${esc(detailLabel)}</a>${item.repo ? ext(item.repo, page.projects.source) : ""}</p></div></li>`).join("");
+  return `<h2 id="${group}-h">${esc(content.heading)}</h2><p class="section-intro">${esc(content.intro)}</p>
+<div class="featured-projects">${featured}</div><ul class="work-list project-directory">${directory}</ul>`;
+}
+
 function renderSections(page) {
-  const projects = page.projects.rows.map((project) => `<li><h3>${ext(project.repo, project.name)}</h3><div><p>${esc(project.text)}</p><p class="project-links">${ext(project.repo, page.projects.source)}${project.url ? ext(project.url, page.projects.visit) : ""}</p></div></li>`).join("");
-  const products = page.products.rows.map((product) => `<li><h3>${product.url ? ext(product.url, product.name) : esc(product.name)}</h3><p>${esc(product.text)}</p></li>`).join("");
   const contributions = page.projects.contributions.map((item) => `<li>${ext(item.url, item.name + ": " + item.text)}</li>`).join("");
   const specs = page.homelab.spec.map(([value, label]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join("");
-  return `<section class="content-section" id="projects" aria-labelledby="projects-h"><h2 id="projects-h">${esc(page.projects.heading)}</h2>
-<ul class="work-list">${projects}</ul><div class="upstream"><h3>${esc(page.projects.upstream)}</h3><ul>${contributions}</ul></div></section>
-<section class="content-section" id="products" aria-labelledby="products-h"><h2 id="products-h">${esc(page.products.heading)}</h2><ul class="work-list">${products}</ul></section>
+  return `<section class="content-section project-chapter" id="projects" aria-labelledby="projects-h">${renderProjectChapter(page, "projects")}
+<div class="upstream"><h3>${esc(page.projects.upstream)}</h3><ul>${contributions}</ul></div></section>
+<section class="content-section project-chapter" id="products" aria-labelledby="products-h">${renderProjectChapter(page, "products")}</section>
 <section class="content-section" id="homelab" aria-labelledby="homelab-h"><h2 id="homelab-h">${esc(page.homelab.heading)}</h2><p class="section-intro">${esc(page.homelab.lede)}</p>
 <dl class="lab-spec">${specs}</dl><p class="asof">${esc(page.homelab.asof)}</p><p>${esc(page.homelab.body)}</p>
 <p class="project-links">${ext(site.orrery, page.homelab.orrery)}${ext("https://github.com/giovannirco/agentic-homelab", page.homelab.handbook)}</p></section>
@@ -152,12 +188,24 @@ function renderStory(page, story) {
   const route = "work/" + story.id + "/";
   const related = story.id === "ai" ? page.projects.rows.slice(0, 3) : [page.projects.rows[2], page.projects.rows[4]];
   return `${head({ ...page, description: story.summary }, { title: story.title + " · " + page.hero.name, canonical: site.origin + page.path + route, route })}
-<body class="story-page"><a class="skip" href="#story">${esc(page.skip)}</a>${renderHeader(page, story)}
+<body class="story-page"><a class="skip" href="#story">${esc(page.skip)}</a>${renderHeader(page, route)}
 <main class="story" id="story"><a class="back-link" href="${page.path}#${story.id}">${arrow("left")} ${esc(page.reel.back)}</a>
 <article><h1>${esc(story.title)}</h1><p class="story-summary">${esc(story.summary)}</p>${renderComparison(page, story)}
 ${story.sections.map(([title, body]) => `<section><h2>${esc(title)}</h2><p>${esc(body)}</p></section>`).join("")}</article>
 <aside class="related"><h2>${esc(page.reel.related)}</h2><ul>${related.map((project) => `<li>${ext(project.repo, project.name)}<p>${esc(project.text)}</p></li>`).join("")}</ul></aside>
 <a class="back-link" href="${page.path}#${story.id}">${arrow("left")} ${esc(page.reel.back)}</a></main></body></html>`;
+}
+
+function renderProjectStory(page, group, project) {
+  const route = `${group}/${project.id}/`;
+  const back = `<a class="back-link" href="${page.path}#${group}">${arrow("left")} ${esc(page.stories.back)} ${esc(page[group].heading)}</a>`;
+  return `${head({ ...page, description: project.text }, { title: project.name + " · " + page.hero.name, canonical: site.origin + page.path + route, route })}
+<body class="story-page"><a class="skip" href="#story">${esc(page.skip)}</a>${renderHeader(page, route)}
+<main class="story project-story" id="story">${back}<article><h1>${esc(project.name)}</h1><p class="project-tagline">${esc(project.tagline)}</p>
+<p class="story-summary">${esc(project.text)}</p>${renderProjectFigure(page, project)}${renderProjectFacts(page, project)}
+${project.sections.map(([title, body]) => `<section><h2>${esc(title)}</h2><p>${esc(body)}</p></section>`).join("")}
+<p class="project-links">${project.repo ? ext(project.repo, page.projects.source) : ""}${project.url ? ext(project.url, page.projects.visit) : ""}</p></article>
+<footer class="story-footer">${back}</footer></main></body></html>`;
 }
 
 function page(page) {
@@ -184,6 +232,14 @@ for (const entry of langs) {
     writeFileSync(join(out, entry.path, suffix, "index.html"), renderStory(entry, story));
     routes.push({ entry, suffix });
   }
+  for (const group of ["projects", "products"]) {
+    for (const project of entry[group].rows) {
+      const suffix = `${group}/${project.id}/`;
+      mkdirSync(join(out, entry.path, suffix), { recursive: true });
+      writeFileSync(join(out, entry.path, suffix, "index.html"), renderProjectStory(entry, group, project));
+      routes.push({ entry, suffix });
+    }
+  }
 }
 writeFileSync(join(out, "404.html"), notFound());
 writeFileSync(join(out, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${site.origin}/sitemap.xml\n`);
@@ -194,8 +250,8 @@ ${routes.map(({ entry, suffix }) => `<url><loc>${site.origin}${entry.path}${suff
 const english = pages.en;
 writeFileSync(join(out, "llms.txt"), `# ${english.hero.name}\n\n${english.hero.role}. ${english.hero.lede}\n
 ## Cases\n${english.cases.map((story) => `- [${story.title}](${site.origin}/work/${story.id}/): ${story.summary}`).join("\n")}
-## Public work\n${english.projects.rows.map((project) => `- [${project.name}](${project.repo}): ${project.text}`).join("\n")}
-## Products\n${english.products.rows.map((product) => `- ${product.name}: ${product.text}`).join("\n")}
+## Public work\n${english.projects.rows.map((project) => `- [${project.name}](${site.origin}/projects/${project.id}/): ${project.text}`).join("\n")}
+## Products\n${english.products.rows.map((product) => `- [${product.name}](${site.origin}/products/${product.id}/): ${product.text}`).join("\n")}
 ## Experience\n${english.about.history}
 ## Links\n- [Resume](${site.resume})\n- [GitHub](${site.github})\n- [LinkedIn](${site.linkedin})\n`);
 console.log(`built ${langs.length} languages and ${routes.length} routes into dist/`);

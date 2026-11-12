@@ -63,30 +63,32 @@ for (const path of ["/", "/pt-br/"]) {
       expect(violations.map((item) => item.id)).toEqual([]);
     }
   });
-  test(`${path} comparisons expose the decision and its scope without diagrams`, async ({ page }) => {
+  test(`${path} compact proofs expose results while reading pages keep full comparisons`, async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto(path);
     await expect(page.locator(".flow, .case-diagram")).toHaveCount(0);
     for (const id of ["observability", "delivery", "network", "ai"]) {
       await page.locator(`[data-case-link="${id}"]`).click();
-      const comparison = page.locator(`#${id} .case-comparison`);
-      await expect(comparison.locator("dt")).toHaveCount(3);
-      for (const detail of await comparison.locator("dd").all()) {
+      const proof = page.locator(`#${id} .case-proof`);
+      await expect(proof.locator("dt")).toHaveCount(2);
+      for (const detail of await proof.locator("dd").all()) {
         await expect(detail).not.toBeEmpty();
         await expect(detail).toBeVisible();
       }
       await expect(page.locator(`#${id} .case-scope`)).not.toBeEmpty();
-      expect(await comparison.evaluate((node) => node.getAnimations({ subtree: true }).length)).toBe(0);
-      expect(await comparison.evaluate((node) => node.scrollWidth <= node.clientWidth)).toBe(true);
-      const panels = await comparison.locator(".comparison-before, .comparison-after").evaluateAll((nodes) => nodes.map((node) => node.getBoundingClientRect().toJSON()));
-      if (page.viewportSize().width <= 760) expect(panels[1].top).toBeGreaterThan(panels[0].bottom);
-      else expect(panels[1].top).toBe(panels[0].top);
+      expect(await proof.evaluate((node) => node.getAnimations({ subtree: true }).length)).toBe(0);
+      expect(await proof.evaluate((node) => node.scrollWidth <= node.clientWidth)).toBe(true);
     }
-    await expect(page.locator("#observability .comparison-after")).toContainText("Grafana Cloud");
+    await expect(page.locator("#observability .case-decision")).toContainText("Grafana Cloud");
     await expect(page.locator("#observability .case-scope")).toContainText("Observe");
-    await expect(page.locator("#network .comparison-decision")).toContainText("Hubble");
+    await expect(page.locator("#network .case-decision")).toContainText("Hubble");
     await page.goto(path + "work/network/");
-    await expect(page.locator(".case-comparison")).toContainText("Hubble");
+    const comparison = page.locator(".case-comparison");
+    await expect(comparison).toContainText("Hubble");
+    await expect(comparison.locator("dt")).toHaveCount(3);
+    const panels = await comparison.locator(".comparison-before, .comparison-after").evaluateAll((nodes) => nodes.map((node) => node.getBoundingClientRect().toJSON()));
+    if (page.viewportSize().width <= 760) expect(panels[1].top).toBeGreaterThan(panels[0].bottom);
+    else expect(panels[1].top).toBe(panels[0].top);
     await expect(page.locator(".case-diagram")).toHaveCount(0);
   });
 }
@@ -96,9 +98,10 @@ test("vertical chapters settle independently of horizontal cases", async ({ page
   await page.evaluate(() => document.fonts.ready);
   await expect.poll(() => page.locator("#products").evaluate((node) => Math.abs(node.getBoundingClientRect().top))).toBeLessThan(2);
   await page.mouse.move(1100, 500);
-  await page.mouse.wheel(0, 500);
+  const chapterHeight = await page.locator("#products").evaluate((node) => node.getBoundingClientRect().height);
+  await page.mouse.wheel(0, chapterHeight);
   await expect.poll(() => page.locator("#homelab").evaluate((node) => Math.abs(node.getBoundingClientRect().top))).toBeLessThan(2);
-  await page.mouse.wheel(0, -500);
+  await page.mouse.wheel(0, -chapterHeight);
   await expect.poll(() => page.locator("#products").evaluate((node) => Math.abs(node.getBoundingClientRect().top))).toBeLessThan(2);
   await expect(page.locator('[data-case-link="observability"]')).toHaveAttribute("aria-current", "true");
 });
