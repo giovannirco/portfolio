@@ -1,4 +1,21 @@
 (() => {
+  const hash = location.hash;
+  const chapter = document.getElementById(hash.slice(1));
+  if (!chapter?.classList.contains("content-section")) return;
+  if (performance.getEntriesByType("navigation")[0]?.type === "back_forward") return;
+  let interacted = false;
+  const events = new AbortController();
+  for (const type of ["pointerdown", "touchstart", "wheel", "keydown"]) {
+    window.addEventListener(type, () => { interacted = true; }, { once: true, passive: true, signal: events.signal });
+  }
+  window.addEventListener("load", async () => {
+    await document.fonts.ready;
+    events.abort();
+    if (!interacted && location.hash === hash) chapter.scrollIntoView({ behavior: "instant", block: "start" });
+  }, { once: true });
+})();
+
+(() => {
   const viewer = document.querySelector(".image-viewer");
   if (!viewer) return;
   let opener;
