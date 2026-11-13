@@ -1,4 +1,38 @@
 (() => {
+  const viewer = document.querySelector(".image-viewer");
+  if (!viewer) return;
+  let opener;
+  let position;
+  document.querySelectorAll("[data-image-viewer]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      opener = link;
+      position = { top: scrollY, left: scrollX, behavior: "instant" };
+      const image = link.querySelector("img").cloneNode();
+      image.loading = "eager";
+      const caption = link.closest("figure").querySelector("figcaption").cloneNode(true);
+      viewer.querySelector("figure").replaceChildren(image, caption);
+      viewer.showModal();
+      viewer.querySelector("button").focus({ preventScroll: true });
+    });
+  });
+  viewer.querySelector("[data-image-close]").addEventListener("click", () => viewer.close());
+  viewer.addEventListener("click", (event) => {
+    if (event.target === viewer) viewer.close();
+  });
+  viewer.addEventListener("keydown", (event) => {
+    if (event.key !== "Tab") return;
+    event.preventDefault();
+    viewer.querySelector("button").focus({ preventScroll: true });
+  });
+  viewer.addEventListener("close", () => {
+    opener.focus({ preventScroll: true });
+    window.scrollTo(position);
+  });
+})();
+
+(() => {
   const reel = document.querySelector(".reel");
   if (!reel) return;
   document.documentElement.classList.add("is-enhanced");

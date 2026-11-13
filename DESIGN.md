@@ -224,7 +224,13 @@ Featured entries use an unboxed two-column composition: project name, purpose, c
 
 Screenshots preserve their native aspect ratios, have explicit dimensions and alt text, and load lazily. Captions distinguish public documentation from synthetic demonstrations. Images are copied unchanged and fingerprinted by the build. Provenance and license notices live alongside the source assets. Workflow figures are semantic ordered lists labeled “How it works”, not imitations of product interfaces. Their numbers communicate actual step order; they do not establish a decorative numbering system.
 
-The remaining entries use ruled rows: a 220px name column plus flexible copy, with purpose, contribution, status and an internal story link. Phones stack the rows. Upstream contributions remain a separate group, and the homelab chapter retains its dated inventory boundary.
+The remaining entries use ruled rows: a 220px name column plus flexible copy, with purpose, contribution, status and an internal story link. Phones stack the rows. Upstream contributions remain a separate group, and the homelab chapter explains concrete uses and operational lessons.
+
+## Image viewer and homelab
+
+Screenshots have a visible enlargement link. A native modal dialog shows the original image and caption, with a localized close button. Outside click and Escape close it; focus and scroll return to the image link. Keyboard focus remains in the viewer and background scrolling is blocked. Without JavaScript, the same link opens the original image. The viewer uses the existing charcoal, paper and amber palette, with a dark backdrop and no entrance motion.
+
+The homelab chapter replaces hardware statistics with three ruled editorial rows: useful document workflows, release verification and learning from failures. Each row pairs a short heading with a concrete account. Desktop uses one-third/two-thirds columns; phones stack them. Public operating notes lead the links, followed by the Orrery map. These explain the work without making current uptime claims.
 
 ## Reading pages
 

@@ -9,6 +9,14 @@ const inventory = {
 };
 
 for (const prefix of ["", "pt-br/"]) {
+  test(`${prefix || "en"} homelab explains operating work with useful public destinations`, () => {
+    const lab = read(prefix + "index.html").split('id="homelab"')[1].split('id="about"')[0];
+    assert.ok(!lab.includes('class="lab-spec"'));
+    assert.equal((lab.match(/<h3>/g) || []).length, 3);
+    assert.match(lab, /href="https:\/\/github.com\/giovannirco\/agentic-homelab"/);
+    assert.match(lab, /href="https:\/\/orrery.giovanni.dev.br/);
+    assert.ok(!/3090|GPU|130|~500/.test(lab));
+  });
   test(`${prefix || "en"} homepage features the selected projects and promotes Plano Adentro`, () => {
     const home = read(prefix + "index.html");
     const projects = home.split('id="projects"')[1].split('id="products"')[0];
