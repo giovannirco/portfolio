@@ -26,7 +26,7 @@ for (const path of ["/", "/pt-br/"]) {
     await expect(page.locator("#projects-h")).toBeInViewport();
   });
   test(`${path} product and open-source stories have accessible loaded evidence`, async ({ page }) => {
-    for (const route of ["projects/platen/", "products/tessera/"]) {
+    for (const route of ["projects/job-scout/", "projects/platen/", "projects/latchkey/", "products/plano-adentro/", "products/tessera/"]) {
       await page.goto(path + route);
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
       const { violations } = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze();

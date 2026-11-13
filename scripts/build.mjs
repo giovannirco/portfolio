@@ -162,7 +162,7 @@ function renderProjectChapter(page, group) {
   const detailLabel = group === "products" ? page.stories.productRead : page.stories.read;
   const featured = content.rows.filter((item) => item.featured).map((item) => `<article class="featured-project">
 <div class="project-copy"><h3>${esc(item.name)}</h3><p class="project-tagline">${esc(item.tagline)}</p><p>${esc(item.text)}</p>
-<p class="project-role"><strong>${esc(page.stories.role)}:</strong> ${esc(item.role)}</p><p class="project-decision">${esc(item.decision)}</p><p class="project-status">${esc(item.status)}</p>
+${item.role ? `<p class="project-role"><strong>${esc(page.stories.role)}:</strong> ${esc(item.role)}</p>` : ""}${item.decision ? `<p class="project-decision">${esc(item.decision)}</p>` : ""}${item.status ? `<p class="project-status">${esc(item.status)}</p>` : ""}
 <a class="story-link" href="${page.path}${group}/${item.id}/">${esc(detailLabel)} ${arrow()}</a></div>${renderProjectFigure(page, item)}</article>`).join("");
   const directory = content.rows.filter((item) => !item.featured).map((item) => `<li><h3><a href="${page.path}${group}/${item.id}/">${esc(item.name)}</a></h3><div><p>${esc(item.text)}</p>${item.role ? `<p class="project-role"><strong>${esc(page.stories.role)}:</strong> ${esc(item.role)}</p>` : ""}${item.status ? `<p class="project-status">${esc(item.status)}</p>` : ""}<p class="project-links"><a href="${page.path}${group}/${item.id}/">${esc(detailLabel)}</a>${item.repo ? ext(item.repo, page.projects.source) : ""}</p></div></li>`).join("");
   return `<h2 id="${group}-h">${esc(content.heading)}</h2><p class="section-intro">${esc(content.intro)}</p>

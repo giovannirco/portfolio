@@ -9,6 +9,17 @@ const inventory = {
 };
 
 for (const prefix of ["", "pt-br/"]) {
+  test(`${prefix || "en"} homepage features the selected projects and promotes Plano Adentro`, () => {
+    const home = read(prefix + "index.html");
+    const projects = home.split('id="projects"')[1].split('id="products"')[0];
+    const products = home.split('id="products"')[1].split('id="homelab"')[0];
+    const featuredNames = (section) => [...section.matchAll(/<article class="featured-project">[\s\S]*?<h3>([^<]+)<\/h3>/g)].map((match) => match[1]);
+    assert.deepEqual(featuredNames(projects), ["Job Scout", "Platen", "Latchkey"]);
+    assert.deepEqual(featuredNames(products), ["Subsíndico", "Plano Adentro"]);
+    assert.match(projects.split("</article>")[0], /<img src="\/assets\/projects\/job-scout[^" ]+\.png"/);
+    assert.match(products.split('class="work-list project-directory"')[1], /Tessera/);
+    assert.ok(!/<strong>[^<]+:<\/strong>\s*<\/p>/.test(products));
+  });
   test(`${prefix || "en"} opening shows compact proof and keeps full case comparisons on reading pages`, () => {
     const home = read(prefix + "index.html");
     assert.equal((home.match(/class="case-proof"/g) || []).length, 4);
