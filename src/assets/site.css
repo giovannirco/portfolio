@@ -90,10 +90,13 @@ h1, h2, h3 { line-height: 1.1; text-wrap: balance; }
 .upstream ul { list-style: none; padding: 0; display: grid; gap: 12px; }
 .upstream a { color: var(--muted); }
 .section-intro { font-size: 24px; margin-bottom: 38px; }
-.lab-spec { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin: 38px 0 20px; }
-.lab-spec div { display: flex; flex-direction: column-reverse; }
-.lab-spec dt { color: var(--muted); font-size: 16px; }
-.lab-spec dd { margin: 0; font: 500 32px/1.4 var(--sans); }
+.lab-chapter { padding-block: 88px; }
+.lab-chapter > h2 { margin-bottom: 24px; }
+.lab-chapter > .section-intro { max-width: 48ch; color: #d3cdc0; }
+.lab-practices { list-style: none; margin: 0 0 28px; padding: 0; }
+.lab-practices li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 48px; padding-block: 28px; border-top: 1px solid var(--line); }
+.lab-practices h3 { font: 500 24px/1.3 var(--sans); max-width: 17ch; text-wrap: balance; }
+.lab-practices p { color: #d3cdc0; }
 .asof { font-size: 14px; color: var(--muted); margin: 20px 0 30px; }
 .principles { list-style: none; padding: 0; display: grid; gap: 30px; }
 .principles h3 { font-size: 21px; font-weight: 500; margin-bottom: 10px; }
@@ -157,7 +160,8 @@ h1, h2, h3 { line-height: 1.1; text-wrap: balance; }
   .content-section h2 { margin-bottom: 28px; }
   .work-list > li { grid-template-columns: 1fr; gap: 12px; padding-block: 24px; }
   .work-list h3 { font-size: 22px; }
-  .lab-spec { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lab-practices li { grid-template-columns: 1fr; gap: 14px; }
+  .lab-practices h3 { max-width: none; }
   .section-intro { font-size: 21px; }
   .story { padding: 0 24px; margin-top: 36px; }
   .story h1 { font-size: 38px; }
@@ -259,6 +263,18 @@ html:has(.chapter-page) { scroll-snap-type: y mandatory; }
 .story-link { display: inline-flex; gap: 12px; align-items: center; margin-top: 24px; text-decoration-color: var(--amber); }
 .project-figure { margin: 0; min-width: 0; }
 .project-figure img { display: block; width: 100%; height: auto; }
+.image-link { display: block; cursor: zoom-in; text-decoration-color: var(--amber); }
+.image-enlarge { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 14px; }
+.image-enlarge .arrow { width: 18px; height: 18px; transform: rotate(-45deg); }
+.image-viewer { border: 0; padding: clamp(8px, 2vw, 20px); width: min(1480px, calc(100% - 16px)); max-width: none; max-height: calc(100dvh - 32px); background: var(--ground); color: var(--paper); color-scheme: dark; }
+.image-viewer::backdrop { background: rgb(0 0 0 / .88); }
+.image-viewer[open] { display: flex; flex-direction: column; gap: 16px; }
+.image-viewer button { align-self: end; flex: none; min-height: 44px; padding: 8px 16px; border: 1px solid var(--muted); background: var(--ground); color: var(--paper); }
+.image-viewer button:hover { border-color: var(--amber); color: var(--amber); }
+.image-viewer figure { margin: 0; min-height: 0; display: flex; flex-direction: column; gap: 12px; }
+.image-viewer img { display: block; width: 100%; height: auto; min-height: 0; object-fit: contain; }
+.image-viewer figcaption { flex: none; font-size: 14px; line-height: 1.5; color: var(--muted); }
+html:has(.image-viewer[open]) { overflow: hidden; }
 .project-figure figcaption, .project-flow figcaption { font-size: 14px; line-height: 1.5; margin-top: 14px; color: var(--muted); }
 .project-flow { margin: 0; padding: 32px; background: var(--paper); color: var(--ink); }
 .project-flow ol { display: grid; gap: 0; list-style: none; margin: 0; padding: 0; counter-reset: workflow; }

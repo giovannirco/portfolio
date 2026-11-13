@@ -40,7 +40,7 @@ Staff Platform Engineer with almost seven years on the Exodus platform team, wor
 - Public work includes Job Scout, Platen, CPA Prometheus, Interview skills, Orrery and Peephole, plus Jev Playground, Latchkey and HeatBar. Upstream contributions remain separate. Attribute the Jev model to TypeSafe and the Latchkey protocol port to its upstream project.
 - Products are a separate group: Plano Adentro, Subsíndico, Tessera, Navalha and Seguros MCP. Navalha is in testing and unlinked; Seguros MCP's Tokio Marine integration is in beta.
 - Every project and product has a bilingual internal story. Use verified public screenshots or explicitly labeled workflow diagrams; preserve image provenance and maturity limits. Plano Adentro retains only its approved public description.
-- Agentic homelab belongs with the homelab section. Dated inventory is not a current availability claim.
+- Agentic homelab belongs with the homelab section. Explain useful tools, release verification and documented operational lessons; do not use hardware totals or imply current availability.
 - Metric cardinality reduction is not billing savings. Older career notes contain differing intermediate percentages; avoid presenting them as a cost reduction or inventing a monetary outcome.
 
 ## Product Principles

@@ -41,38 +41,24 @@ export const pages = {
       "intro": "Selected engineering decisions"
     },
     "homelab": {
-      "heading": "What I run",
-      "lede": "At home I run the platform I would want at work, on a smaller budget.",
-      "spec": [
+      "heading": "What the lab is for",
+      "lede": "I use my homelab to build tools I need, run my own applications and learn from their failures.",
+      "rows": [
         [
-          "6",
-          "Talos clusters"
+          "Tools for everyday work",
+          "Platen brings printing, scanning and document ingestion into a browser workflow. Connecting those pieces means checking the whole task, from the physical device to the saved document."
         ],
         [
-          "11",
-          "Kubernetes nodes"
+          "Verify the release",
+          "Changes live in Git, and deployed versions are pinned. After a release, I check the page or API that someone will actually use, with the previous version recorded for rollback."
         ],
         [
-          "3",
-          "Proxmox hosts"
-        ],
-        [
-          "2 × 3090",
-          "GPU node"
-        ],
-        [
-          "130",
-          "alert rules"
-        ],
-        [
-          "~500",
-          "network policies"
+          "Find the cause, keep the lesson",
+          "Disk stalls have looked like network failures. Metrics, logs and controlled comparisons help distinguish them. I record the investigation and the fix so the next incident starts with evidence."
         ]
       ],
-      "asof": "Counted on the clusters on 23 Oct 2026",
-      "body": "Omni manages Talos, Flux lays down the platform and Argo CD the apps. The design uses default-deny namespaces, a self-hosted Grafana stack for metrics, logs and traces, and a WhatsApp alert integration. The figures above are a dated record, not a live availability indicator. When I change something, I write down what I did and why.",
-      "orrery": "Explore the homelab in Orrery",
-      "handbook": "How it was built"
+      "handbook": "Read the operating notes",
+      "orrery": "Explore the public map"
     },
     "projects": {
       "heading": "Public work",
@@ -292,7 +278,11 @@ export const pages = {
             "Pair a supported lock",
             "Control it from the board"
           ],
-          "image": null
+          "image": {
+            "src": "latchkey-dashboard-demo.png",
+            "alt": "Latchkey dashboard with two demo locks, their lock states, battery levels and hardening warnings.",
+            "caption": "Actual Latchkey interface connected to its simulated board API; no real lock involved."
+          }
         },
         {
           "name": "HeatBar",
@@ -712,7 +702,11 @@ export const pages = {
       "status": "Stage and limits",
       "workflow": "How it works",
       "directory": "More projects",
-      "productRead": "About the product"
+      "productRead": "About the product",
+      "enlarge": "View larger",
+      "imageLabel": "View larger image of {project}",
+      "imageViewer": "Enlarged project image",
+      "closeImage": "Close image"
     }
   },
   "pt-br": {
@@ -747,38 +741,24 @@ export const pages = {
       "intro": "Decisões de engenharia"
     },
     "homelab": {
-      "heading": "O que eu opero",
-      "lede": "Em casa eu mantenho a plataforma que eu gostaria de ter no trabalho, com orçamento menor.",
-      "spec": [
+      "heading": "Para que serve o laboratório",
+      "lede": "Uso meu homelab para criar ferramentas de que preciso, manter minhas aplicações e aprender com suas falhas.",
+      "rows": [
         [
-          "6",
-          "clusters Talos"
+          "Ferramentas para o dia a dia",
+          "O Platen reúne impressão, digitalização e envio de documentos em um fluxo pelo navegador. Conectar essas partes exige verificar a tarefa inteira, do dispositivo físico ao documento salvo."
         ],
         [
-          "11",
-          "nós Kubernetes"
+          "Verificar a versão publicada",
+          "As mudanças ficam no Git, e as versões implantadas são fixadas. Depois de uma publicação, verifico a página ou a API que alguém vai usar, com a versão anterior registrada para reversão."
         ],
         [
-          "3",
-          "hosts Proxmox"
-        ],
-        [
-          "2 × 3090",
-          "nó com GPU"
-        ],
-        [
-          "130",
-          "regras de alerta"
-        ],
-        [
-          "~500",
-          "network policies"
+          "Encontrar a causa, guardar a lição",
+          "Travamentos de disco já pareceram falhas de rede. Métricas, logs e comparações controladas ajudam a separar as causas. Registro a investigação e a correção para que o próximo incidente comece com evidências."
         ]
       ],
-      "asof": "Contado nos clusters em 23 out. 2026",
-      "body": "O Omni gerencia o Talos, o Flux instala a plataforma e o Argo CD os apps. O desenho usa negação por padrão nos namespaces, um stack Grafana próprio para métricas, logs e traces e uma integração de alertas com WhatsApp. Os números acima são um registro datado, não um indicador de disponibilidade atual. Quando mudo algo, escrevo o que fiz e por quê.",
-      "orrery": "Explore o homelab no Orrery",
-      "handbook": "Como foi construído"
+      "handbook": "Leia as notas de operação",
+      "orrery": "Explore o mapa público"
     },
     "projects": {
       "heading": "Código aberto",
@@ -998,7 +978,11 @@ export const pages = {
             "Parear uma fechadura compatível",
             "Controlar pela placa"
           ],
-          "image": null
+          "image": {
+            "src": "latchkey-dashboard-demo.png",
+            "alt": "Painel do Latchkey com duas fechaduras de demonstração, estados, níveis de bateria e avisos de proteção.",
+            "caption": "Interface real do Latchkey conectada à API simulada da placa, sem uma fechadura real."
+          }
         },
         {
           "name": "HeatBar",
@@ -1418,7 +1402,11 @@ export const pages = {
       "status": "Estágio e limites",
       "workflow": "Como funciona",
       "directory": "Mais projetos",
-      "productRead": "Conheça o produto"
+      "productRead": "Conheça o produto",
+      "enlarge": "Ampliar imagem",
+      "imageLabel": "Ampliar imagem de {project}",
+      "imageViewer": "Imagem ampliada do projeto",
+      "closeImage": "Fechar imagem"
     }
   }
 };

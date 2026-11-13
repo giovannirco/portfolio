@@ -145,7 +145,7 @@ function renderProjectFigure(page, project) {
   if (project.image) {
     const { src, alt, caption } = project.image;
     const { width, height } = imageSizes[src];
-    return `<figure class="project-figure"><img src="${asset[`projects/${src}`]}" alt="${esc(alt)}" width="${width}" height="${height}" loading="lazy" decoding="async"><figcaption>${esc(caption)}</figcaption></figure>`;
+    return `<figure class="project-figure"><a class="image-link" data-image-viewer href="${asset[`projects/${src}`]}" aria-label="${esc(page.stories.imageLabel.replace("{project}", project.name))}"><img src="${asset[`projects/${src}`]}" alt="${esc(alt)}" width="${width}" height="${height}" loading="lazy" decoding="async"><span class="image-enlarge">${esc(page.stories.enlarge)} ${arrow()}</span></a><figcaption>${esc(caption)}</figcaption></figure>`;
   }
   if (project.flow.length) {
     return `<figure class="project-flow"><ol>${project.flow.map((step) => `<li>${esc(step)}</li>`).join("")}</ol><figcaption>${esc(page.stories.workflow)}</figcaption></figure>`;
@@ -155,6 +155,10 @@ function renderProjectFigure(page, project) {
 
 function renderProjectFacts(page, project) {
   return `<dl class="project-facts">${["role", "decision", "status"].filter((key) => project[key]).map((key) => `<div><dt>${esc(page.stories[key])}</dt><dd>${esc(project[key])}</dd></div>`).join("")}</dl>`;
+}
+
+function renderImageViewer(page) {
+  return `<dialog class="image-viewer" aria-label="${esc(page.stories.imageViewer)}"><button type="button" data-image-close>${esc(page.stories.closeImage)}</button><figure></figure></dialog><script src="${asset["site.js"]}" defer></script>`;
 }
 
 function renderProjectChapter(page, group) {
@@ -171,13 +175,13 @@ ${item.role ? `<p class="project-role"><strong>${esc(page.stories.role)}:</stron
 
 function renderSections(page) {
   const contributions = page.projects.contributions.map((item) => `<li>${ext(item.url, item.name + ": " + item.text)}</li>`).join("");
-  const specs = page.homelab.spec.map(([value, label]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join("");
+  const practices = page.homelab.rows.map(([title, body]) => `<li><h3>${esc(title)}</h3><p>${esc(body)}</p></li>`).join("");
   return `<section class="content-section project-chapter" id="projects" aria-labelledby="projects-h">${renderProjectChapter(page, "projects")}
 <div class="upstream"><h3>${esc(page.projects.upstream)}</h3><ul>${contributions}</ul></div></section>
 <section class="content-section project-chapter" id="products" aria-labelledby="products-h">${renderProjectChapter(page, "products")}</section>
-<section class="content-section" id="homelab" aria-labelledby="homelab-h"><h2 id="homelab-h">${esc(page.homelab.heading)}</h2><p class="section-intro">${esc(page.homelab.lede)}</p>
-<dl class="lab-spec">${specs}</dl><p class="asof">${esc(page.homelab.asof)}</p><p>${esc(page.homelab.body)}</p>
-<p class="project-links">${ext(site.orrery, page.homelab.orrery)}${ext("https://github.com/giovannirco/agentic-homelab", page.homelab.handbook)}</p></section>
+<section class="content-section lab-chapter" id="homelab" aria-labelledby="homelab-h"><h2 id="homelab-h">${esc(page.homelab.heading)}</h2><p class="section-intro">${esc(page.homelab.lede)}</p>
+<ul class="lab-practices">${practices}</ul>
+<p class="project-links">${ext("https://github.com/giovannirco/agentic-homelab", page.homelab.handbook)}${ext(site.orrery, page.homelab.orrery)}</p></section>
 <section class="content-section about" id="about" aria-labelledby="about-h"><h2 id="about-h">${esc(page.about.heading)}</h2>
 <ul class="principles">${page.contact.principles.map(([title, body]) => `<li><h3>${esc(title)}</h3><p>${esc(body)}</p></li>`).join("")}</ul>
 <div class="experience"><h3>${esc(page.about.experience)}</h3><p>${esc(page.about.history)}</p></div>
@@ -205,13 +209,13 @@ function renderProjectStory(page, group, project) {
 <p class="story-summary">${esc(project.text)}</p>${renderProjectFigure(page, project)}${renderProjectFacts(page, project)}
 ${project.sections.map(([title, body]) => `<section><h2>${esc(title)}</h2><p>${esc(body)}</p></section>`).join("")}
 <p class="project-links">${project.repo ? ext(project.repo, page.projects.source) : ""}${project.url ? ext(project.url, page.projects.visit) : ""}</p></article>
-<footer class="story-footer">${back}</footer></main></body></html>`;
+<footer class="story-footer">${back}</footer></main>${project.image ? renderImageViewer(page) : ""}</body></html>`;
 }
 
 function page(page) {
   return `${head(page)}<body class="chapter-page"><a class="skip" href="#work">${esc(page.skip)}</a>
 <main><section class="case-chapter" aria-label="${esc(page.hero.name)}">${renderHeader(page)}${renderReel(page)}</section>${renderSections(page)}</main>
-<script src="${asset["site.js"]}" defer></script></body></html>`;
+${renderImageViewer(page)}</body></html>`;
 }
 
 function notFound() {

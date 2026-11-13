@@ -1,10 +1,12 @@
 # portfolio
 
-Source of [giovanni.dev.br](https://giovanni.dev.br): a horizontal reel of four Staff case studies, followed by substantial open-source and product chapters, in English and Portuguese. Plain HTML and CSS, with JavaScript for reel navigation. Swipe, arrow buttons and keyboard controls select cases. Each opening case shows a compact decision, result and scope; its standalone page retains the full Before / My decision / After comparison. Native vertical chapters grow to fit longer content. Reduced motion and browsing without JavaScript are supported.
+Source of [giovanni.dev.br](https://giovanni.dev.br): a horizontal reel of four Staff case studies, followed by substantial open-source and product chapters, in English and Portuguese. Plain HTML and CSS, with JavaScript for reel navigation and image enlargement. Swipe, arrow buttons and keyboard controls select cases. Each opening case shows a compact decision, result and scope; its standalone page retains the full Before / My decision / After comparison. Native vertical chapters grow to fit longer content. Reduced motion and browsing without JavaScript are supported.
 
 Featured projects combine purpose, contribution, engineering decisions and status with verified public screenshots or labeled workflow diagrams. Every project and product also has a static reading page. Image sources and licenses are recorded in `src/assets/projects/README.md`; no private employer material is included.
 
 Public work features Job Scout, Platen and Latchkey; the remaining projects use compact list entries. Products feature Subsíndico and Plano Adentro, with Tessera in the list below.
+
+Screenshots open in a larger, keyboard-accessible viewer. Escape, the close button or a click outside the image returns to the same scroll position; without JavaScript they link directly to the original image. The homelab chapter explains everyday tools, release verification and lessons from failures, with links to the public operating notes and Orrery.
 
 ## Build and run
 
@@ -33,4 +35,4 @@ The build emits 38 routes: two landing pages, eight case pages, eighteen open-so
 
 ## Licence
 
-Code under the MIT licence. IBM Plex and Wix Madefor Display are under the SIL Open Font License (`src/fonts/OFL.txt` and `src/fonts/Wix-OFL.txt`).
+Code under the MIT licence. Project images retain their documented source licenses (`src/assets/projects/README.md`). IBM Plex and Wix Madefor Display are under the SIL Open Font License (`src/fonts/OFL.txt` and `src/fonts/Wix-OFL.txt`).
