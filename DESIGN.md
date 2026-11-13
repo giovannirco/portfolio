@@ -214,6 +214,8 @@ The case reel stays first. Each paper panel presents an outcome headline, a sema
 
 The header and reel remain one native vertical snap area. Cards use 68.16vw width, 76vw below 1201px and 88vw on phones, exposing their neighbors. The minimum case height is 63.18svh, 65.7svh on large desktop and 500px on phones; content can grow. Case titles have a 23ch limit on desktop and use 30px/1.1 on phones. Proof text uses 21px/1.5 on desktop, 18px below 1001px and 16px/1.4 on phones. Scope uses 14px/1.4 on phones.
 
+Direct links to vertical chapters align after fonts finish loading, provided the reader has not interacted or changed the destination. Browser back/forward scroll restoration is preserved.
+
 Keep the four-case index, arrow controls, swipe, direct hashes, browser history and focused-reel ArrowLeft/ArrowRight/Home/End. Mobile index labels can be shorter, while accessible names and desktop labels retain the full subject. The existing Intro remains reachable through navigation. Vertical wheel movement never drives horizontal case selection. Reduced motion disables smooth transitions.
 
 ## Project and product chapters

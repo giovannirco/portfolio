@@ -105,6 +105,32 @@ test("vertical chapters settle independently of horizontal cases", async ({ page
   await expect.poll(() => page.locator("#products").evaluate((node) => Math.abs(node.getBoundingClientRect().top))).toBeLessThan(2);
   await expect(page.locator('[data-case-link="observability"]')).toHaveAttribute("aria-current", "true");
 });
+test("direct chapter links stay aligned when fonts arrive after navigation", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 960 });
+  let releaseFonts;
+  const fonts = new Promise((resolve) => { releaseFonts = resolve; });
+  await page.route("**/*.woff2", async (route) => { await fonts; await route.continue(); });
+  await page.goto("/#products", { waitUntil: "domcontentloaded" });
+  await expect(page.locator("#products")).toBeInViewport();
+  releaseFonts();
+  await page.evaluate(() => document.fonts.ready);
+  await expect.poll(() => page.locator("#products").evaluate((node) => Math.abs(node.getBoundingClientRect().top))).toBeLessThan(2);
+});
+test("late fonts do not pull the reader back after scrolling", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 960 });
+  let releaseFonts;
+  const fonts = new Promise((resolve) => { releaseFonts = resolve; });
+  await page.route("**/*.woff2", async (route) => { await fonts; await route.continue(); });
+  await page.goto("/#products", { waitUntil: "domcontentloaded" });
+  await expect(page.locator("#products")).toBeInViewport();
+  const initial = await page.evaluate(() => scrollY);
+  await page.mouse.wheel(0, 300);
+  await expect.poll(() => page.evaluate(() => scrollY)).toBeGreaterThan(initial + 100);
+  releaseFonts();
+  await page.waitForLoadState("load");
+  await page.evaluate(() => document.fonts.ready);
+  await expect.poll(() => page.locator("#products").evaluate((node) => node.getBoundingClientRect().top)).toBeLessThan(-100);
+});
 test("long phone chapters keep their last links reachable", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/pt-br/#projects");
