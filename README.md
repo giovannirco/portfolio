@@ -4,6 +4,8 @@ Source of [giovanni.dev.br](https://giovanni.dev.br): a horizontal reel of four 
 
 Featured projects combine purpose, contribution, engineering decisions and status with verified public screenshots or labeled workflow diagrams. Every project and product also has a static reading page. Image sources and licenses are recorded in `src/assets/projects/README.md`; no private employer material is included.
 
+Public work features Job Scout, Platen and Latchkey; the remaining projects use compact list entries. Products feature Subsíndico and Plano Adentro, with Tessera in the list below.
+
 ## Build and run
 
 Use Node 24.22.3 to match CI and the image build.

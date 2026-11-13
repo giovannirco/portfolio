@@ -4,17 +4,21 @@ These are screenshots of the actual projects, not generated product mockups. Cap
 
 | Asset | Source and status | Dimensions |
 |---|---|---|
+| `job-scout-pipeline-demo.png` | Actual [Job Scout pipeline](https://github.com/giovannirco/job-scout/blob/06104250398510fe01ca05607024fc4781c94720/apps/web/src/pages/Pipeline.tsx), captured locally on 2026-11-13 UTC from v2.14.6 with eight fictional positions. Fresh database, workers disabled, no AI calls or production data. Copied unchanged from the capture. | 1440 × 760 |
 | `platen-home.png` | [Platen's public README screenshot](https://github.com/giovannirco/platen/blob/master/docs/img/home.png), copied unchanged. Device dashboard with printer, scanner and Paperless controls; an existing documentation image, not a fresh device-health claim. | 1200 × 760 |
 | `peephole-demo.png` | [Peephole's public demo screenshot](https://github.com/giovannirco/peephole/blob/main/docs/screenshots/demo.png), copied unchanged. Hosts and readings are synthetic, matching [the demo configuration](https://github.com/giovannirco/peephole/blob/main/examples/demo.yaml). | 1984 × 728 |
 | `orrery-public.png` | Screenshot of [the public Orrery](https://orrery.giovanni.dev.br/) on 2026-11-12 UTC, used with the owner's authorization. Captured before launching the interactive flight; no private account or infrastructure data. | 1200 × 800 |
 
 Platen's source blob is `4aa449251cf5827b8bd9961ffe01b435344dbe9b`; Peephole's is `0c9ca69cc8b4b85160e2f6e1805f6e2b8cbf0a93`. Both match the copied image bytes. Preserve their native aspect ratios and keep synthetic-demo labels visible.
 
-## License for the Platen and Peephole images
+Job Scout's screenshot SHA-256 is `fdc5b44f55e0949f138803c5d981ad66b09c221eef58c74c188c57e0c9a11c16`. Its [source license](https://github.com/giovannirco/job-scout/blob/06104250398510fe01ca05607024fc4781c94720/LICENSE) is MIT, Copyright (c) 2026 giovannirco; the permission and warranty text below also applies. The screenshot shows the real interface with synthetic demonstration data, not actual job applications.
+
+## License for the Job Scout, Platen and Peephole images
 
 MIT License
 
 Copyright (c) 2026 Giovanni Coutinho
+Copyright (c) 2026 giovannirco (Job Scout)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

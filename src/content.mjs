@@ -105,7 +105,11 @@ export const pages = {
             "Research and draft",
             "Review and track"
           ],
-          "image": null
+          "image": {
+            "src": "job-scout-pipeline-demo.png",
+            "alt": "Job Scout pipeline with eight fictional positions across Review, Materials, Applied and Interview.",
+            "caption": "Actual Job Scout interface with synthetic demonstration data."
+          }
         },
         {
           "name": "Platen",
@@ -217,7 +221,7 @@ export const pages = {
           "repo": "https://github.com/giovannirco/peephole",
           "url": "https://peephole.bitops.com.br",
           "id": "peephole",
-          "featured": true,
+          "featured": false,
           "tagline": "Put service status on a tiny physical screen.",
           "role": "Rust hub, rendering, service plugins and display integration.",
           "decision": "Render at the hub so one screen can show many services without holding their credentials.",
@@ -269,7 +273,7 @@ export const pages = {
           "url": "",
           "text": "ESP32 firmware pairs directly with supported TTLock locks and serves an owner-controlled web interface, without a vendor account or phone app.",
           "id": "latchkey",
-          "featured": false,
+          "featured": true,
           "tagline": "Put a supported smart lock under local control.",
           "role": "ESP32 firmware and product integration built on an upstream TTLock protocol port.",
           "decision": "Run pairing and control on the board, with physical confirmation for destructive web actions.",
@@ -284,7 +288,10 @@ export const pages = {
               "The firmware builds on kind3r/ttlock-sdk-js as its primary protocol reference and port, with ttlock-ble supplying another reference and test vectors. USB claiming and a board-button confirmation put physical presence into privileged workflows; the documented security model still matters."
             ]
           ],
-          "flow": [],
+          "flow": [
+            "Pair a supported lock",
+            "Control it from the board"
+          ],
           "image": null
         },
         {
@@ -563,20 +570,6 @@ export const pages = {
       "heading": "Products I'm building",
       "rows": [
         {
-          "name": "Plano Adentro",
-          "text": "Architects and designers share projects their clients can walk through in a browser.",
-          "url": "https://planoadentro.com.br",
-          "id": "plano-adentro",
-          "featured": false,
-          "tagline": "Let clients explore the project.",
-          "role": "",
-          "decision": "",
-          "status": "",
-          "sections": [],
-          "flow": [],
-          "image": null
-        },
-        {
           "name": "Subsíndico",
           "text": "A workspace for condominium documents, assemblies and maintenance. Residents and managers can ask questions against uploaded material and inspect the cited source. Permissions determine which documents can be used in an answer.",
           "url": "https://subsindico.ia.br",
@@ -604,11 +597,28 @@ export const pages = {
           "image": null
         },
         {
+          "name": "Plano Adentro",
+          "text": "Architects and designers share projects their clients can walk through in a browser.",
+          "url": "https://planoadentro.com.br",
+          "id": "plano-adentro",
+          "featured": true,
+          "tagline": "Let clients explore the project.",
+          "role": "",
+          "decision": "",
+          "status": "",
+          "sections": [],
+          "flow": [
+            "Share the project",
+            "Explore in the browser"
+          ],
+          "image": null
+        },
+        {
           "name": "Tessera",
           "text": "Give someone permission to request an authentication code, with an expiry and a record of each code issued. The web application is separate from the service that holds and uses the underlying secrets.",
           "url": "https://tessera.otservices.space",
           "id": "tessera",
-          "featured": true,
+          "featured": false,
           "tagline": "Share a code without handing over its secret.",
           "role": "Permission flows, isolated code issuance and its audit trail.",
           "decision": "Separate the web tier from secret custody and enforce limits when issuing a code.",
@@ -801,7 +811,11 @@ export const pages = {
             "Pesquisar e redigir",
             "Revisar e acompanhar"
           ],
-          "image": null
+          "image": {
+            "src": "job-scout-pipeline-demo.png",
+            "alt": "Pipeline do Job Scout com oito vagas fictícias nas etapas Review, Materials, Applied e Interview.",
+            "caption": "Interface real do Job Scout com dados fictícios de demonstração."
+          }
         },
         {
           "name": "Platen",
@@ -913,7 +927,7 @@ export const pages = {
           "repo": "https://github.com/giovannirco/peephole",
           "url": "https://peephole.bitops.com.br",
           "id": "peephole",
-          "featured": true,
+          "featured": false,
           "tagline": "Leve o estado dos serviços para uma pequena tela.",
           "role": "Hub Rust, renderização, plugins de serviços e integração com a tela.",
           "decision": "Renderizar no hub para mostrar vários serviços sem guardar suas credenciais na tela.",
@@ -965,7 +979,7 @@ export const pages = {
           "url": "",
           "text": "Um firmware ESP32 se conecta diretamente a fechaduras TTLock compatíveis e oferece uma interface web sob controle do dono, sem conta do fabricante nem aplicativo de celular.",
           "id": "latchkey",
-          "featured": false,
+          "featured": true,
           "tagline": "Coloque uma fechadura compatível sob controle local.",
           "role": "Firmware ESP32 e integração do produto sobre um porte do protocolo TTLock de um projeto existente.",
           "decision": "Executar pareamento e controle na placa, com confirmação física para ações destrutivas pela web.",
@@ -980,7 +994,10 @@ export const pages = {
               "O firmware usa kind3r/ttlock-sdk-js como referência principal e origem do porte do protocolo, além de ttlock-ble como referência e fonte de vetores de teste. A configuração inicial por USB e a confirmação por botão incluem presença física nos fluxos privilegiados; o modelo de segurança documentado continua essencial."
             ]
           ],
-          "flow": [],
+          "flow": [
+            "Parear uma fechadura compatível",
+            "Controlar pela placa"
+          ],
           "image": null
         },
         {
@@ -1259,20 +1276,6 @@ export const pages = {
       "heading": "Produtos que estou construindo",
       "rows": [
         {
-          "name": "Plano Adentro",
-          "text": "Arquitetos e designers compartilham projetos que seus clientes podem explorar pelo navegador.",
-          "url": "https://planoadentro.com.br",
-          "id": "plano-adentro",
-          "featured": false,
-          "tagline": "Deixe o cliente explorar o projeto.",
-          "role": "",
-          "decision": "",
-          "status": "",
-          "sections": [],
-          "flow": [],
-          "image": null
-        },
-        {
           "name": "Subsíndico",
           "text": "Um espaço para documentos, assembleias e manutenção de condomínios. Moradores e gestores fazem perguntas sobre os materiais enviados e conferem a fonte citada. As permissões determinam quais documentos podem entrar na resposta.",
           "url": "https://subsindico.ia.br",
@@ -1300,11 +1303,28 @@ export const pages = {
           "image": null
         },
         {
+          "name": "Plano Adentro",
+          "text": "Arquitetos e designers compartilham projetos que seus clientes podem explorar pelo navegador.",
+          "url": "https://planoadentro.com.br",
+          "id": "plano-adentro",
+          "featured": true,
+          "tagline": "Deixe o cliente explorar o projeto.",
+          "role": "",
+          "decision": "",
+          "status": "",
+          "sections": [],
+          "flow": [
+            "Compartilhar o projeto",
+            "Explorar no navegador"
+          ],
+          "image": null
+        },
+        {
           "name": "Tessera",
           "text": "Dê a alguém permissão para solicitar um código de autenticação, com validade e registro de cada emissão. A aplicação web é separada do serviço que guarda e usa os segredos de origem.",
           "url": "https://tessera.otservices.space",
           "id": "tessera",
-          "featured": true,
+          "featured": false,
           "tagline": "Compartilhe um código sem entregar seu segredo.",
           "role": "Fluxos de permissão, emissão isolada de códigos e sua auditoria.",
           "decision": "Separar a camada web da custódia dos segredos e aplicar limites na emissão do código.",
